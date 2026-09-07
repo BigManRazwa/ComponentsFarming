@@ -25,6 +25,12 @@ const navigation: NavCategory[] = [
       { label: 'Card', path: '/components/card' },
     ],
   },
+  {
+    title: 'Themes',
+    items: [
+      { label: 'Art & Design', path: '/themes/art-and-design' },
+    ],
+  },
 ]
 
 export function Sidebar() {
