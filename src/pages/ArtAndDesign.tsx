@@ -7,11 +7,12 @@ interface ArtAndDesignProps {
   themes: ThemeData[]
   categories: string[]
   onDelete: (id: string) => void
+  onEdit: (id: string) => void
   onGoUpload: () => void
   onViewTheme: (slug: string) => void
 }
 
-export function ArtAndDesign({ themes, categories, onDelete, onGoUpload, onViewTheme }: ArtAndDesignProps) {
+export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload, onViewTheme }: ArtAndDesignProps) {
   const [activeFilter, setActiveFilter] = useState('All')
   const [sortBy, setSortBy] = useState('Popular')
   const [searchQuery, setSearchQuery] = useState('')
@@ -131,7 +132,7 @@ export function ArtAndDesign({ themes, categories, onDelete, onGoUpload, onViewT
       {filtered.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((theme) => (
-            <ThemeCard key={theme.id} theme={theme} onDelete={onDelete} onView={onViewTheme} />
+            <ThemeCard key={theme.id} theme={theme} onDelete={onDelete} onEdit={onEdit} onView={onViewTheme} />
           ))}
         </div>
       ) : (

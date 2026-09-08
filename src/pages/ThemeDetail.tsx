@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import type { ThemeData, Review, StyleVariation } from '../components/ui/ThemeCard'
 
 interface ThemeDetailProps {
@@ -79,30 +79,41 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
   const [reviewAuthor, setReviewAuthor] = useState('')
   const [reviewRating, setReviewRating] = useState(0)
   const [reviewComment, setReviewComment] = useState('')
+  const [isEditing, setIsEditing] = useState(false)
+  const [editName, setEditName] = useState(theme.name)
+  const [editDesc, setEditDesc] = useState(theme.description || '')
+  const [editThumbnail, setEditThumbnail] = useState(theme.thumbnail)
+  const iframeRef = useRef<HTMLIFrameElement>(null)
 
   const reviews = theme.reviews || []
   const avgRating = computeAvgRating(reviews)
   const hasVariations = theme.styleVariations && theme.styleVariations.length > 0
 
-  // Build demo URL with style params if a variation is selected
-  function getDemoUrl(): string | null {
-    if (!theme.demoUrl) return null
-    if (activeVariation === null || !theme.styleVariations?.[activeVariation]) return theme.demoUrl
-    const v = theme.styleVariations[activeVariation]
-    try {
-      const url = new URL(theme.demoUrl)
-      url.searchParams.set('style', v.name)
-      url.searchParams.set('bg', v.bgColor)
-      url.searchParams.set('text', v.textColor)
-      url.searchParams.set('accent', v.accentColor)
-      url.searchParams.set('font', v.fontFamily)
-      return url.toString()
-    } catch {
-      return theme.demoUrl
-    }
-  }
+  // Send style-variation change to the iframe via postMessage
+  useEffect(() => {
+    const iframe = iframeRef.current
+    if (!iframe) return
 
-  const demoUrl = getDemoUrl()
+    function sendVariation() {
+      const v = activeVariation !== null ? theme.styleVariations?.[activeVariation] : null
+      iframe!.contentWindow?.postMessage(
+        {
+          type: 'SET_THEME_VARIATION',
+          variation: v
+            ? { name: v.name, font: v.fontFamily, accent: v.accentColor, bg: v.bgColor, text: v.textColor }
+            : null, // null = reset to default
+        },
+        '*'
+      )
+    }
+
+    // If the iframe is already loaded, send immediately; also listen for (re)load
+    sendVariation()
+    iframe.addEventListener('load', sendVariation)
+    return () => iframe.removeEventListener('load', sendVariation)
+  }, [activeVariation, theme.styleVariations])
+
+  const demoUrl = theme.demoUrl || null
 
   function handleSubmitReview(e: React.FormEvent) {
     e.preventDefault()
@@ -138,19 +149,78 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
         {/* ───── LEFT COLUMN ───── */}
         <div className="lg:col-span-2 space-y-8">
 
-          {/* Title & Delete */}
+          {/* Title & Actions */}
           <div className="flex items-start justify-between">
-            <h1 className="text-3xl font-bold text-white tracking-tight">{theme.name}</h1>
-            <button
-              onClick={() => onDelete(theme.id)}
-              className="p-2 rounded-xl border border-zinc-800/60 text-zinc-600 hover:text-red-400 hover:border-red-500/30 transition-all shrink-0 mt-1"
-              title="Delete theme"
-            >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-              </svg>
-            </button>
+            {isEditing ? (
+              <input
+                value={editName}
+                onChange={(e) => setEditName(e.target.value)}
+                className="text-3xl font-bold text-white tracking-tight bg-zinc-900/50 border border-zinc-700/60 rounded-xl px-3 py-1.5 w-full mr-3 focus:outline-none focus:border-blue-500/40 transition-all"
+              />
+            ) : (
+              <h1 className="text-3xl font-bold text-white tracking-tight">{theme.name}</h1>
+            )}
+            <div className="flex gap-2 shrink-0 mt-1">
+              {isEditing ? (
+                <>
+                  <button
+                    onClick={() => {
+                      onUpdate({ ...theme, name: editName.trim() || theme.name, description: editDesc, thumbnail: editThumbnail || theme.thumbnail })
+                      setIsEditing(false)
+                    }}
+                    className="px-3 py-2 rounded-xl bg-blue-500 text-white text-xs font-medium hover:bg-blue-600 transition-all cursor-pointer"
+                  >
+                    Save
+                  </button>
+                  <button
+                    onClick={() => {
+                      setEditName(theme.name)
+                      setEditDesc(theme.description || '')
+                      setEditThumbnail(theme.thumbnail)
+                      setIsEditing(false)
+                    }}
+                    className="px-3 py-2 rounded-xl border border-zinc-700/60 text-zinc-400 text-xs font-medium hover:bg-zinc-800/60 transition-all cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={() => setIsEditing(true)}
+                    className="p-2 rounded-xl border border-zinc-800/60 text-zinc-600 hover:text-blue-400 hover:border-blue-500/30 transition-all"
+                    title="Edit theme"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => onDelete(theme.id)}
+                    className="p-2 rounded-xl border border-zinc-800/60 text-zinc-600 hover:text-red-400 hover:border-red-500/30 transition-all"
+                    title="Delete theme"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                  </button>
+                </>
+              )}
+            </div>
           </div>
+
+          {/* Thumbnail URL (edit mode only) */}
+          {isEditing && (
+            <div>
+              <h2 className="text-[11px] font-semibold text-zinc-600 uppercase tracking-wider mb-2">Thumbnail URL</h2>
+              <input
+                value={editThumbnail}
+                onChange={(e) => setEditThumbnail(e.target.value)}
+                placeholder="/thumbnails/my-theme.png"
+                className="w-full px-3 py-2 rounded-lg border border-zinc-800/60 bg-zinc-900/50 text-sm text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-blue-500/40 transition-all"
+              />
+            </div>
+          )}
 
           {/* Community Rating */}
           <div>
@@ -204,10 +274,20 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
           )}
 
           {/* Description */}
-          {theme.description && (
+          {(theme.description || isEditing) && (
             <div>
               <h2 className="text-[11px] font-semibold text-zinc-600 uppercase tracking-wider mb-3">Description</h2>
-              <p className="text-sm text-zinc-400 leading-relaxed whitespace-pre-line">{theme.description}</p>
+              {isEditing ? (
+                <textarea
+                  value={editDesc}
+                  onChange={(e) => setEditDesc(e.target.value)}
+                  rows={4}
+                  className="w-full px-3 py-2 rounded-lg border border-zinc-800/60 bg-zinc-900/50 text-sm text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-blue-500/40 transition-all resize-none"
+                  placeholder="Describe this theme..."
+                />
+              ) : (
+                <p className="text-sm text-zinc-400 leading-relaxed whitespace-pre-line">{theme.description}</p>
+              )}
             </div>
           )}
 
@@ -363,16 +443,40 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
                 )}
               </div>
 
-              {demoUrl ? (
-                <div className="relative w-full" style={{ height: '600px' }}>
-                  <iframe
-                    src={demoUrl}
-                    title={`${theme.name} demo`}
-                    className="w-full h-full border-0"
-                    sandbox="allow-scripts allow-same-origin allow-popups"
-                  />
-                </div>
-              ) : (
+              {demoUrl ? (() => {
+                const isMobile = theme.tags?.includes('Mobile')
+                return isMobile ? (
+                  <div className="relative w-full overflow-hidden flex justify-center" style={{ height: '600px', background: '#1a1a2e' }}>
+                    <iframe
+                      ref={iframeRef}
+                      src={demoUrl}
+                      title={`${theme.name} demo`}
+                      className="border-0"
+                      style={{
+                        width: '390px',
+                        height: '600px',
+                      }}
+                      sandbox="allow-scripts allow-same-origin allow-popups"
+                    />
+                  </div>
+                ) : (
+                  <div className="relative w-full overflow-hidden" style={{ height: '600px' }}>
+                    <iframe
+                      ref={iframeRef}
+                      src={demoUrl}
+                      title={`${theme.name} demo`}
+                      className="border-0 origin-top-left"
+                      style={{
+                        width: '1440px',
+                        height: '1333px',
+                        transform: 'scale(0.45)',
+                        transformOrigin: 'top left',
+                      }}
+                      sandbox="allow-scripts allow-same-origin allow-popups"
+                    />
+                  </div>
+                )
+              })() : (
                 <img
                   src={theme.thumbnail}
                   alt={theme.name}
@@ -402,6 +506,52 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
               </a>
+            )}
+
+            {/* Download this theme */}
+            {demoUrl && (
+              <div className="rounded-xl border border-zinc-800/60 bg-zinc-900/30 px-5 py-4 flex items-center justify-between gap-4">
+                <div>
+                  <h3 className="text-sm font-semibold text-zinc-200 mb-1">Download this theme</h3>
+                  <p className="text-xs text-zinc-500 leading-relaxed">
+                    This theme is available for download to be used on your own project.
+                  </p>
+                </div>
+                <button
+                  onClick={() => {
+                    // Open preview in new window so user can save the full page
+                    const w = window.open(demoUrl, '_blank')
+                    if (w) {
+                      // After a short delay, prompt them
+                      setTimeout(() => {
+                        // Create a downloadable blob from the iframe content if possible
+                        try {
+                          const iframe = iframeRef.current
+                          if (iframe?.contentDocument) {
+                            const html = iframe.contentDocument.documentElement.outerHTML
+                            const blob = new Blob([`<!DOCTYPE html>\n${html}`], { type: 'text/html' })
+                            const url = URL.createObjectURL(blob)
+                            const a = document.createElement('a')
+                            a.href = url
+                            a.download = `${theme.slug}.html`
+                            a.click()
+                            URL.revokeObjectURL(url)
+                            w.close()
+                          }
+                        } catch {
+                          // Cross-origin or other issue — just leave the new tab open
+                        }
+                      }, 1500)
+                    }
+                  }}
+                  className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-700/60 bg-zinc-800/40 text-sm text-zinc-300 font-medium hover:border-blue-500/40 hover:text-blue-400 hover:bg-blue-500/5 transition-all cursor-pointer"
+                >
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                  </svg>
+                  Download
+                </button>
+              </div>
             )}
           </div>
         </div>

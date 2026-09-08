@@ -34,10 +34,11 @@ export interface ThemeData {
 interface ThemeCardProps extends HTMLAttributes<HTMLDivElement> {
   theme: ThemeData
   onDelete?: (id: string) => void
+  onEdit?: (id: string) => void
   onView?: (slug: string) => void
 }
 
-export function ThemeCard({ theme, onDelete, onView, className = '', ...props }: ThemeCardProps) {
+export function ThemeCard({ theme, onDelete, onEdit, onView, className = '', ...props }: ThemeCardProps) {
   return (
     <div
       className={`
@@ -48,18 +49,31 @@ export function ThemeCard({ theme, onDelete, onView, className = '', ...props }:
       onClick={() => onView?.(theme.slug)}
       {...props}
     >
-      {/* Delete button */}
-      {onDelete && (
-        <button
-          onClick={(e) => { e.stopPropagation(); onDelete(theme.id) }}
-          className="absolute top-2.5 left-2.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity p-1.5 rounded-lg bg-red-500/80 backdrop-blur-sm text-white hover:bg-red-500"
-          title="Delete theme"
-        >
-          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-      )}
+      {/* Action buttons */}
+      <div className="absolute top-2.5 left-2.5 z-10 opacity-0 group-hover:opacity-100 transition-opacity flex gap-1.5">
+        {onEdit && (
+          <button
+            onClick={(e) => { e.stopPropagation(); onEdit(theme.id) }}
+            className="p-1.5 rounded-lg bg-blue-500/80 backdrop-blur-sm text-white hover:bg-blue-500"
+            title="Edit theme"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+          </button>
+        )}
+        {onDelete && (
+          <button
+            onClick={(e) => { e.stopPropagation(); onDelete(theme.id) }}
+            className="p-1.5 rounded-lg bg-red-500/80 backdrop-blur-sm text-white hover:bg-red-500"
+            title="Delete theme"
+          >
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        )}
+      </div>
 
       {/* Thumbnail */}
       <div className="relative aspect-[16/10] overflow-hidden bg-zinc-950">

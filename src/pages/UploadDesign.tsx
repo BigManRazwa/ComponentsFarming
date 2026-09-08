@@ -8,6 +8,7 @@ interface UploadDesignProps {
   categories: string[]
   onAddCategory: (name: string) => void
   onDeleteCategory: (name: string) => void
+  editTheme?: ThemeData
 }
 
 function generateSlug(name: string): string {
@@ -22,17 +23,17 @@ function generateSlug(name: string): string {
 const inputClass = 'w-full px-4 py-2.5 rounded-xl border border-zinc-800/60 bg-zinc-900/30 text-sm text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-blue-500/40 focus:ring-1 focus:ring-blue-500/20 transition-all'
 const chipContainerClass = 'rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-3 focus-within:border-blue-500/40 focus-within:ring-1 focus-within:ring-blue-500/20 transition-all'
 
-export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddCategory, onDeleteCategory }: UploadDesignProps) {
-  const [name, setName] = useState('')
-  const [customSlug, setCustomSlug] = useState('')
-  const [description, setDescription] = useState('')
-  const [demoUrl, setDemoUrl] = useState('')
-  const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set())
+export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddCategory, onDeleteCategory, editTheme }: UploadDesignProps) {
+  const [name, setName] = useState(editTheme?.name || '')
+  const [customSlug, setCustomSlug] = useState(editTheme?.slug || '')
+  const [description, setDescription] = useState(editTheme?.description || '')
+  const [demoUrl, setDemoUrl] = useState(editTheme?.demoUrl || '')
+  const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set(editTheme?.tags || []))
   const [newCategoryInput, setNewCategoryInput] = useState('')
   const [featureInput, setFeatureInput] = useState('')
-  const [features, setFeatures] = useState<string[]>([])
-  const [thumbnail, setThumbnail] = useState<string | null>(null)
-  const [styleVariations, setStyleVariations] = useState<StyleVariation[]>([])
+  const [features, setFeatures] = useState<string[]>(editTheme?.features || [])
+  const [thumbnail, setThumbnail] = useState<string | null>(editTheme?.thumbnail || null)
+  const [styleVariations, setStyleVariations] = useState<StyleVariation[]>(editTheme?.styleVariations || [])
   const [dragOver, setDragOver] = useState(false)
   const [slugError, setSlugError] = useState('')
 
@@ -113,13 +114,15 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
     e.preventDefault()
     if (!name.trim() || !thumbnail) return
     const finalSlug = resolvedSlug || generateSlug(name)
-    if (existingSlugs.includes(finalSlug)) {
+    // When editing, allow keeping the same slug
+    const slugsToCheck = editTheme ? existingSlugs.filter((s) => s !== editTheme.slug) : existingSlugs
+    if (slugsToCheck.includes(finalSlug)) {
       setSlugError('This URL is already taken. Choose a different one.')
       return
     }
 
     const theme: ThemeData = {
-      id: crypto.randomUUID(),
+      id: editTheme?.id || crypto.randomUUID(),
       name: name.trim(),
       slug: finalSlug,
       description: description.trim(),
@@ -128,7 +131,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
       tags: selectedCategories.size > 0 ? [...selectedCategories] : undefined,
       features: features.length > 0 ? features : undefined,
       styleVariations: styleVariations.length > 0 ? styleVariations : undefined,
-      reviews: [],
+      reviews: editTheme?.reviews || [],
     }
     onSave(theme)
   }
@@ -145,8 +148,10 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
         Back to themes
       </button>
 
-      <h1 className="text-3xl font-bold text-white tracking-tight mb-2">Upload Design</h1>
-      <p className="text-zinc-500 text-[15px] mb-10">Add a new theme to your art and design collection.</p>
+      <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">{editTheme ? 'Edit Design' : 'Upload Design'}</h1>
+      <p className="text-zinc-500 text-sm mb-10">
+        {editTheme ? 'Update your theme details below.' : 'Add a new theme to your art and design collection.'}
+      </p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
 
