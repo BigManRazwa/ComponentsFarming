@@ -54,8 +54,9 @@ export function ThemeCard({ theme, onDelete, onEdit, onView, className = '', ...
         {onEdit && (
           <button
             onClick={(e) => { e.stopPropagation(); onEdit(theme.id) }}
-            className="p-1.5 rounded-lg bg-blue-500/80 backdrop-blur-sm text-white hover:bg-blue-500"
+            className="p-1.5 rounded-lg bg-blue-500/80 backdrop-blur-sm text-white hover:bg-blue-500 cursor-pointer"
             title="Edit theme"
+            aria-label="Edit theme"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -65,8 +66,9 @@ export function ThemeCard({ theme, onDelete, onEdit, onView, className = '', ...
         {onDelete && (
           <button
             onClick={(e) => { e.stopPropagation(); onDelete(theme.id) }}
-            className="p-1.5 rounded-lg bg-red-500/80 backdrop-blur-sm text-white hover:bg-red-500"
+            className="p-1.5 rounded-lg bg-red-500/80 backdrop-blur-sm text-white hover:bg-red-500 cursor-pointer"
             title="Delete theme"
+            aria-label="Delete theme"
           >
             <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -81,6 +83,7 @@ export function ThemeCard({ theme, onDelete, onEdit, onView, className = '', ...
           src={theme.thumbnail}
           alt={theme.name}
           className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
         />
       </div>
 
@@ -110,7 +113,7 @@ export function ThemeCard({ theme, onDelete, onEdit, onView, className = '', ...
                   </svg>
                 ))}
               </div>
-              <span className="text-[10px] text-zinc-600 ml-0.5">
+              <span className="text-xs text-zinc-500 ml-0.5">
                 ({theme.reviews!.length})
               </span>
             </div>
@@ -123,13 +126,13 @@ export function ThemeCard({ theme, onDelete, onEdit, onView, className = '', ...
             {theme.features.slice(0, 3).map((feature) => (
               <span
                 key={feature}
-                className="text-[10px] px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400/80 border border-blue-500/20"
+                className="text-xs px-2 py-0.5 rounded-full bg-blue-500/10 text-blue-400/80 border border-blue-500/20"
               >
                 {feature}
               </span>
             ))}
             {theme.features.length > 3 && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-zinc-800/60 text-zinc-500">
+              <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-800/60 text-zinc-500">
                 +{theme.features.length - 3}
               </span>
             )}
@@ -142,7 +145,7 @@ export function ThemeCard({ theme, onDelete, onEdit, onView, className = '', ...
             {theme.tags.map((tag) => (
               <span
                 key={tag}
-                className="text-[10px] px-2 py-0.5 rounded-full bg-zinc-800/60 text-zinc-500 border border-zinc-800/40"
+                className="text-xs px-2 py-0.5 rounded-full bg-zinc-800/60 text-zinc-500 border border-zinc-800/40"
               >
                 {tag}
               </span>

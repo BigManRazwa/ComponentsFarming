@@ -27,7 +27,6 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
   const [name, setName] = useState(editTheme?.name || '')
   const [customSlug, setCustomSlug] = useState(editTheme?.slug || '')
   const [description, setDescription] = useState(editTheme?.description || '')
-  const [demoUrl, setDemoUrl] = useState(editTheme?.demoUrl || '')
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(new Set(editTheme?.tags || []))
   const [newCategoryInput, setNewCategoryInput] = useState('')
   const [featureInput, setFeatureInput] = useState('')
@@ -127,7 +126,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
       slug: finalSlug,
       description: description.trim(),
       thumbnail,
-      demoUrl: demoUrl.trim() || undefined,
+      demoUrl: `/?preview=${finalSlug}`,
       tags: selectedCategories.size > 0 ? [...selectedCategories] : undefined,
       features: features.length > 0 ? features : undefined,
       styleVariations: styleVariations.length > 0 ? styleVariations : undefined,
@@ -141,7 +140,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
 
   return (
     <div className="max-w-2xl mx-auto">
-      <button onClick={onBack} className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors mb-8">
+      <button onClick={onBack} className="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-300 transition-colors mb-8 cursor-pointer">
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
@@ -198,17 +197,19 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
             <span className="pl-4 pr-1 text-sm text-zinc-600 whitespace-nowrap select-none">/theme/</span>
             <input type="text" value={customSlug} onChange={(e) => { setCustomSlug(e.target.value); setSlugError('') }}
               placeholder={generateSlug(name) || 'auto-generated-from-name'}
-              className="flex-1 px-2 py-2.5 bg-transparent text-sm text-zinc-300 placeholder-zinc-700 focus:outline-none" />
+              className="flex-1 px-2 py-2.5 bg-transparent text-sm text-zinc-300 placeholder-zinc-600 focus:outline-none" />
           </div>
           {resolvedSlug && <p className="text-[11px] text-zinc-600 mt-1.5">URL: <span className="text-zinc-500">/theme/{resolvedSlug}</span></p>}
           {slugError && <p className="text-[11px] text-red-400 mt-1.5">{slugError}</p>}
         </div>
 
-        {/* Demo URL */}
+        {/* Demo URL (auto-generated) */}
         <div>
           <label className="block text-sm font-medium text-zinc-300 mb-2">Demo URL</label>
-          <input type="url" value={demoUrl} onChange={(e) => setDemoUrl(e.target.value)} placeholder="https://your-demo-site.com" className={inputClass} />
-          <p className="text-[11px] text-zinc-700 mt-1.5">Link to a live demo — this will be shown as an embedded preview</p>
+          <div className={inputClass + ' bg-zinc-900/50 text-zinc-500 cursor-default'}>
+            {resolvedSlug ? `/?preview=${resolvedSlug}` : '/?preview=...'}
+          </div>
+          <p className="text-[11px] text-zinc-700 mt-1.5">Auto-generated from your theme name — this will be the embedded preview route</p>
         </div>
 
         {/* Description */}
@@ -242,7 +243,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
                   <button
                     type="button"
                     onClick={() => removeVariation(i)}
-                    className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-red-500/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                    className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-red-500/80 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity cursor-pointer"
                   >
                     <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -275,7 +276,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
                       key={font}
                       type="button"
                       onClick={() => setNewVarFont(font)}
-                      className={`text-[10px] px-2 py-0.5 rounded-full border transition-all ${
+                      className={`text-[10px] px-2 py-0.5 rounded-full border transition-all cursor-pointer ${
                         newVarFont === font
                           ? 'bg-blue-500/15 text-blue-400 border-blue-500/30'
                           : 'bg-zinc-800/40 text-zinc-500 border-zinc-800/40 hover:border-zinc-700 hover:text-zinc-300'
@@ -330,17 +331,17 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
 
               <div className="flex gap-2">
                 <button type="button" onClick={addVariation} disabled={!newVarName.trim()}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${newVarName.trim() ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-400 hover:to-cyan-400' : 'bg-zinc-800 text-zinc-600 cursor-not-allowed'}`}>
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${newVarName.trim() ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-400 hover:to-cyan-400' : 'bg-zinc-800 text-zinc-600 cursor-not-allowed'}`}>
                   Add Variation
                 </button>
-                <button type="button" onClick={() => setShowVarForm(false)} className="px-4 py-2 rounded-lg text-sm text-zinc-500 hover:text-zinc-300 transition-colors">
+                <button type="button" onClick={() => setShowVarForm(false)} className="px-4 py-2 rounded-lg text-sm text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer">
                   Cancel
                 </button>
               </div>
             </div>
           ) : (
             <button type="button" onClick={() => setShowVarForm(true)}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-zinc-800/60 text-xs text-zinc-500 hover:text-zinc-300 hover:border-zinc-700 transition-all w-full justify-center">
+              className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-dashed border-zinc-800/60 text-xs text-zinc-500 hover:text-zinc-300 hover:border-zinc-700 transition-all w-full justify-center cursor-pointer">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
@@ -358,7 +359,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
                 {features.map((feature) => (
                   <span key={feature} className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20">
                     {feature}
-                    <button type="button" onClick={() => removeFeature(feature)} className="hover:text-blue-200 transition-colors">
+                    <button type="button" onClick={() => removeFeature(feature)} className="hover:text-blue-200 transition-colors cursor-pointer">
                       <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
                   </span>
@@ -387,7 +388,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
                   type="button"
                   onClick={() => toggleCategory(cat)}
                   className={`
-                    group inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border transition-all
+                    group inline-flex items-center gap-1.5 text-xs px-3 py-1.5 rounded-lg border transition-all cursor-pointer
                     ${selectedCategories.has(cat)
                       ? 'bg-blue-500/15 text-blue-400 border-blue-500/30'
                       : 'bg-zinc-800/40 text-zinc-500 border-zinc-800/40 hover:border-zinc-700 hover:text-zinc-300'
@@ -427,7 +428,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
               onClick={handleCreateCategory}
               disabled={!newCategoryInput.trim() || categories.includes(newCategoryInput.trim())}
               className={`
-                px-4 py-2.5 rounded-xl text-sm font-medium shrink-0 transition-all
+                px-4 py-2.5 rounded-xl text-sm font-medium shrink-0 transition-all cursor-pointer
                 ${newCategoryInput.trim() && !categories.includes(newCategoryInput.trim())
                   ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-400 hover:to-cyan-400'
                   : 'bg-zinc-800 text-zinc-600 cursor-not-allowed'
@@ -442,8 +443,8 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
         {/* Submit */}
         <div className="pt-4">
           <button type="submit" disabled={!isValid}
-            className={`w-full py-3 rounded-xl text-sm font-semibold transition-all ${isValid ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-400 hover:to-cyan-400 active:scale-[0.98]' : 'bg-zinc-800 text-zinc-600 cursor-not-allowed'}`}>
-            Add Theme
+            className={`w-full py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer ${isValid ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-400 hover:to-cyan-400 active:scale-[0.98]' : 'bg-zinc-800 text-zinc-600 cursor-not-allowed'}`}>
+            {editTheme ? 'Save Changes' : 'Add Theme'}
           </button>
         </div>
       </form>

@@ -5,6 +5,7 @@ interface ThemeDetailProps {
   theme: ThemeData
   onBack: () => void
   onDelete: (id: string) => void
+  onEdit: (id: string) => void
   onUpdate: (updated: ThemeData) => void
 }
 
@@ -73,16 +74,12 @@ function VariationCard({ variation, isActive, onClick }: {
   )
 }
 
-export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailProps) {
+export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: ThemeDetailProps) {
   const [activeVariation, setActiveVariation] = useState<number | null>(null)
   const [showReviewForm, setShowReviewForm] = useState(false)
   const [reviewAuthor, setReviewAuthor] = useState('')
   const [reviewRating, setReviewRating] = useState(0)
   const [reviewComment, setReviewComment] = useState('')
-  const [isEditing, setIsEditing] = useState(false)
-  const [editName, setEditName] = useState(theme.name)
-  const [editDesc, setEditDesc] = useState(theme.description || '')
-  const [editThumbnail, setEditThumbnail] = useState(theme.thumbnail)
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
   const reviews = theme.reviews || []
@@ -99,21 +96,24 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
       iframe!.contentWindow?.postMessage(
         {
           type: 'SET_THEME_VARIATION',
-          variation: v
-            ? { name: v.name, font: v.fontFamily, accent: v.accentColor, bg: v.bgColor, text: v.textColor }
-            : null, // null = reset to default
+          variation: v ? { accent: v.accentColor, bg: v.bgColor, text: v.textColor, font: v.fontFamily } : null,
         },
         '*'
       )
     }
 
-    // If the iframe is already loaded, send immediately; also listen for (re)load
-    sendVariation()
+    if (iframe.contentDocument?.readyState === 'complete') {
+      sendVariation()
+    }
     iframe.addEventListener('load', sendVariation)
     return () => iframe.removeEventListener('load', sendVariation)
   }, [activeVariation, theme.styleVariations])
 
-  const demoUrl = theme.demoUrl || null
+  const demoUrl = theme.demoUrl
+    ? theme.demoUrl.startsWith('http') || theme.demoUrl.startsWith('/')
+      ? theme.demoUrl
+      : undefined
+    : undefined
 
   function handleSubmitReview(e: React.FormEvent) {
     e.preventDefault()
@@ -138,9 +138,9 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
     <div className="max-w-6xl mx-auto">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-xs text-zinc-600 mb-8">
-        <button onClick={onBack} className="hover:text-zinc-400 transition-colors">Themes</button>
+        <button onClick={onBack} className="hover:text-zinc-400 transition-colors cursor-pointer">Themes</button>
         <span>›</span>
-        <button onClick={onBack} className="hover:text-zinc-400 transition-colors">Art & Design</button>
+        <button onClick={onBack} className="hover:text-zinc-400 transition-colors cursor-pointer">Art & Design</button>
         <span>›</span>
         <span className="text-zinc-400">{theme.name}</span>
       </div>
@@ -151,88 +151,40 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
 
           {/* Title & Actions */}
           <div className="flex items-start justify-between">
-            {isEditing ? (
-              <input
-                value={editName}
-                onChange={(e) => setEditName(e.target.value)}
-                className="text-3xl font-bold text-white tracking-tight bg-zinc-900/50 border border-zinc-700/60 rounded-xl px-3 py-1.5 w-full mr-3 focus:outline-none focus:border-blue-500/40 transition-all"
-              />
-            ) : (
-              <h1 className="text-3xl font-bold text-white tracking-tight">{theme.name}</h1>
-            )}
+            <h1 className="text-3xl font-bold text-white tracking-tight">{theme.name}</h1>
             <div className="flex gap-2 shrink-0 mt-1">
-              {isEditing ? (
-                <>
-                  <button
-                    onClick={() => {
-                      onUpdate({ ...theme, name: editName.trim() || theme.name, description: editDesc, thumbnail: editThumbnail || theme.thumbnail })
-                      setIsEditing(false)
-                    }}
-                    className="px-3 py-2 rounded-xl bg-blue-500 text-white text-xs font-medium hover:bg-blue-600 transition-all cursor-pointer"
-                  >
-                    Save
-                  </button>
-                  <button
-                    onClick={() => {
-                      setEditName(theme.name)
-                      setEditDesc(theme.description || '')
-                      setEditThumbnail(theme.thumbnail)
-                      setIsEditing(false)
-                    }}
-                    className="px-3 py-2 rounded-xl border border-zinc-700/60 text-zinc-400 text-xs font-medium hover:bg-zinc-800/60 transition-all cursor-pointer"
-                  >
-                    Cancel
-                  </button>
-                </>
-              ) : (
-                <>
-                  <button
-                    onClick={() => setIsEditing(true)}
-                    className="p-2 rounded-xl border border-zinc-800/60 text-zinc-600 hover:text-blue-400 hover:border-blue-500/30 transition-all"
-                    title="Edit theme"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                    </svg>
-                  </button>
-                  <button
-                    onClick={() => onDelete(theme.id)}
-                    className="p-2 rounded-xl border border-zinc-800/60 text-zinc-600 hover:text-red-400 hover:border-red-500/30 transition-all"
-                    title="Delete theme"
-                  >
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                    </svg>
-                  </button>
-                </>
-              )}
+              <button
+                onClick={() => onEdit(theme.id)}
+                className="p-2 rounded-xl border border-zinc-800/60 text-zinc-600 hover:text-blue-400 hover:border-blue-500/30 transition-all cursor-pointer"
+                title="Edit theme"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                </svg>
+              </button>
+              <button
+                onClick={() => onDelete(theme.id)}
+                className="p-2 rounded-xl border border-zinc-800/60 text-zinc-600 hover:text-red-400 hover:border-red-500/30 transition-all cursor-pointer"
+                title="Delete theme"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+              </button>
             </div>
           </div>
 
-          {/* Thumbnail URL (edit mode only) */}
-          {isEditing && (
-            <div>
-              <h2 className="text-[11px] font-semibold text-zinc-600 uppercase tracking-wider mb-2">Thumbnail URL</h2>
-              <input
-                value={editThumbnail}
-                onChange={(e) => setEditThumbnail(e.target.value)}
-                placeholder="/thumbnails/my-theme.png"
-                className="w-full px-3 py-2 rounded-lg border border-zinc-800/60 bg-zinc-900/50 text-sm text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-blue-500/40 transition-all"
-              />
-            </div>
-          )}
-
           {/* Community Rating */}
           <div>
-            <h2 className="text-[11px] font-semibold text-zinc-600 uppercase tracking-wider mb-3">Community Rating</h2>
+            <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Community Rating</h2>
             {reviews.length > 0 ? (
               <div className="flex items-center gap-3">
                 <StarRating rating={avgRating} size="md" />
                 <span className="text-sm text-zinc-400">{avgRating.toFixed(1)}/5</span>
-                <span className="text-xs text-zinc-600">({reviews.length} review{reviews.length !== 1 ? 's' : ''})</span>
+                <span className="text-xs text-zinc-500">({reviews.length} review{reviews.length !== 1 ? 's' : ''})</span>
               </div>
             ) : (
-              <p className="text-xs text-zinc-600">No reviews yet. Be the first to rate this theme.</p>
+              <p className="text-xs text-zinc-500">No reviews yet. Be the first to rate this theme.</p>
             )}
           </div>
 
@@ -241,7 +193,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
             <>
               {/* Default Style */}
               <div>
-                <h2 className="text-[11px] font-semibold text-zinc-600 uppercase tracking-wider mb-3">Default Style</h2>
+                <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Default Style</h2>
                 <VariationCard
                   variation={null}
                   isActive={activeVariation === null}
@@ -251,7 +203,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
 
               {/* Style Variations */}
               <div>
-                <h2 className="text-[11px] font-semibold text-zinc-600 uppercase tracking-wider mb-2">
+                <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">
                   Style Variations
                 </h2>
                 <p className="text-xs text-zinc-500 mb-4">
@@ -265,7 +217,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
                         isActive={activeVariation === i}
                         onClick={() => setActiveVariation(i)}
                       />
-                      <span className="text-[10px] text-zinc-600 max-w-[80px] truncate">{v.name}</span>
+                      <span className="text-xs text-zinc-500 max-w-[80px] truncate">{v.name}</span>
                     </div>
                   ))}
                 </div>
@@ -274,27 +226,17 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
           )}
 
           {/* Description */}
-          {(theme.description || isEditing) && (
+          {theme.description && (
             <div>
-              <h2 className="text-[11px] font-semibold text-zinc-600 uppercase tracking-wider mb-3">Description</h2>
-              {isEditing ? (
-                <textarea
-                  value={editDesc}
-                  onChange={(e) => setEditDesc(e.target.value)}
-                  rows={4}
-                  className="w-full px-3 py-2 rounded-lg border border-zinc-800/60 bg-zinc-900/50 text-sm text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-blue-500/40 transition-all resize-none"
-                  placeholder="Describe this theme..."
-                />
-              ) : (
-                <p className="text-sm text-zinc-400 leading-relaxed whitespace-pre-line">{theme.description}</p>
-              )}
+              <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Description</h2>
+              <p className="text-sm text-zinc-400 leading-relaxed whitespace-pre-line">{theme.description}</p>
             </div>
           )}
 
           {/* Features */}
           {theme.features && theme.features.length > 0 && (
             <div>
-              <h2 className="text-[11px] font-semibold text-zinc-600 uppercase tracking-wider mb-3">Features</h2>
+              <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Features</h2>
               <div className="rounded-xl border border-zinc-800/60 bg-zinc-900/20 divide-y divide-zinc-800/40">
                 {theme.features.map((feature) => (
                   <div key={feature} className="flex items-center gap-3 px-4 py-3">
@@ -311,7 +253,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
           {/* Tags */}
           {theme.tags && theme.tags.length > 0 && (
             <div>
-              <h2 className="text-[11px] font-semibold text-zinc-600 uppercase tracking-wider mb-3">Tags</h2>
+              <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Tags</h2>
               <div className="flex flex-wrap gap-2">
                 {theme.tags.map((tag) => (
                   <span key={tag} className="text-xs px-3 py-1.5 rounded-lg bg-zinc-800/60 text-zinc-400 border border-zinc-700/40">
@@ -325,12 +267,12 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
           {/* ───── REVIEWS SECTION ───── */}
           <div>
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-[11px] font-semibold text-zinc-600 uppercase tracking-wider">
+              <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider">
                 Reviews ({reviews.length})
               </h2>
               <button
                 onClick={() => setShowReviewForm(!showReviewForm)}
-                className="text-xs text-blue-400 hover:text-blue-300 transition-colors font-medium"
+                className="text-xs text-blue-400 hover:text-blue-300 transition-colors font-medium cursor-pointer"
               >
                 {showReviewForm ? 'Cancel' : '+ Add Review'}
               </button>
@@ -372,7 +314,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
                   className={`
                     px-4 py-2 rounded-lg text-sm font-medium transition-all
                     ${reviewAuthor.trim() && reviewRating > 0
-                      ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-400 hover:to-cyan-400'
+                      ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-400 hover:to-cyan-400 cursor-pointer'
                       : 'bg-zinc-800 text-zinc-600 cursor-not-allowed'
                     }
                   `}
@@ -394,7 +336,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
                         </div>
                         <span className="text-sm text-zinc-300 font-medium">{review.author}</span>
                       </div>
-                      <span className="text-[10px] text-zinc-600">{review.date}</span>
+                      <span className="text-xs text-zinc-500">{review.date}</span>
                     </div>
                     <StarRating rating={review.rating} size="sm" />
                     {review.comment && (
@@ -406,10 +348,10 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
             ) : (
               !showReviewForm && (
                 <div className="rounded-xl border border-dashed border-zinc-800/60 py-8 text-center">
-                  <p className="text-xs text-zinc-600 mb-2">No reviews yet</p>
+                  <p className="text-xs text-zinc-500 mb-2">No reviews yet</p>
                   <button
                     onClick={() => setShowReviewForm(true)}
-                    className="text-xs text-blue-400 hover:text-blue-300 transition-colors font-medium"
+                    className="text-xs text-blue-400 hover:text-blue-300 transition-colors font-medium cursor-pointer"
                   >
                     Be the first to review
                   </button>
@@ -425,10 +367,10 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
             {/* Demo iframe or screenshot */}
             <div className="rounded-xl border border-zinc-800/60 bg-zinc-900/30 overflow-hidden">
               <div className="px-4 py-3 border-b border-zinc-800/60 flex items-center gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-zinc-800" />
-                <div className="w-2.5 h-2.5 rounded-full bg-zinc-800" />
-                <div className="w-2.5 h-2.5 rounded-full bg-zinc-800" />
-                <span className="text-[11px] text-zinc-600 ml-2 uppercase tracking-wider">
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
+                <div className="w-2.5 h-2.5 rounded-full bg-amber-500/60" />
+                <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
+                <span className="text-[11px] text-zinc-500 ml-2 uppercase tracking-wider">
                   {demoUrl ? 'Live Demo' : 'Preview'}
                 </span>
                 {demoUrl && (
@@ -446,14 +388,14 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
               {demoUrl ? (() => {
                 const isMobile = theme.tags?.includes('Mobile')
                 return isMobile ? (
-                  <div className="relative w-full overflow-hidden flex justify-center" style={{ height: '600px', background: '#1a1a2e' }}>
+                  <div className="relative w-full overflow-hidden flex justify-center bg-zinc-950" style={{ height: '600px' }}>
                     <iframe
                       ref={iframeRef}
                       src={demoUrl}
                       title={`${theme.name} demo`}
                       className="border-0"
                       style={{
-                        width: '390px',
+                        width: 'min(390px, 100%)',
                         height: '600px',
                       }}
                       sandbox="allow-scripts allow-same-origin allow-popups"
@@ -499,7 +441,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
                   </svg>
                   <div>
                     <p className="text-sm text-zinc-300 group-hover:text-blue-400 transition-colors font-medium">Preview Demo Site</p>
-                    <p className="text-[10px] text-zinc-600 truncate max-w-xs">{theme.demoUrl}</p>
+                    <p className="text-xs text-zinc-500 truncate max-w-xs">{theme.demoUrl}</p>
                   </div>
                 </div>
                 <svg className="w-4 h-4 text-zinc-700 group-hover:text-blue-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -519,29 +461,23 @@ export function ThemeDetail({ theme, onBack, onDelete, onUpdate }: ThemeDetailPr
                 </div>
                 <button
                   onClick={() => {
-                    // Open preview in new window so user can save the full page
-                    const w = window.open(demoUrl, '_blank')
-                    if (w) {
-                      // After a short delay, prompt them
-                      setTimeout(() => {
-                        // Create a downloadable blob from the iframe content if possible
-                        try {
-                          const iframe = iframeRef.current
-                          if (iframe?.contentDocument) {
-                            const html = iframe.contentDocument.documentElement.outerHTML
-                            const blob = new Blob([`<!DOCTYPE html>\n${html}`], { type: 'text/html' })
-                            const url = URL.createObjectURL(blob)
-                            const a = document.createElement('a')
-                            a.href = url
-                            a.download = `${theme.slug}.html`
-                            a.click()
-                            URL.revokeObjectURL(url)
-                            w.close()
-                          }
-                        } catch {
-                          // Cross-origin or other issue — just leave the new tab open
-                        }
-                      }, 1500)
+                    try {
+                      const iframe = iframeRef.current
+                      if (iframe?.contentDocument) {
+                        const html = iframe.contentDocument.documentElement.outerHTML
+                        const blob = new Blob([`<!DOCTYPE html>\n${html}`], { type: 'text/html' })
+                        const url = URL.createObjectURL(blob)
+                        const a = document.createElement('a')
+                        a.href = url
+                        a.download = `${theme.slug}.html`
+                        a.click()
+                        URL.revokeObjectURL(url)
+                      } else {
+                        // Fallback: open in new tab
+                        window.open(demoUrl, '_blank')
+                      }
+                    } catch {
+                      window.open(demoUrl, '_blank')
                     }
                   }}
                   className="shrink-0 flex items-center gap-2 px-4 py-2 rounded-lg border border-zinc-700/60 bg-zinc-800/40 text-sm text-zinc-300 font-medium hover:border-blue-500/40 hover:text-blue-400 hover:bg-blue-500/5 transition-all cursor-pointer"
