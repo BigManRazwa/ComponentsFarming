@@ -85,6 +85,19 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
   const reviews = theme.reviews || []
   const avgRating = computeAvgRating(reviews)
   const hasVariations = theme.styleVariations && theme.styleVariations.length > 0
+  const hasFontVariations = theme.fontVariations && theme.fontVariations.length > 0
+  const [activeFont, setActiveFont] = useState<number | null>(null)
+
+  // Load Google Fonts for font variation previews
+  useEffect(() => {
+    if (!hasFontVariations) return
+    const families = theme.fontVariations!.map((f) => f.fontFamily.split(',')[0].trim()).join('&family=')
+    const link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.href = `https://fonts.googleapis.com/css2?family=${families.replace(/ /g, '+')}&display=swap`
+    document.head.appendChild(link)
+    return () => { document.head.removeChild(link) }
+  }, [hasFontVariations, theme.fontVariations])
 
   // Send style-variation change to the iframe via postMessage
   useEffect(() => {
@@ -93,10 +106,11 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
 
     function sendVariation() {
       const v = activeVariation !== null ? theme.styleVariations?.[activeVariation] : null
+      const f = activeFont !== null ? theme.fontVariations?.[activeFont] : null
       iframe!.contentWindow?.postMessage(
         {
           type: 'SET_THEME_VARIATION',
-          variation: v ? { accent: v.accentColor, bg: v.bgColor, text: v.textColor, font: v.fontFamily } : null,
+          variation: v ? { accent: v.accentColor, bg: v.bgColor, text: v.textColor, font: f ? f.fontFamily : v.fontFamily } : f ? { font: f.fontFamily } : null,
         },
         '*'
       )
@@ -107,7 +121,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
     }
     iframe.addEventListener('load', sendVariation)
     return () => iframe.removeEventListener('load', sendVariation)
-  }, [activeVariation, theme.styleVariations])
+  }, [activeVariation, activeFont, theme.styleVariations, theme.fontVariations])
 
   const demoUrl = theme.demoUrl
     ? theme.demoUrl.startsWith('http') || theme.demoUrl.startsWith('/')
@@ -223,6 +237,62 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
                 </div>
               </div>
             </>
+          )}
+
+          {/* Font Variations */}
+          {hasFontVariations && (
+            <div>
+              <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-2">
+                Font Variations
+              </h2>
+              <p className="text-xs text-zinc-500 mb-4">
+                Switch typography to change the look &amp; feel.
+              </p>
+              <div className="flex flex-col gap-2">
+                {/* Default font option */}
+                <button
+                  onClick={() => setActiveFont(null)}
+                  className={`w-full text-left px-4 py-3 rounded-xl border transition-all cursor-pointer ${
+                    activeFont === null
+                      ? 'border-blue-500 bg-blue-500/10'
+                      : 'border-zinc-800/60 bg-zinc-900/20 hover:border-zinc-700'
+                  }`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-xs text-zinc-500">Default</span>
+                      <p className="text-sm text-zinc-300 mt-0.5">Theme Default Font</p>
+                    </div>
+                    {activeFont === null && (
+                      <div className="w-2 h-2 rounded-full bg-blue-500" />
+                    )}
+                  </div>
+                </button>
+                {theme.fontVariations!.map((f, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveFont(i)}
+                    className={`w-full text-left px-4 py-3 rounded-xl border transition-all cursor-pointer ${
+                      activeFont === i
+                        ? 'border-blue-500 bg-blue-500/10'
+                        : 'border-zinc-800/60 bg-zinc-900/20 hover:border-zinc-700'
+                    }`}
+                  >
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <span className="text-xs text-zinc-500">{f.name}</span>
+                        <p className="text-sm text-zinc-300 mt-0.5" style={{ fontFamily: f.fontFamily }}>
+                          {f.preview}
+                        </p>
+                      </div>
+                      {activeFont === i && (
+                        <div className="w-2 h-2 rounded-full bg-blue-500" />
+                      )}
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
           )}
 
           {/* Description */}

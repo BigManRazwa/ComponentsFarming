@@ -23,6 +23,28 @@ import { FurnitureStore } from './pages/examples/FurnitureStore'
 import { MobileBeautyStore } from './pages/examples/MobileBeautyStore'
 import { KanbanBoard } from './pages/examples/KanbanBoard'
 import { MobileRecipeApp } from './pages/examples/MobileRecipeApp'
+import { CrmDashboard } from './pages/examples/CrmDashboard'
+import { MobileMeditationApp } from './pages/examples/MobileMeditationApp'
+import { ConferenceLanding } from './pages/examples/ConferenceLanding'
+import { JobBoard } from './pages/examples/JobBoard'
+import { MobilePodcastApp } from './pages/examples/MobilePodcastApp'
+import { AnalyticsDashboard } from './pages/examples/AnalyticsDashboard'
+import { MobileFoodDelivery } from './pages/examples/MobileFoodDelivery'
+import { ChatApp } from './pages/examples/ChatApp'
+import { MobileCryptoWallet } from './pages/examples/MobileCryptoWallet'
+import { VideoStreaming } from './pages/examples/VideoStreaming'
+import { MobileSocialProfile } from './pages/examples/MobileSocialProfile'
+import { AdminCms } from './pages/examples/AdminCms'
+import { MobileRideSharing } from './pages/examples/MobileRideSharing'
+import { SocialAnalytics } from './pages/examples/SocialAnalytics'
+import { MobileWorkoutPlanner } from './pages/examples/MobileWorkoutPlanner'
+import { StartupLanding } from './pages/examples/StartupLanding'
+import { MobileNotesApp } from './pages/examples/MobileNotesApp'
+import { EcommerceProduct } from './pages/examples/EcommerceProduct'
+import { EmailClient } from './pages/examples/EmailClient'
+import { MobileDatingApp } from './pages/examples/MobileDatingApp'
+import { ProjectDashboard } from './pages/examples/ProjectDashboard'
+import { MobileShoppingCart } from './pages/examples/MobileShoppingCart'
 import type { ThemeData } from './components/ui/ThemeCard'
 
 const THEMES_KEY = 'art-design-themes'
@@ -950,9 +972,963 @@ const DEFAULT_THEMES: ThemeData[] = [
     ],
     reviews: [],
   },
+  {
+    id: 'seed-crm-dashboard',
+    name: 'CRM Sales Dashboard',
+    slug: 'crm-dashboard',
+    description:
+      'A CRM sales dashboard with pipeline funnel, deals table, stats cards, upcoming tasks, and activity feed — designed for sales teams and customer relationship management.',
+    thumbnail: '/thumbnails/crm-dashboard.jpg',
+    tags: ['CRM & Sales', 'Desktop'],
+    features: [
+      'Pipeline Funnel Chart',
+      'Recent Deals Table',
+      'Revenue Stats Cards',
+      'Upcoming Tasks List',
+      'Activity Feed',
+      'Sidebar Navigation',
+      'Search & Notifications',
+    ],
+    demoUrl: '/?preview=crm-dashboard',
+    styleVariations: [
+      {
+        name: 'Teal',
+        fontFamily: 'Inter',
+        bgColor: '#0F1419',
+        textColor: '#F1F5F9',
+        accentColor: '#14B8A6',
+      },
+      {
+        name: 'Indigo',
+        fontFamily: 'Inter',
+        bgColor: '#0F0F1A',
+        textColor: '#F1F0FF',
+        accentColor: '#6366F1',
+      },
+      {
+        name: 'Amber',
+        fontFamily: 'Inter',
+        bgColor: '#141008',
+        textColor: '#FFF8E8',
+        accentColor: '#F59E0B',
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-meditation',
+    name: 'Meditation & Wellness App',
+    slug: 'mobile-meditation',
+    description:
+      'A mobile meditation and wellness app with guided sessions, daily progress ring, mood tracker, category explorer, and wellness stats — designed for mindfulness and mental health apps.',
+    thumbnail: '/thumbnails/meditation-app.jpg',
+    tags: ['Wellness', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Featured Session Card',
+      'Daily Progress Ring',
+      'Category Explorer Grid',
+      'Recommended Sessions',
+      'Mood Tracker',
+      'Wellness Stats',
+      'Glassmorphism Cards',
+    ],
+    demoUrl: '/?preview=mobile-meditation',
+    styleVariations: [
+      {
+        name: 'Twilight',
+        fontFamily: 'Inter',
+        bgColor: '#1A0A3E',
+        textColor: '#F5F0FF',
+        accentColor: '#8B5CF6',
+      },
+      {
+        name: 'Ocean',
+        fontFamily: 'Inter',
+        bgColor: '#0A2030',
+        textColor: '#F0FAFF',
+        accentColor: '#06B6D4',
+      },
+      {
+        name: 'Forest',
+        fontFamily: 'Inter',
+        bgColor: '#0A2010',
+        textColor: '#F0FFF5',
+        accentColor: '#22C55E',
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-conference-landing',
+    name: 'Conference & Event Landing',
+    slug: 'conference-landing',
+    description:
+      'A maximalist conference and event landing page with animated hero, speaker carousel, schedule timeline, ticket pricing tiers, sponsor logos wall, venue map, FAQ accordion, and newsletter — packed with gradients, glassmorphism, and glow effects.',
+    thumbnail: '/thumbnails/conference-landing.jpg',
+    tags: ['Events & Conference', 'Desktop'],
+    features: [
+      'Animated Hero with Countdown',
+      'Speaker Cards Grid',
+      'Schedule Timeline with Tracks',
+      'Ticket Pricing Tiers',
+      'Sponsor Logos Wall',
+      'Venue & Hotels Section',
+      'FAQ Accordion',
+      'Gradient & Glow Effects',
+      'Glassmorphism Cards',
+    ],
+    demoUrl: '/?preview=conference-landing',
+    styleVariations: [
+      {
+        name: 'Electric Blue',
+        fontFamily: 'Space Grotesk',
+        bgColor: '#030712',
+        textColor: '#F8FAFC',
+        accentColor: '#3B82F6',
+      },
+      {
+        name: 'Sunset',
+        fontFamily: 'Space Grotesk',
+        bgColor: '#0C0308',
+        textColor: '#FFF5F0',
+        accentColor: '#F97316',
+      },
+      {
+        name: 'Matrix',
+        fontFamily: 'Space Grotesk',
+        bgColor: '#020F05',
+        textColor: '#F0FFF5',
+        accentColor: '#22C55E',
+      },
+    ],
+    fontVariations: [
+      {
+        name: 'Mono Tech',
+        fontFamily: 'JetBrains Mono, monospace',
+        preview: 'DEVCON 2025 — Code the Future',
+      },
+      {
+        name: 'Bold Sans',
+        fontFamily: 'Outfit, sans-serif',
+        preview: 'DEVCON 2025 — Code the Future',
+      },
+      {
+        name: 'Classic Serif',
+        fontFamily: 'Playfair Display, serif',
+        preview: 'DEVCON 2025 — Code the Future',
+      },
+      {
+        name: 'Geometric',
+        fontFamily: 'Poppins, sans-serif',
+        preview: 'DEVCON 2025 — Code the Future',
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-job-board',
+    name: 'Job Board Platform',
+    slug: 'job-board',
+    description:
+      'A detailed job board and hiring platform with hero search, stats bar, featured companies, filterable job listings with sidebar, salary ranges, and job alerts — designed for recruitment and career platforms.',
+    thumbnail: '/thumbnails/job-board.jpg',
+    tags: ['Jobs & Careers', 'Desktop'],
+    features: [
+      'Hero Search with Trending Tags',
+      'Stats Bar',
+      'Featured Companies Grid',
+      'Detailed Job Listing Cards',
+      'Filter Sidebar',
+      'Salary Range Display',
+      'Job Alerts Signup',
+      'Bookmark Toggle',
+    ],
+    demoUrl: '/?preview=job-board',
+    styleVariations: [
+      {
+        name: 'Violet',
+        fontFamily: 'Plus Jakarta Sans',
+        bgColor: '#09090B',
+        textColor: '#FAFAFA',
+        accentColor: '#7C3AED',
+      },
+      {
+        name: 'Emerald',
+        fontFamily: 'Plus Jakarta Sans',
+        bgColor: '#050F0A',
+        textColor: '#F0FFF5',
+        accentColor: '#059669',
+      },
+      {
+        name: 'Rose',
+        fontFamily: 'Plus Jakarta Sans',
+        bgColor: '#0C0508',
+        textColor: '#FFF5F8',
+        accentColor: '#E11D48',
+      },
+    ],
+    fontVariations: [
+      {
+        name: 'Modern Sans',
+        fontFamily: 'Outfit, sans-serif',
+        preview: 'Find Your Dream Job Today',
+      },
+      {
+        name: 'Geometric',
+        fontFamily: 'Poppins, sans-serif',
+        preview: 'Find Your Dream Job Today',
+      },
+      {
+        name: 'Classic',
+        fontFamily: 'Source Sans 3, sans-serif',
+        preview: 'Find Your Dream Job Today',
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-podcast',
+    name: 'Mobile Podcast Player',
+    slug: 'mobile-podcast',
+    description:
+      'A rich mobile podcast player with now playing controls, continue listening queue, trending episodes, category browser, new releases grid, and queue management — designed for audio streaming and podcast platforms.',
+    thumbnail: '/thumbnails/podcast-app.jpg',
+    tags: ['Podcast & Audio', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Now Playing Card with Controls',
+      'Continue Listening Queue',
+      'Trending Episodes List',
+      'Browse Categories',
+      'New Releases Grid',
+      'Queue Management',
+      'Playback Speed Toggle',
+    ],
+    demoUrl: '/?preview=mobile-podcast',
+    styleVariations: [
+      {
+        name: 'Flame',
+        fontFamily: 'Inter',
+        bgColor: '#0A0A0A',
+        textColor: '#FAFAFA',
+        accentColor: '#F97316',
+      },
+      {
+        name: 'Royal Purple',
+        fontFamily: 'Inter',
+        bgColor: '#0A080F',
+        textColor: '#F5F0FF',
+        accentColor: '#8B5CF6',
+      },
+      {
+        name: 'Mint',
+        fontFamily: 'Inter',
+        bgColor: '#080C0E',
+        textColor: '#F0FAFF',
+        accentColor: '#14B8A6',
+      },
+    ],
+    fontVariations: [
+      {
+        name: 'Rounded',
+        fontFamily: 'Nunito, sans-serif',
+        preview: 'PodVibe — Listen to the world',
+      },
+      {
+        name: 'Clean',
+        fontFamily: 'DM Sans, sans-serif',
+        preview: 'PodVibe — Listen to the world',
+      },
+      {
+        name: 'Mono',
+        fontFamily: 'IBM Plex Mono, monospace',
+        preview: 'PodVibe — Listen to the world',
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-analytics-dashboard',
+    name: 'Data Analytics Dashboard',
+    slug: 'analytics-dashboard',
+    description:
+      'A data-heavy analytics dashboard with KPI cards, SVG area chart, revenue bar chart, traffic donut chart, pages table, real-time activity feed, and quick stats — packed with visualizations for data teams.',
+    thumbnail: '/thumbnails/analytics-dashboard.jpg',
+    tags: ['Analytics', 'Desktop'],
+    features: [
+      'KPI Stats Cards',
+      'SVG Area Chart',
+      'Revenue Bar Chart',
+      'Traffic Donut Chart',
+      'Pages Data Table',
+      'Real-time Activity Feed',
+      'Date Range Picker',
+      'Sidebar Navigation',
+    ],
+    demoUrl: '/?preview=analytics-dashboard',
+    styleVariations: [
+      {
+        name: 'Cyan',
+        fontFamily: 'Inter',
+        bgColor: '#0A0F14',
+        textColor: '#F1F5F9',
+        accentColor: '#06B6D4',
+      },
+      {
+        name: 'Violet',
+        fontFamily: 'Inter',
+        bgColor: '#0C0A14',
+        textColor: '#F1F0FF',
+        accentColor: '#8B5CF6',
+      },
+      {
+        name: 'Lime',
+        fontFamily: 'Inter',
+        bgColor: '#0A0F08',
+        textColor: '#F5FFF0',
+        accentColor: '#84CC16',
+      },
+    ],
+    fontVariations: [
+      {
+        name: 'Mono Data',
+        fontFamily: 'JetBrains Mono, monospace',
+        preview: 'DataPulse — 2.4M Users',
+      },
+      {
+        name: 'Clean Sans',
+        fontFamily: 'DM Sans, sans-serif',
+        preview: 'DataPulse — 2.4M Users',
+      },
+      {
+        name: 'Technical',
+        fontFamily: 'IBM Plex Sans, sans-serif',
+        preview: 'DataPulse — 2.4M Users',
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-food-delivery',
+    name: 'Mobile Food Delivery App',
+    slug: 'mobile-food-delivery',
+    description:
+      'A mobile food delivery app with restaurant listings, category browser, promo banners, popular dishes, special offers, order tracking progress, and cart — designed for food ordering platforms.',
+    thumbnail: '/thumbnails/food-delivery.jpg',
+    tags: ['Food Delivery', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Restaurant Cards with Ratings',
+      'Category Browser',
+      'Promo Banner',
+      'Popular Dishes List',
+      'Special Offers Cards',
+      'Order Tracking Progress',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-food-delivery',
+    styleVariations: [
+      {
+        name: 'Red',
+        fontFamily: 'Inter',
+        bgColor: '#FFFFFF',
+        textColor: '#1A1A1A',
+        accentColor: '#EF4444',
+      },
+      {
+        name: 'Orange',
+        fontFamily: 'Inter',
+        bgColor: '#FFFAF5',
+        textColor: '#1A1A1A',
+        accentColor: '#F97316',
+      },
+      {
+        name: 'Green',
+        fontFamily: 'Inter',
+        bgColor: '#F5FFF8',
+        textColor: '#1A1A1A',
+        accentColor: '#22C55E',
+      },
+    ],
+    fontVariations: [
+      {
+        name: 'Rounded',
+        fontFamily: 'Nunito, sans-serif',
+        preview: 'Order delicious food now',
+      },
+      {
+        name: 'Friendly',
+        fontFamily: 'Quicksand, sans-serif',
+        preview: 'Order delicious food now',
+      },
+      {
+        name: 'Modern',
+        fontFamily: 'Outfit, sans-serif',
+        preview: 'Order delicious food now',
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-chat-app',
+    name: 'Team Chat & Messaging',
+    slug: 'chat-app',
+    description:
+      'A team chat and messaging app with conversation list, message bubbles with reactions, typing indicators, file sharing, shared links panel, and member list — designed for team collaboration platforms.',
+    thumbnail: '/thumbnails/chat-app.jpg',
+    tags: ['Chat & Messaging', 'Desktop'],
+    features: [
+      'Conversation List with Unread Badges',
+      'Message Bubbles with Reactions',
+      'Typing Indicator Animation',
+      'File Attachment Cards',
+      'Reply Threads',
+      'Shared Files & Links Panel',
+      'Member Online/Offline Status',
+      'Message Input with Emoji & GIF',
+    ],
+    demoUrl: '/?preview=chat-app',
+    styleVariations: [
+      {
+        name: 'Blue',
+        fontFamily: 'Inter',
+        bgColor: '#0B0E14',
+        textColor: '#F1F5F9',
+        accentColor: '#3B82F6',
+      },
+      {
+        name: 'Violet',
+        fontFamily: 'Inter',
+        bgColor: '#0C0A14',
+        textColor: '#F1F0FF',
+        accentColor: '#8B5CF6',
+      },
+      {
+        name: 'Emerald',
+        fontFamily: 'Inter',
+        bgColor: '#080E0C',
+        textColor: '#F0FFF5',
+        accentColor: '#10B981',
+      },
+    ],
+    fontVariations: [
+      {
+        name: 'Slack Style',
+        fontFamily: 'Lato, sans-serif',
+        preview: 'TeamChat — Stay connected',
+      },
+      {
+        name: 'Discord Style',
+        fontFamily: 'Outfit, sans-serif',
+        preview: 'TeamChat — Stay connected',
+      },
+      {
+        name: 'Mono',
+        fontFamily: 'JetBrains Mono, monospace',
+        preview: 'TeamChat — Stay connected',
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-crypto',
+    name: 'Mobile Crypto Wallet',
+    slug: 'mobile-crypto',
+    description:
+      'A mobile crypto wallet and trading app with portfolio chart, asset list with sparklines, quick actions, watchlist, recent transactions, and market overview — designed for cryptocurrency and fintech apps.',
+    thumbnail: '/thumbnails/crypto-wallet.jpg',
+    tags: ['Crypto & Trading', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Portfolio Value with SVG Chart',
+      'Asset List with Sparklines',
+      'Quick Action Buttons',
+      'Watchlist Chips',
+      'Transaction History',
+      'Market Overview Stats',
+      'Dark Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-crypto',
+    styleVariations: [
+      {
+        name: 'Green',
+        fontFamily: 'Inter',
+        bgColor: '#0A0A0A',
+        textColor: '#FAFAFA',
+        accentColor: '#22C55E',
+      },
+      {
+        name: 'Blue',
+        fontFamily: 'Inter',
+        bgColor: '#080C14',
+        textColor: '#F1F5F9',
+        accentColor: '#3B82F6',
+      },
+      {
+        name: 'Gold',
+        fontFamily: 'Inter',
+        bgColor: '#0C0A05',
+        textColor: '#FFF8E8',
+        accentColor: '#F59E0B',
+      },
+    ],
+    fontVariations: [
+      {
+        name: 'Finance',
+        fontFamily: 'DM Sans, sans-serif',
+        preview: 'CoinVault — $24,582.40',
+      },
+      {
+        name: 'Tech',
+        fontFamily: 'Space Grotesk, sans-serif',
+        preview: 'CoinVault — $24,582.40',
+      },
+      {
+        name: 'Mono',
+        fontFamily: 'IBM Plex Mono, monospace',
+        preview: 'CoinVault — $24,582.40',
+      },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-video-streaming',
+    name: 'Video Streaming Platform',
+    slug: 'video-streaming',
+    description:
+      'A Netflix-style video streaming platform with cinematic hero, continue watching with progress bars, trending posters with hover overlays, top 10 ranking, and new releases grid — designed for entertainment platforms.',
+    thumbnail: '/thumbnails/video-streaming.jpg',
+    tags: ['Video & Streaming', 'Desktop'],
+    features: [
+      'Cinematic Hero Section',
+      'Continue Watching with Progress',
+      'Trending Posters with Hover',
+      'Top 10 Ranked List',
+      'New Releases Grid',
+      'Genre Tag Pills',
+      'Search & Notifications',
+      'Dark Cinema Theme',
+    ],
+    demoUrl: '/?preview=video-streaming',
+    styleVariations: [
+      { name: 'Netflix Red', fontFamily: 'Inter', bgColor: '#0A0A0A', textColor: '#FFFFFF', accentColor: '#E50914' },
+      { name: 'Sky Blue', fontFamily: 'Inter', bgColor: '#080C14', textColor: '#F1F5F9', accentColor: '#0EA5E9' },
+      { name: 'Purple', fontFamily: 'Inter', bgColor: '#0C0812', textColor: '#F5F0FF', accentColor: '#A855F7' },
+    ],
+    fontVariations: [
+      { name: 'Cinema', fontFamily: 'Bebas Neue, sans-serif', preview: 'THE LAST FRONTIER' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'THE LAST FRONTIER' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'THE LAST FRONTIER' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-social-profile',
+    name: 'Mobile Social Profile',
+    slug: 'mobile-social-profile',
+    description:
+      'An Instagram-style social media profile page with avatar, stats, bio, story highlights, content tabs, and photo grid with engagement overlays — designed for social media and creator platforms.',
+    thumbnail: '/thumbnails/social-profile.jpg',
+    tags: ['Social Profile', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Profile Stats & Bio',
+      'Story Highlights Circles',
+      'Content Tab Switcher',
+      'Photo Grid with Hover Stats',
+      'Video & Multi-post Indicators',
+      'Edit & Share Profile',
+      'Light/Dark Theme Support',
+    ],
+    demoUrl: '/?preview=mobile-social-profile',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#3B82F6' },
+      { name: 'Pink', fontFamily: 'Inter', bgColor: '#FFF5F8', textColor: '#1A1A1A', accentColor: '#EC4899' },
+      { name: 'Dark', fontFamily: 'Inter', bgColor: '#0A0A0F', textColor: '#F5F5FF', accentColor: '#6366F1' },
+    ],
+    fontVariations: [
+      { name: 'Rounded', fontFamily: 'Nunito, sans-serif', preview: '@alexdesigns — 45.2K followers' },
+      { name: 'Geometric', fontFamily: 'Poppins, sans-serif', preview: '@alexdesigns — 45.2K followers' },
+      { name: 'Elegant', fontFamily: 'Playfair Display, serif', preview: '@alexdesigns — 45.2K followers' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-admin-cms',
+    name: 'Admin CMS Dashboard',
+    slug: 'admin-cms',
+    description:
+      'A content management admin dashboard with sidebar navigation, content stats, searchable data table with status badges, quick actions, recent activity feed, and content calendar — designed for CMS and admin panels.',
+    thumbnail: '/thumbnails/admin-cms.jpg',
+    tags: ['Admin & CMS', 'Desktop'],
+    features: [
+      'Sidebar Navigation',
+      'Content Stats Cards',
+      'Searchable Data Table',
+      'Status Badge Filters',
+      'Quick Action Buttons',
+      'Recent Activity Feed',
+      'Content Calendar Widget',
+      'Breadcrumb Navigation',
+    ],
+    demoUrl: '/?preview=admin-cms',
+    styleVariations: [
+      { name: 'Indigo', fontFamily: 'Inter', bgColor: '#0A0A12', textColor: '#F1F1F8', accentColor: '#6366F1' },
+      { name: 'Teal', fontFamily: 'Inter', bgColor: '#080E0E', textColor: '#F0FAFA', accentColor: '#14B8A6' },
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#0C0A05', textColor: '#FFF8E8', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'AdminHub — Content Management' },
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'AdminHub — Content Management' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'AdminHub — Content Management' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-ride-sharing',
+    name: 'Mobile Ride Sharing App',
+    slug: 'mobile-ride-sharing',
+    description:
+      'An Uber-style ride sharing app with location search, map with route, ride option cards, promo banners, payment selection, and ride request — designed for transportation and mobility platforms.',
+    thumbnail: '/thumbnails/ride-sharing.jpg',
+    tags: ['Ride & Transport', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Location Search with Pins',
+      'Map with Route Visualization',
+      'Ride Option Cards',
+      'Price Comparison',
+      'Promo Banner',
+      'Payment Method Selection',
+      'Request Ride Action',
+    ],
+    demoUrl: '/?preview=mobile-ride-sharing',
+    styleVariations: [
+      { name: 'Dark', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#000000' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#3B82F6' },
+      { name: 'Green', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#22C55E' },
+    ],
+    fontVariations: [
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'RideGo — Where to?' },
+      { name: 'Rounded', fontFamily: 'Nunito, sans-serif', preview: 'RideGo — Where to?' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'RideGo — Where to?' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-social-analytics',
+    name: 'Social Media Analytics',
+    slug: 'social-analytics',
+    description:
+      'A social media analytics dashboard with engagement charts, audience demographics, platform performance breakdown, top performing posts, and connected accounts — designed for marketing and social media teams.',
+    thumbnail: '/thumbnails/social-analytics.jpg',
+    tags: ['Dashboard', 'Desktop'],
+    features: [
+      'Engagement Line Charts',
+      'Audience Demographics Donut',
+      'Platform Performance Bars',
+      'Top Performing Posts',
+      'Connected Social Accounts',
+      'Follower Growth Stats',
+      'Date Range Filtering',
+      'Export Reports',
+    ],
+    demoUrl: '/?preview=social-analytics',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0A0E18', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#140A0E', textColor: '#FFF0F2', accentColor: '#F43F5E' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+    ],
+    fontVariations: [
+      { name: 'Marketing', fontFamily: 'Poppins, sans-serif', preview: 'SocialPulse — 89.7K Followers' },
+      { name: 'Data', fontFamily: 'IBM Plex Sans, sans-serif', preview: 'SocialPulse — 89.7K Followers' },
+      { name: 'Bold', fontFamily: 'Montserrat, sans-serif', preview: 'SocialPulse — 89.7K Followers' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-workout',
+    name: 'Mobile Workout Planner',
+    slug: 'mobile-workout',
+    description:
+      'A mobile workout and fitness planner with progress rings, exercise tracker, weekly activity chart, recommended plans, and achievements — designed for fitness and health apps.',
+    thumbnail: '/thumbnails/workout-planner.jpg',
+    tags: ['Health & Fitness', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'SVG Progress Ring',
+      'Exercise List with Status',
+      'Weekly Activity Bar Chart',
+      'Featured Workout Card',
+      'Recommended Plans Carousel',
+      'Achievement Badges',
+      'Calorie & Step Tracking',
+    ],
+    demoUrl: '/?preview=mobile-workout',
+    styleVariations: [
+      { name: 'Orange', fontFamily: 'Inter', bgColor: '#0A0A0A', textColor: '#FAFAFA', accentColor: '#F97316' },
+      { name: 'Cyan', fontFamily: 'Inter', bgColor: '#080C10', textColor: '#F0FAFA', accentColor: '#06B6D4' },
+      { name: 'Lime', fontFamily: 'Inter', bgColor: '#080A06', textColor: '#F5FFF0', accentColor: '#84CC16' },
+    ],
+    fontVariations: [
+      { name: 'Sport', fontFamily: 'Oswald, sans-serif', preview: 'Crush your workout today' },
+      { name: 'Friendly', fontFamily: 'Quicksand, sans-serif', preview: 'Crush your workout today' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'Crush your workout today' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-startup-landing',
+    name: 'Startup Landing Page',
+    slug: 'startup-landing',
+    description:
+      'A modern SaaS startup landing page with gradient hero, feature cards, social proof testimonials, pricing tiers, FAQ accordion, and CTA banner — designed for product launches and marketing sites.',
+    thumbnail: '/thumbnails/startup-landing.jpg',
+    tags: ['Portfolio', 'Desktop'],
+    features: [
+      'Gradient Hero Section',
+      'Feature Cards Grid',
+      'Social Proof Testimonials',
+      '3-Tier Pricing Table',
+      'FAQ Accordion',
+      'CTA Banner',
+      'Trusted By Logos',
+      'Sticky Navigation',
+    ],
+    demoUrl: '/?preview=startup-landing',
+    styleVariations: [
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#09090B', textColor: '#FAFAFA', accentColor: '#8B5CF6' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#09090B', textColor: '#FAFAFA', accentColor: '#3B82F6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#09090B', textColor: '#FAFAFA', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Impact', fontFamily: 'Sora, sans-serif', preview: 'Ship faster with AI-powered tools' },
+      { name: 'Elegant', fontFamily: 'DM Sans, sans-serif', preview: 'Ship faster with AI-powered tools' },
+      { name: 'Geometric', fontFamily: 'Space Grotesk, sans-serif', preview: 'Ship faster with AI-powered tools' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-notes',
+    name: 'Mobile Notes & To-Do',
+    slug: 'mobile-notes',
+    description:
+      'A mobile notes and to-do app with pinned notes, category filters, grid layout, checkable to-do items, color-coded tags, and floating action button — designed for productivity and note-taking apps.',
+    thumbnail: '/thumbnails/notes-app.jpg',
+    tags: ['Productivity', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Pinned Notes Section',
+      'Category Filter Pills',
+      'Notes Grid Layout',
+      'Checkable To-Do Items',
+      'Color-Coded Tags',
+      'Floating Action Button',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-notes',
+    styleVariations: [
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#FFFBF0', textColor: '#1A1A1A', accentColor: '#F59E0B' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#F5F8FF', textColor: '#1A1A1A', accentColor: '#3B82F6' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#FFF5F7', textColor: '#1A1A1A', accentColor: '#F43F5E' },
+    ],
+    fontVariations: [
+      { name: 'Handwritten', fontFamily: 'Caveat, cursive', preview: 'My Notes — Stay organized' },
+      { name: 'Rounded', fontFamily: 'Nunito, sans-serif', preview: 'My Notes — Stay organized' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'My Notes — Stay organized' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-ecommerce-product',
+    name: 'E-Commerce Product Page',
+    slug: 'ecommerce-product',
+    description:
+      'A detailed product page with image gallery, color/size selectors, pricing with discounts, reviews with ratings breakdown, specifications table, and related products — designed for online stores.',
+    thumbnail: '/thumbnails/ecommerce-product.jpg',
+    tags: ['E-Commerce', 'Desktop'],
+    features: [
+      'Product Image Gallery',
+      'Color & Size Selectors',
+      'Quantity Picker',
+      'Discount Badge & Pricing',
+      'Star Ratings & Reviews',
+      'Specifications Table',
+      'Shipping Info Card',
+      'Related Products Grid',
+    ],
+    demoUrl: '/?preview=ecommerce-product',
+    styleVariations: [
+      { name: 'Orange', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#111827', accentColor: '#F97316' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#111827', accentColor: '#3B82F6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#111827', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Premium', fontFamily: 'Playfair Display, serif', preview: 'SoundPro Max — $299.99' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'SoundPro Max — $299.99' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'SoundPro Max — $299.99' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-music',
+    name: 'Mobile Music Player',
+    slug: 'mobile-music',
+    description:
+      'A Spotify-style music player with album art, playback controls, progress bar, volume slider, up next queue, and recently played — designed for music streaming and audio apps.',
+    thumbnail: '/thumbnails/music-player.jpg',
+    tags: ['Music & Entertainment', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Album Art with Gradient',
+      'Playback Controls',
+      'Progress & Volume Sliders',
+      'Like & Share Actions',
+      'Up Next Queue',
+      'Recently Played Carousel',
+      'Dark Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-music',
+    styleVariations: [
+      { name: 'Green', fontFamily: 'Inter', bgColor: '#0A0A0A', textColor: '#FAFAFA', accentColor: '#22C55E' },
+      { name: 'Purple', fontFamily: 'Inter', bgColor: '#0C0812', textColor: '#F5F0FF', accentColor: '#A855F7' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#120A0C', textColor: '#FFF0F2', accentColor: '#F43F5E' },
+    ],
+    fontVariations: [
+      { name: 'Groove', fontFamily: 'Righteous, cursive', preview: 'Midnight Dreams — Luna Eclipse' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'Midnight Dreams — Luna Eclipse' },
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'Midnight Dreams — Luna Eclipse' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-email-client',
+    name: 'Desktop Email Client',
+    slug: 'email-client',
+    description:
+      'A Gmail-style email client with 3-column layout, compose button, folder navigation with counts, email list with avatars, reading pane with reply, labels, and search filters — designed for productivity and communication apps.',
+    thumbnail: '/thumbnails/email-client.jpg',
+    tags: ['Productivity', 'Desktop'],
+    features: [
+      '3-Column Layout',
+      'Compose Email Button',
+      'Folder Nav with Counts',
+      'Email List with Avatars',
+      'Reading Pane with Reply',
+      'Search & Filter Bar',
+      'Color-Coded Labels',
+      'Storage Indicator',
+    ],
+    demoUrl: '/?preview=email-client',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0C1220', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+      { name: 'Teal', fontFamily: 'Inter', bgColor: '#080E0E', textColor: '#F0FAFA', accentColor: '#14B8A6' },
+    ],
+    fontVariations: [
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'MailFlow — Q4 Marketing Report' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'MailFlow — Q4 Marketing Report' },
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'MailFlow — Q4 Marketing Report' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-dating',
+    name: 'Mobile Dating App',
+    slug: 'mobile-dating',
+    description:
+      'A Tinder-style dating app with swipeable profile cards, interest tags, match percentage, action buttons, nearby people, and recent activity — designed for dating and social connection platforms.',
+    thumbnail: '/thumbnails/dating-app.jpg',
+    tags: ['Social Media', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Profile Card with Photo',
+      'Interest Tag Pills',
+      'Match Percentage Badge',
+      'Like/Reject/Super-Like Buttons',
+      'People Near You Carousel',
+      'Recent Activity Feed',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-dating',
+    styleVariations: [
+      { name: 'Coral', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#FF6B6B' },
+      { name: 'Purple', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#A855F7' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#3B82F6' },
+    ],
+    fontVariations: [
+      { name: 'Playful', fontFamily: 'Quicksand, sans-serif', preview: 'Spark — Find your match' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'Spark — Find your match' },
+      { name: 'Elegant', fontFamily: 'Cormorant Garamond, serif', preview: 'Spark — Find your match' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-project-dashboard',
+    name: 'Project Management Dashboard',
+    slug: 'project-dashboard',
+    description:
+      'A Linear-style project dashboard with task list, status groups, detail panel, progress tracking, team members, subtasks, and comments — designed for project management and team collaboration.',
+    thumbnail: '/thumbnails/project-dashboard.jpg',
+    tags: ['Dashboard', 'Desktop'],
+    features: [
+      '3-Column Layout',
+      'Task List with Status Groups',
+      'Task Detail Panel',
+      'Progress Tracking Bar',
+      'Priority & Assignee Filters',
+      'Subtask Management',
+      'Team Comments',
+      'Project Sidebar Nav',
+    ],
+    demoUrl: '/?preview=project-dashboard',
+    styleVariations: [
+      { name: 'Cyan', fontFamily: 'Inter', bgColor: '#0A0E14', textColor: '#F1F5F9', accentColor: '#06B6D4' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#0F0D08', textColor: '#FFF8F0', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'Planify — Mobile App v2.0' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'Planify — Mobile App v2.0' },
+      { name: 'Technical', fontFamily: 'IBM Plex Sans, sans-serif', preview: 'Planify — Mobile App v2.0' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-cart',
+    name: 'Mobile Shopping Cart',
+    slug: 'mobile-cart',
+    description:
+      'A mobile shopping cart with quantity controls, promo code input, order summary with computed totals, checkout button, and suggested items — designed for e-commerce and retail apps.',
+    thumbnail: '/thumbnails/shopping-cart.jpg',
+    tags: ['E-Commerce', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Cart Items with Quantity',
+      'Remove Item Controls',
+      'Promo Code Input',
+      'Auto-Computed Totals',
+      'Checkout Button',
+      'Suggested Items Carousel',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-cart',
+    styleVariations: [
+      { name: 'Indigo', fontFamily: 'Inter', bgColor: '#F5F5FF', textColor: '#1A1A2E', accentColor: '#6366F1' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#F0FFF8', textColor: '#1A2E1A', accentColor: '#10B981' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#FFF5F7', textColor: '#2E1A1A', accentColor: '#F43F5E' },
+    ],
+    fontVariations: [
+      { name: 'Rounded', fontFamily: 'Nunito, sans-serif', preview: 'My Cart — 3 items' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'My Cart — 3 items' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'My Cart — 3 items' },
+    ],
+    reviews: [],
+  },
 ]
 
-const DEFAULT_CATEGORIES = ['E-Commerce', 'Desktop', 'Mobile', 'Portfolio', 'Fashion & Beauty', 'Dashboard', 'Food & Restaurant', 'Health & Fitness', 'Travel & Booking', 'Social Media', 'Music & Entertainment', 'Education', 'Real Estate', 'Finance', 'Blog & News', 'Weather & Utility', 'Productivity', 'Food & Recipe']
+const DEFAULT_CATEGORIES = ['E-Commerce', 'Desktop', 'Mobile', 'Portfolio', 'Fashion & Beauty', 'Dashboard', 'Food & Restaurant', 'Health & Fitness', 'Travel & Booking', 'Social Media', 'Music & Entertainment', 'Education', 'Real Estate', 'Finance', 'Blog & News', 'Weather & Utility', 'Productivity', 'Food & Recipe', 'CRM & Sales', 'Wellness', 'Events & Conference', 'Jobs & Careers', 'Podcast & Audio', 'Analytics', 'Food Delivery', 'Chat & Messaging', 'Crypto & Trading', 'Video & Streaming', 'Social Profile', 'Admin & CMS', 'Ride & Transport']
 
 function load<T>(key: string, fallback: T): T {
   try {
@@ -976,7 +1952,7 @@ function loadWithSeeds(): { themes: ThemeData[]; categories: string[] } {
   // Filter out any seeds the user has permanently deleted
   const activeDefaults = DEFAULT_THEMES.filter((d) => !deletedIds.includes(d.id))
 
-  if (seedVersion === '23') {
+  if (seedVersion === '35') {
     return { themes: savedThemes, categories: mergedCategories }
   }
 
@@ -987,7 +1963,7 @@ function loadWithSeeds(): { themes: ThemeData[]; categories: string[] } {
   // Persist to localStorage immediately
   localStorage.setItem(THEMES_KEY, JSON.stringify(mergedThemes))
   localStorage.setItem(CATEGORIES_KEY, JSON.stringify(mergedCategories))
-  localStorage.setItem(SEEDED_KEY, '23')
+  localStorage.setItem(SEEDED_KEY, '35')
   return { themes: mergedThemes, categories: mergedCategories }
 }
 
@@ -1017,6 +1993,29 @@ const PREVIEW_COMPONENTS: Record<string, React.ComponentType<any>> = {
   'mobile-beauty-store': MobileBeautyStore,
   'kanban-board': KanbanBoard,
   'mobile-recipe-app': MobileRecipeApp,
+  'crm-dashboard': CrmDashboard,
+  'mobile-meditation': MobileMeditationApp,
+  'conference-landing': ConferenceLanding,
+  'job-board': JobBoard,
+  'mobile-podcast': MobilePodcastApp,
+  'analytics-dashboard': AnalyticsDashboard,
+  'mobile-food-delivery': MobileFoodDelivery,
+  'chat-app': ChatApp,
+  'mobile-crypto': MobileCryptoWallet,
+  'video-streaming': VideoStreaming,
+  'mobile-social-profile': MobileSocialProfile,
+  'admin-cms': AdminCms,
+  'mobile-ride-sharing': MobileRideSharing,
+  'social-analytics': SocialAnalytics,
+  'mobile-workout': MobileWorkoutPlanner,
+  'startup-landing': StartupLanding,
+  'mobile-notes': MobileNotesApp,
+  'ecommerce-product': EcommerceProduct,
+  'mobile-music': MobileMusicPlayer,
+  'email-client': EmailClient,
+  'mobile-dating': MobileDatingApp,
+  'project-dashboard': ProjectDashboard,
+  'mobile-cart': MobileShoppingCart,
 }
 
 function getInitialPage(): Page {
