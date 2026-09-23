@@ -45,6 +45,24 @@ import { EmailClient } from './pages/examples/EmailClient'
 import { MobileDatingApp } from './pages/examples/MobileDatingApp'
 import { ProjectDashboard } from './pages/examples/ProjectDashboard'
 import { MobileShoppingCart } from './pages/examples/MobileShoppingCart'
+import { FileManager } from './pages/examples/FileManager'
+import { MobileEventTickets } from './pages/examples/MobileEventTickets'
+import { InvoiceDashboard } from './pages/examples/InvoiceDashboard'
+import { MobileLanguageLearning } from './pages/examples/MobileLanguageLearning'
+import { BookingCalendar } from './pages/examples/BookingCalendar'
+import { MobileHabitTracker } from './pages/examples/MobileHabitTracker'
+import { BlogEditor } from './pages/examples/BlogEditor'
+import { MobileParkingFinder } from './pages/examples/MobileParkingFinder'
+import { StockTrading } from './pages/examples/StockTrading'
+import { MobilePropertyFinder } from './pages/examples/MobilePropertyFinder'
+import { SupportDashboard } from './pages/examples/SupportDashboard'
+import { MobileRecipeDetail } from './pages/examples/MobileRecipeDetail'
+import { PodcastStudio } from './pages/examples/PodcastStudio'
+import { MobileFashionStore } from './pages/examples/MobileFashionStore'
+import { JobBoardDash } from './pages/examples/JobBoardDash'
+import { MobileWeatherPro } from './pages/examples/MobileWeatherPro'
+import { CrmPipeline } from './pages/examples/CrmPipeline'
+import { MobileFoodOrder } from './pages/examples/MobileFoodOrder'
 import type { ThemeData } from './components/ui/ThemeCard'
 
 const THEMES_KEY = 'art-design-themes'
@@ -1926,6 +1944,564 @@ const DEFAULT_THEMES: ThemeData[] = [
     ],
     reviews: [],
   },
+  {
+    id: 'seed-file-manager',
+    name: 'Desktop File Manager',
+    slug: 'file-manager',
+    description:
+      'A Google Drive-style cloud file manager with folder/file grid, detail panel, breadcrumb navigation, storage indicator, file type badges, and sharing settings — designed for cloud storage and document management.',
+    thumbnail: '/thumbnails/file-manager.jpg',
+    tags: ['Productivity', 'Desktop'],
+    features: [
+      '3-Column Layout',
+      'File & Folder Grid',
+      'File Detail Panel',
+      'Breadcrumb Navigation',
+      'Storage Progress Bar',
+      'File Type Badges',
+      'Star & Share Actions',
+      'Search & Sort Toolbar',
+    ],
+    demoUrl: '/?preview=file-manager',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0C1220', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Teal', fontFamily: 'Inter', bgColor: '#080E0E', textColor: '#F0FAFA', accentColor: '#14B8A6' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+    ],
+    fontVariations: [
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'CloudVault — 4.2 GB of 10 GB' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'CloudVault — 4.2 GB of 10 GB' },
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'CloudVault — 4.2 GB of 10 GB' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-events',
+    name: 'Mobile Event Tickets',
+    slug: 'mobile-events',
+    description:
+      'A mobile event discovery and ticket booking app with featured events, category filters, event listings with booking, popular venues, and ticket cards with QR codes — designed for event platforms.',
+    thumbnail: '/thumbnails/event-tickets.jpg',
+    tags: ['Events & Conference', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Featured Event Banner',
+      'Category Filter Pills',
+      'Event Cards with Booking',
+      'Popular Venues Carousel',
+      'Ticket Cards with QR',
+      'Price Badges',
+      'Dark Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-events',
+    styleVariations: [
+      { name: 'Purple', fontFamily: 'Inter', bgColor: '#0A0A0F', textColor: '#FAFAFA', accentColor: '#A855F7' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#0F0A0A', textColor: '#FFF0F2', accentColor: '#F43F5E' },
+      { name: 'Cyan', fontFamily: 'Inter', bgColor: '#080C10', textColor: '#F0FAFA', accentColor: '#06B6D4' },
+    ],
+    fontVariations: [
+      { name: 'Display', fontFamily: 'Sora, sans-serif', preview: 'Summer Music Festival — $49' },
+      { name: 'Rounded', fontFamily: 'Nunito, sans-serif', preview: 'Summer Music Festival — $49' },
+      { name: 'Bold', fontFamily: 'Montserrat, sans-serif', preview: 'Summer Music Festival — $49' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-invoice-dashboard',
+    name: 'Invoice & Billing Dashboard',
+    slug: 'invoice-dashboard',
+    description:
+      'An invoice management dashboard with revenue stats, invoice table with status badges, detail panel with line items, payment history timeline, and client info — designed for billing and finance apps.',
+    thumbnail: '/thumbnails/invoice-dashboard.jpg',
+    tags: ['Finance', 'Desktop'],
+    features: [
+      '3-Column Layout',
+      'Revenue Stats Cards',
+      'Invoice Table with Filters',
+      'Status Badges (Paid/Pending/Overdue)',
+      'Invoice Detail Panel',
+      'Line Items Breakdown',
+      'Payment History Timeline',
+      'Create Invoice Action',
+    ],
+    demoUrl: '/?preview=invoice-dashboard',
+    styleVariations: [
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0C1220', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#0F0D08', textColor: '#FFF8F0', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'Finance', fontFamily: 'IBM Plex Sans, sans-serif', preview: 'BillFlow — $124,580 Revenue' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'BillFlow — $124,580 Revenue' },
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'BillFlow — $124,580 Revenue' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-language',
+    name: 'Mobile Language Learning',
+    slug: 'mobile-language',
+    description:
+      'A Duolingo-style language learning app with lesson path, progress rings, daily practice, word matching, leaderboard, achievements, and gamified stats — designed for educational and language platforms.',
+    thumbnail: '/thumbnails/language-learning.jpg',
+    tags: ['Education', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Lesson Path with Nodes',
+      'Progress Ring & Bar',
+      'Word Matching Exercise',
+      'Weekly Leaderboard',
+      'Achievement Badges',
+      'Streak & XP Stats',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-language',
+    styleVariations: [
+      { name: 'Green', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#22C55E' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#3B82F6' },
+      { name: 'Orange', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#F97316' },
+    ],
+    fontVariations: [
+      { name: 'Friendly', fontFamily: 'Nunito, sans-serif', preview: 'Spanish — Unit 3 · 65%' },
+      { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'Spanish — Unit 3 · 65%' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'Spanish — Unit 3 · 65%' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-booking-calendar',
+    name: 'Booking Calendar Dashboard',
+    slug: 'booking-calendar',
+    description:
+      'A hotel booking calendar with week view, color-coded booking blocks, guest detail panel, room availability stats, and upcoming check-ins — designed for hospitality and reservation management.',
+    thumbnail: '/thumbnails/booking-calendar.jpg',
+    tags: ['Travel & Booking', 'Desktop'],
+    features: [
+      '3-Column Layout',
+      'Week View Calendar Grid',
+      'Color-Coded Booking Blocks',
+      'Guest Detail Panel',
+      'Room Availability Stats',
+      'Upcoming Check-Ins',
+      'Month/Week View Toggle',
+      'New Booking Action',
+    ],
+    demoUrl: '/?preview=booking-calendar',
+    styleVariations: [
+      { name: 'Orange', fontFamily: 'Inter', bgColor: '#0F0D08', textColor: '#FFF8F0', accentColor: '#F97316' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0C1220', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'StayBook — September 2023' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'StayBook — September 2023' },
+      { name: 'Serif', fontFamily: 'Lora, serif', preview: 'StayBook — September 2023' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-habits',
+    name: 'Mobile Habit Tracker',
+    slug: 'mobile-habits',
+    description:
+      'A habit tracking app with circular progress ring, interactive habit checklist, week strip calendar, streak counter, weekly bar chart, and motivational quotes — designed for wellness and self-improvement.',
+    thumbnail: '/thumbnails/habit-tracker.jpg',
+    tags: ['Wellness', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Circular Progress Ring',
+      'Interactive Habit Checklist',
+      'Week Calendar Strip',
+      'Streak Counter',
+      'Weekly Bar Chart',
+      'Motivational Quotes',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-habits',
+    styleVariations: [
+      { name: 'Teal', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#14B8A6' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#8B5CF6' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#F43F5E' },
+    ],
+    fontVariations: [
+      { name: 'Friendly', fontFamily: 'Nunito, sans-serif', preview: 'My Habits — 21 day streak' },
+      { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'My Habits — 21 day streak' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'My Habits — 21 day streak' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-blog-editor',
+    name: 'Desktop Blog Editor',
+    slug: 'blog-editor',
+    description:
+      'A Medium-style blog editor with rich text toolbar, pull quotes, inline code, image placeholders, post settings panel with SEO, tags, and publish controls — designed for content platforms and CMS.',
+    thumbnail: '/thumbnails/blog-editor.jpg',
+    tags: ['Blog & News', 'Desktop'],
+    features: [
+      '3-Column Editor Layout',
+      'Rich Text Formatting Toolbar',
+      'Pull Quote & Code Blocks',
+      'Image Upload Placeholder',
+      'Tag Management',
+      'SEO Settings Panel',
+      'Publish Schedule',
+      'Word Count & Read Time',
+    ],
+    demoUrl: '/?preview=blog-editor',
+    styleVariations: [
+      { name: 'Indigo', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#6366F1' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A2E1A', accentColor: '#10B981' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#2E1A1A', accentColor: '#F43F5E' },
+    ],
+    fontVariations: [
+      { name: 'Editorial', fontFamily: 'Merriweather, serif', preview: 'The Future of AI in Design' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'The Future of AI in Design' },
+      { name: 'Classic', fontFamily: 'Lora, serif', preview: 'The Future of AI in Design' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-parking',
+    name: 'Mobile Parking Finder',
+    slug: 'mobile-parking',
+    description:
+      'A parking spot finder app with dark map view, availability markers, parking cards with pricing, filter pills, reserve buttons, and recent searches — designed for parking and transport apps.',
+    thumbnail: '/thumbnails/parking-finder.jpg',
+    tags: ['Ride & Transport', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Dark Map View',
+      'Availability Markers',
+      'Parking Cards with Pricing',
+      'Filter by Type',
+      'Reserve Button',
+      'Recent Searches',
+      'Dark Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-parking',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0A1020', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#080E0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+    ],
+    fontVariations: [
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'ParkEasy — Downtown SF' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'ParkEasy — Downtown SF' },
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'ParkEasy — Downtown SF' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-stock-trading',
+    name: 'Stock Trading Platform',
+    slug: 'stock-trading',
+    description:
+      'A Robinhood-style trading platform with candlestick chart, buy/sell order form, watchlist panel, portfolio summary, holdings table, and volume bars — designed for stock and crypto trading apps.',
+    thumbnail: '/thumbnails/stock-trading.jpg',
+    tags: ['Crypto & Trading', 'Desktop'],
+    features: [
+      '3-Panel Trading Layout',
+      'Stock Price Chart',
+      'Buy/Sell Order Form',
+      'Watchlist Panel',
+      'Portfolio Summary Cards',
+      'Holdings Table',
+      'Volume Bars',
+      'Time Range Selector',
+    ],
+    demoUrl: '/?preview=stock-trading',
+    styleVariations: [
+      { name: 'Green', fontFamily: 'Inter', bgColor: '#0A0E14', textColor: '#F1F5F9', accentColor: '#22C55E' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0C1220', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#0F0D08', textColor: '#FFF8F0', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'Finance', fontFamily: 'IBM Plex Sans, sans-serif', preview: 'TradeX — AAPL $178.42' },
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'TradeX — AAPL $178.42' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'TradeX — AAPL $178.42' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-property',
+    name: 'Mobile Property Finder',
+    slug: 'mobile-property',
+    description:
+      'A Zillow-style property finder with featured listings, filter pills, property cards with specs, price range slider, map toggle, and recently viewed — designed for real estate and property apps.',
+    thumbnail: '/thumbnails/property-finder.jpg',
+    tags: ['Real Estate', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Featured Property Card',
+      'Filter by Type Pills',
+      'Property Cards with Specs',
+      'Price Range Display',
+      'Map View Toggle',
+      'Recently Viewed Carousel',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-property',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#3B82F6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A2E1A', accentColor: '#10B981' },
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#2E2A1A', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'HomeFind — $850,000' },
+      { name: 'Elegant', fontFamily: 'Playfair Display, serif', preview: 'HomeFind — $850,000' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'HomeFind — $850,000' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-support-dashboard',
+    name: 'Customer Support Dashboard',
+    slug: 'support-dashboard',
+    description:
+      'A Zendesk-style support dashboard with ticket list, live chat conversation, customer details panel, priority tags, internal notes, and agent assignment — designed for help desk and customer service.',
+    thumbnail: '/thumbnails/support-dashboard.jpg',
+    tags: ['Chat & Messaging', 'Desktop'],
+    features: [
+      '4-Column Support Layout',
+      'Ticket List with Priority',
+      'Live Chat Conversation',
+      'Customer Details Panel',
+      'Internal Notes',
+      'Agent Assignment',
+      'Priority & Tag System',
+      'Message Input with Actions',
+    ],
+    demoUrl: '/?preview=support-dashboard',
+    styleVariations: [
+      { name: 'Cyan', fontFamily: 'Inter', bgColor: '#0A0E14', textColor: '#F1F5F9', accentColor: '#06B6D4' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'HelpDesk — 12 open tickets' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'HelpDesk — 12 open tickets' },
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'HelpDesk — 12 open tickets' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-recipe',
+    name: 'Mobile Recipe Detail',
+    slug: 'mobile-recipe',
+    description:
+      'A recipe detail view with hero image, chef info, cooking stats, ingredient checklist, nutrition rings, and start cooking button — designed for food and cooking apps.',
+    thumbnail: '/thumbnails/recipe-detail.jpg',
+    tags: ['Food & Recipe', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Hero Image with Overlay',
+      'Chef Info & Follow',
+      'Cooking Stats Row',
+      'Ingredient Checklist',
+      'Nutrition Progress Rings',
+      'Add to Cart Button',
+      'Light Warm Theme',
+    ],
+    demoUrl: '/?preview=mobile-recipe',
+    styleVariations: [
+      { name: 'Orange', fontFamily: 'Inter', bgColor: '#FFFAF5', textColor: '#2E1A08', accentColor: '#F97316' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#F5FFFA', textColor: '#0A2E1A', accentColor: '#10B981' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#FFF5F7', textColor: '#2E0A12', accentColor: '#F43F5E' },
+    ],
+    fontVariations: [
+      { name: 'Friendly', fontFamily: 'Nunito, sans-serif', preview: 'Pasta Carbonara — 4.9 stars' },
+      { name: 'Elegant', fontFamily: 'Playfair Display, serif', preview: 'Pasta Carbonara — 4.9 stars' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'Pasta Carbonara — 4.9 stars' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-podcast-studio',
+    name: 'Podcast Studio Dashboard',
+    slug: 'podcast-studio',
+    description:
+      'A podcast management dashboard with audio waveform, episode list with status badges, episode detail editor, show notes, tags, analytics cards, and publish controls — designed for podcast hosting platforms.',
+    thumbnail: '/thumbnails/podcast-studio.jpg',
+    tags: ['Podcast & Audio', 'Desktop'],
+    features: [
+      '3-Column Studio Layout',
+      'Audio Waveform Visualization',
+      'Episode List with Status',
+      'Episode Detail Editor',
+      'Show Notes Rich Text',
+      'Tag Management',
+      'Analytics Mini Cards',
+      'Publish & Schedule',
+    ],
+    demoUrl: '/?preview=podcast-studio',
+    styleVariations: [
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#0F0A0C', textColor: '#FFF0F3', accentColor: '#F43F5E' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+      { name: 'Cyan', fontFamily: 'Inter', bgColor: '#0A0E14', textColor: '#F1F5F9', accentColor: '#06B6D4' },
+    ],
+    fontVariations: [
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'PodStudio — Tech Talk Daily' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'PodStudio — Tech Talk Daily' },
+      { name: 'Bold', fontFamily: 'Montserrat, sans-serif', preview: 'PodStudio — Tech Talk Daily' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-fashion',
+    name: 'Mobile Fashion Store',
+    slug: 'mobile-fashion',
+    description:
+      'A luxury fashion e-commerce app with hero banner, category circles, trending product grid with favorites, new arrivals carousel, and premium branding — designed for high-end fashion retail.',
+    thumbnail: '/thumbnails/fashion-store.jpg',
+    tags: ['Fashion & Beauty', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Hero Collection Banner',
+      'Category Circle Nav',
+      'Product Grid with Hearts',
+      'New Arrivals Carousel',
+      'Brand & Price Display',
+      'Sale Pricing',
+      'Light Elegant Theme',
+    ],
+    demoUrl: '/?preview=mobile-fashion',
+    styleVariations: [
+      { name: 'Gold', fontFamily: 'Inter', bgColor: '#FFFCF5', textColor: '#1A1408', accentColor: '#B8860B' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#FFFAFC', textColor: '#2E0A14', accentColor: '#E11D48' },
+      { name: 'Black', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#1A1A1A' },
+    ],
+    fontVariations: [
+      { name: 'Elegant', fontFamily: 'Playfair Display, serif', preview: 'LUXE — Autumn Collection' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'LUXE — Autumn Collection' },
+      { name: 'Classic', fontFamily: 'Cormorant Garamond, serif', preview: 'LUXE — Autumn Collection' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-job-board-dash',
+    name: 'Job Board Dashboard',
+    slug: 'job-board-dash',
+    description:
+      'A LinkedIn-style job board with search bar, filter pills, job listing cards with company logos, salary ranges, skill tags, application tracker, skills match bars, and saved jobs — designed for career platforms.',
+    thumbnail: '/thumbnails/job-board-dash.jpg',
+    tags: ['Jobs & Careers', 'Desktop'],
+    features: [
+      '3-Column Job Board Layout',
+      'Search with Location',
+      'Filter by Type Pills',
+      'Job Cards with Tags',
+      'Application Tracker Rings',
+      'Skills Match Bars',
+      'Saved Jobs List',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=job-board-dash',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#3B82F6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A2E1A', accentColor: '#10B981' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#8B5CF6' },
+    ],
+    fontVariations: [
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'JobFlow — Senior React Developer' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'JobFlow — Senior React Developer' },
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'JobFlow — Senior React Developer' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-weather-pro',
+    name: 'Mobile Weather Pro',
+    slug: 'mobile-weather-pro',
+    description:
+      'A detailed weather app with current conditions, hourly scroll, 7-day forecast with range bars, weather detail grid, air quality gauge, and dark gradient theme — designed for weather and utility apps.',
+    thumbnail: '/thumbnails/weather-pro.jpg',
+    tags: ['Weather & Utility', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Current Weather Display',
+      'Hourly Forecast Scroll',
+      '7-Day Forecast Bars',
+      'Weather Detail Grid',
+      'Air Quality Gauge',
+      'Dark Gradient Theme',
+      'Weather SVG Icons',
+    ],
+    demoUrl: '/?preview=mobile-weather-pro',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0A1628', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A1E', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#081410', textColor: '#F0FFF8', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'San Francisco — 23°' },
+      { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'San Francisco — 23°' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'San Francisco — 23°' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-crm-pipeline',
+    name: 'CRM Sales Pipeline',
+    slug: 'crm-pipeline',
+    description:
+      'A Salesforce-style sales pipeline with kanban board, deal cards with probability bars, pipeline metrics, activity timeline, deal detail panel, and close deal actions — designed for CRM and sales platforms.',
+    thumbnail: '/thumbnails/crm-pipeline.jpg',
+    tags: ['CRM & Sales', 'Desktop'],
+    features: [
+      '3-Column Pipeline Layout',
+      'Kanban Board Columns',
+      'Deal Cards with Probability',
+      'Pipeline Revenue Metrics',
+      'Activity Timeline',
+      'Deal Detail Panel',
+      'Contact Info',
+      'Close Deal Action',
+    ],
+    demoUrl: '/?preview=crm-pipeline',
+    styleVariations: [
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#0F0D08', textColor: '#FFF8F0', accentColor: '#F59E0B' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0C1220', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Finance', fontFamily: 'IBM Plex Sans, sans-serif', preview: 'SalesForce — $2.4M Pipeline' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'SalesForce — $2.4M Pipeline' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'SalesForce — $2.4M Pipeline' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-food-order',
+    name: 'Mobile Food Order Tracker',
+    slug: 'mobile-food-order',
+    description:
+      'A food delivery order tracker with status stepper, estimated time, map with route, driver card, order summary with itemized pricing, and rate & review — designed for food delivery apps.',
+    thumbnail: '/thumbnails/food-order-tracker.jpg',
+    tags: ['Food Delivery', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Order Status Stepper',
+      'Estimated Delivery Time',
+      'Map with Route',
+      'Driver Info Card',
+      'Itemized Order Summary',
+      'Total with Delivery Fee',
+      'Rate & Review Action',
+    ],
+    demoUrl: '/?preview=mobile-food-order',
+    styleVariations: [
+      { name: 'Green', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A2E1A', accentColor: '#22C55E' },
+      { name: 'Orange', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#2E1A08', accentColor: '#F97316' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#3B82F6' },
+    ],
+    fontVariations: [
+      { name: 'Friendly', fontFamily: 'Nunito, sans-serif', preview: 'Order #4521 — 15 min' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'Order #4521 — 15 min' },
+      { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'Order #4521 — 15 min' },
+    ],
+    reviews: [],
+  },
 ]
 
 const DEFAULT_CATEGORIES = ['E-Commerce', 'Desktop', 'Mobile', 'Portfolio', 'Fashion & Beauty', 'Dashboard', 'Food & Restaurant', 'Health & Fitness', 'Travel & Booking', 'Social Media', 'Music & Entertainment', 'Education', 'Real Estate', 'Finance', 'Blog & News', 'Weather & Utility', 'Productivity', 'Food & Recipe', 'CRM & Sales', 'Wellness', 'Events & Conference', 'Jobs & Careers', 'Podcast & Audio', 'Analytics', 'Food Delivery', 'Chat & Messaging', 'Crypto & Trading', 'Video & Streaming', 'Social Profile', 'Admin & CMS', 'Ride & Transport']
@@ -1952,7 +2528,7 @@ function loadWithSeeds(): { themes: ThemeData[]; categories: string[] } {
   // Filter out any seeds the user has permanently deleted
   const activeDefaults = DEFAULT_THEMES.filter((d) => !deletedIds.includes(d.id))
 
-  if (seedVersion === '35') {
+  if (seedVersion === '44') {
     return { themes: savedThemes, categories: mergedCategories }
   }
 
@@ -1963,7 +2539,7 @@ function loadWithSeeds(): { themes: ThemeData[]; categories: string[] } {
   // Persist to localStorage immediately
   localStorage.setItem(THEMES_KEY, JSON.stringify(mergedThemes))
   localStorage.setItem(CATEGORIES_KEY, JSON.stringify(mergedCategories))
-  localStorage.setItem(SEEDED_KEY, '35')
+  localStorage.setItem(SEEDED_KEY, '44')
   return { themes: mergedThemes, categories: mergedCategories }
 }
 
@@ -2016,6 +2592,24 @@ const PREVIEW_COMPONENTS: Record<string, React.ComponentType<any>> = {
   'mobile-dating': MobileDatingApp,
   'project-dashboard': ProjectDashboard,
   'mobile-cart': MobileShoppingCart,
+  'file-manager': FileManager,
+  'mobile-events': MobileEventTickets,
+  'invoice-dashboard': InvoiceDashboard,
+  'mobile-language': MobileLanguageLearning,
+  'booking-calendar': BookingCalendar,
+  'mobile-habits': MobileHabitTracker,
+  'blog-editor': BlogEditor,
+  'mobile-parking': MobileParkingFinder,
+  'stock-trading': StockTrading,
+  'mobile-property': MobilePropertyFinder,
+  'support-dashboard': SupportDashboard,
+  'mobile-recipe': MobileRecipeDetail,
+  'podcast-studio': PodcastStudio,
+  'mobile-fashion': MobileFashionStore,
+  'job-board-dash': JobBoardDash,
+  'mobile-weather-pro': MobileWeatherPro,
+  'crm-pipeline': CrmPipeline,
+  'mobile-food-order': MobileFoodOrder,
 }
 
 function getInitialPage(): Page {
