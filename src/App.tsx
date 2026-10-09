@@ -63,6 +63,26 @@ import { JobBoardDash } from './pages/examples/JobBoardDash'
 import { MobileWeatherPro } from './pages/examples/MobileWeatherPro'
 import { CrmPipeline } from './pages/examples/CrmPipeline'
 import { MobileFoodOrder } from './pages/examples/MobileFoodOrder'
+import { RestaurantPos } from './pages/examples/RestaurantPos'
+import { MobileVideoStream } from './pages/examples/MobileVideoStream'
+import { InventoryMgmt } from './pages/examples/InventoryMgmt'
+import { MobileCourseApp } from './pages/examples/MobileCourseApp'
+import { SocialFeed } from './pages/examples/SocialFeed'
+import { MobileHotelBooking } from './pages/examples/MobileHotelBooking'
+import { AnalyticsDash } from './pages/examples/AnalyticsDash'
+import { CalendarPlanner } from './pages/examples/CalendarPlanner'
+import { MobileCryptoPortfolio } from './pages/examples/MobileCryptoPortfolio'
+import { MusicStudio } from './pages/examples/MusicStudio'
+import { MobileNewsFeed } from './pages/examples/MobileNewsFeed'
+import { VideoEditor } from './pages/examples/VideoEditor'
+import { MobileFitnessDash } from './pages/examples/MobileFitnessDash'
+import { Spreadsheet } from './pages/examples/Spreadsheet'
+import { MobileRestaurant } from './pages/examples/MobileRestaurant'
+import { CodeEditor } from './pages/examples/CodeEditor'
+import { MobileWallet } from './pages/examples/MobileWallet'
+
+import { IotDashboard } from './pages/examples/IotDashboard'
+import { MobileAstrologyApp } from './pages/examples/MobileAstrologyApp'
 import type { ThemeData } from './components/ui/ThemeCard'
 
 const THEMES_KEY = 'art-design-themes'
@@ -2502,6 +2522,575 @@ const DEFAULT_THEMES: ThemeData[] = [
     ],
     reviews: [],
   },
+  {
+    id: 'seed-restaurant-pos',
+    name: 'Restaurant POS Dashboard',
+    slug: 'restaurant-pos',
+    description:
+      'A restaurant point-of-sale system with menu grid, category tabs, cart panel with quantity controls, order queue with status badges, pricing summary with tax, and print receipt — designed for restaurant and food service.',
+    thumbnail: '/thumbnails/restaurant-pos.jpg',
+    tags: ['Food & Restaurant', 'Desktop'],
+    features: [
+      '3-Column POS Layout',
+      'Menu Item Grid',
+      'Category Tab Filters',
+      'Cart with Qty Controls',
+      'Order Queue with Status',
+      'Tax & Total Calculation',
+      'Place Order Action',
+      'Print Receipt Button',
+    ],
+    demoUrl: '/?preview=restaurant-pos',
+    styleVariations: [
+      { name: 'Red', fontFamily: 'Inter', bgColor: '#0F0A0A', textColor: '#FFF0F0', accentColor: '#EF4444' },
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#0F0D08', textColor: '#FFF8F0', accentColor: '#F59E0B' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'BistroOS — Table 5 Order' },
+      { name: 'Rounded', fontFamily: 'Nunito, sans-serif', preview: 'BistroOS — Table 5 Order' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'BistroOS — Table 5 Order' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-video',
+    name: 'Mobile Video Streaming',
+    slug: 'mobile-video',
+    description:
+      'A Netflix-style streaming app with featured hero, continue watching with progress bars, trending posters, top 10 numbered list, genre categories, and bottom nav — designed for video streaming platforms.',
+    thumbnail: '/thumbnails/video-player.jpg',
+    tags: ['Video & Streaming', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Featured Hero Banner',
+      'Continue Watching Progress',
+      'Trending Poster Cards',
+      'Top 10 Numbered List',
+      'Genre Category Pills',
+      'Dark Cinematic Theme',
+      'Bottom Navigation',
+    ],
+    demoUrl: '/?preview=mobile-video',
+    styleVariations: [
+      { name: 'Red', fontFamily: 'Inter', bgColor: '#0A0A0A', textColor: '#F5F5F5', accentColor: '#EF4444' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+      { name: 'Cyan', fontFamily: 'Inter', bgColor: '#0A0E14', textColor: '#F1F5F9', accentColor: '#06B6D4' },
+    ],
+    fontVariations: [
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'StreamX — Stranger Things' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'StreamX — Stranger Things' },
+      { name: 'Bold', fontFamily: 'Montserrat, sans-serif', preview: 'StreamX — Stranger Things' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-inventory-mgmt',
+    name: 'Inventory Management',
+    slug: 'inventory-mgmt',
+    description:
+      'A warehouse inventory system with product table, stock level bars, stats overview, product detail panel with stock history chart, SKU & barcode info, and reorder controls — designed for inventory and warehouse management.',
+    thumbnail: '/thumbnails/inventory-mgmt.jpg',
+    tags: ['Admin & CMS', 'Desktop'],
+    features: [
+      '3-Column Inventory Layout',
+      'Product Table with Status',
+      'Stock Level Bars',
+      'Stats Overview Cards',
+      'Product Detail Panel',
+      'Stock History Chart',
+      'Search & Add Product',
+      'Reorder Controls',
+    ],
+    demoUrl: '/?preview=inventory-mgmt',
+    styleVariations: [
+      { name: 'Teal', fontFamily: 'Inter', bgColor: '#080E0E', textColor: '#F0FAFA', accentColor: '#14B8A6' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0C1220', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#0F0D08', textColor: '#FFF8F0', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'StockHub — 2,456 Products' },
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'StockHub — 2,456 Products' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'StockHub — 2,456 Products' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-course',
+    name: 'Mobile Course App',
+    slug: 'mobile-course',
+    description:
+      'A Udemy-style course learning app with continue learning progress, popular courses grid with ratings, category circles, top instructors, and bottom navigation — designed for online education platforms.',
+    thumbnail: '/thumbnails/course-app.jpg',
+    tags: ['Education', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Continue Learning Card',
+      'Course Grid with Ratings',
+      'Category Circle Nav',
+      'Top Instructors Row',
+      'Search Courses',
+      'Light Theme Design',
+      'Bottom Navigation',
+    ],
+    demoUrl: '/?preview=mobile-course',
+    styleVariations: [
+      { name: 'Indigo', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#6366F1' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A2E1A', accentColor: '#10B981' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#2E0A12', accentColor: '#F43F5E' },
+    ],
+    fontVariations: [
+      { name: 'Friendly', fontFamily: 'Nunito, sans-serif', preview: 'LearnX — React Masterclass' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'LearnX — React Masterclass' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'LearnX — React Masterclass' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-social-feed',
+    name: 'Social Network Feed',
+    slug: 'social-feed',
+    description:
+      'A Twitter/X-style social feed with create post, post cards with engagement actions, trending topics, who to follow suggestions, and search — designed for social networking platforms.',
+    thumbnail: '/thumbnails/social-feed.jpg',
+    tags: ['Social Media', 'Desktop'],
+    features: [
+      '3-Column Social Layout',
+      'Create Post with Media',
+      'Post Cards with Engagement',
+      'Like/Retweet/Comment Actions',
+      'Trending Topics',
+      'Who to Follow',
+      'Search Bar',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=social-feed',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#0F172A', accentColor: '#3B82F6' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#8B5CF6' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#2E0A12', accentColor: '#F43F5E' },
+    ],
+    fontVariations: [
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'ConnectX — Social Feed' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'ConnectX — Social Feed' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'ConnectX — Social Feed' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-hotel',
+    name: 'Mobile Hotel Booking',
+    slug: 'mobile-hotel',
+    description:
+      'A Booking.com-style hotel booking app with search dates, featured hotel card, filter pills, popular hotel list, special offer promo, and bottom navigation — designed for travel and booking platforms.',
+    thumbnail: '/thumbnails/hotel-booking.jpg',
+    tags: ['Travel & Booking', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Date & Guest Search',
+      'Featured Hotel Card',
+      'Filter by Amenity Pills',
+      'Popular Hotel List',
+      'Special Offer Promo',
+      'Heart Favorites',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-hotel',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#3B82F6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A2E1A', accentColor: '#10B981' },
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#2E2A1A', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'Elegant', fontFamily: 'Playfair Display, serif', preview: 'The Ritz-Carlton — $350' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'The Ritz-Carlton — $350' },
+      { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'The Ritz-Carlton — $350' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-analytics-dash',
+    name: 'Analytics Dashboard',
+    slug: 'analytics-dash',
+    description:
+      'A Google Analytics-style dashboard with KPI cards, traffic chart, traffic sources donut, top pages, device breakdown, and country locations — designed for analytics and reporting platforms.',
+    thumbnail: '/thumbnails/analytics-dash.jpg',
+    tags: ['Analytics', 'Desktop'],
+    features: [
+      '2-Column Analytics Layout',
+      'KPI Cards with Trends',
+      'Traffic Bar Chart',
+      'Traffic Sources Donut',
+      'Top Pages Table',
+      'Device Breakdown Bars',
+      'Country Locations',
+      'Export & Date Range',
+    ],
+    demoUrl: '/?preview=analytics-dash',
+    styleVariations: [
+      { name: 'Indigo', fontFamily: 'Inter', bgColor: '#0C0A1E', textColor: '#F1F0FF', accentColor: '#6366F1' },
+      { name: 'Cyan', fontFamily: 'Inter', bgColor: '#0A0E14', textColor: '#F1F5F9', accentColor: '#06B6D4' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'DataPulse — 2.4M Views' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'DataPulse — 2.4M Views' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'DataPulse — 2.4M Views' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-calendar-planner',
+    name: 'Calendar Planner',
+    slug: 'calendar-planner',
+    description:
+      'A Google Calendar-style planner with mini month picker, color-coded calendars, week view time grid with event blocks, today\'s schedule with attendees, and task checklist — designed for productivity and scheduling apps.',
+    thumbnail: '/thumbnails/calendar-planner.jpg',
+    tags: ['Productivity', 'Desktop'],
+    features: [
+      '3-Column Calendar Layout',
+      'Mini Month Date Picker',
+      'Week View Time Grid',
+      'Color-Coded Event Blocks',
+      'Day/Week/Month Toggle',
+      'Today\'s Schedule Panel',
+      'Attendee Avatars',
+      'Task Checklist',
+    ],
+    demoUrl: '/?preview=calendar-planner',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#0F172A', accentColor: '#3B82F6' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#8B5CF6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A2E1A', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'PlanIt — October 2024' },
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'PlanIt — October 2024' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'PlanIt — October 2024' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-crypto-portfolio',
+    name: 'Mobile Crypto Portfolio',
+    slug: 'mobile-crypto-portfolio',
+    description:
+      'A Coinbase-style crypto portfolio with total balance, quick actions, timeframe chart, asset list with sparklines, recent transactions, and bottom navigation — designed for crypto and trading apps.',
+    thumbnail: '/thumbnails/crypto-portfolio.jpg',
+    tags: ['Crypto & Trading', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Total Balance with P&L',
+      'Send/Receive/Swap/Buy',
+      'Timeframe Line Chart',
+      'Asset List with Sparklines',
+      'Recent Transactions',
+      'Dark Theme Design',
+      'Bottom Navigation',
+    ],
+    demoUrl: '/?preview=mobile-crypto-portfolio',
+    styleVariations: [
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#0F0D08', textColor: '#FFF8F0', accentColor: '#F59E0B' },
+      { name: 'Cyan', fontFamily: 'Inter', bgColor: '#0A0E14', textColor: '#F1F5F9', accentColor: '#06B6D4' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'Portfolio — $48,352.80' },
+      { name: 'Finance', fontFamily: 'IBM Plex Sans, sans-serif', preview: 'Portfolio — $48,352.80' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'Portfolio — $48,352.80' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-music-studio',
+    name: 'Music Studio',
+    slug: 'music-studio',
+    description:
+      'An Ableton-style DAW dashboard with track lanes, waveform blocks, mute/solo controls, mixer channels with faders and level meters, transport bar, and master section — designed for music production apps.',
+    thumbnail: '/thumbnails/music-studio.jpg',
+    tags: ['Music & Entertainment', 'Desktop'],
+    features: [
+      'DAW Track Lanes',
+      'Waveform Blocks',
+      'Mute & Solo Controls',
+      'Mixer Channel Strips',
+      'Transport Controls',
+      'BPM & Time Display',
+      'Master Level Meters',
+      'Waveform Overview',
+    ],
+    demoUrl: '/?preview=music-studio',
+    styleVariations: [
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+      { name: 'Cyan', fontFamily: 'Inter', bgColor: '#0A0E14', textColor: '#F1F5F9', accentColor: '#06B6D4' },
+      { name: 'Rose', fontFamily: 'Inter', bgColor: '#140A0C', textColor: '#FFF0F2', accentColor: '#F43F5E' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'BeatForge — 128 BPM' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'BeatForge — 128 BPM' },
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'BeatForge — 128 BPM' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-news',
+    name: 'Mobile News Feed',
+    slug: 'mobile-news',
+    description:
+      'A CNN-style news reader with breaking news banner, category tabs, featured article card, trending horizontal scroll, latest articles list, and bottom navigation — designed for news and media apps.',
+    thumbnail: '/thumbnails/news-feed.jpg',
+    tags: ['Blog & News', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Breaking News Banner',
+      'Category Tab Filters',
+      'Featured Article Card',
+      'Trending Horizontal Scroll',
+      'Latest Articles List',
+      'Bookmark Toggle',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=mobile-news',
+    styleVariations: [
+      { name: 'Red', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#EF4444' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#3B82F6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A2E1A', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Serif', fontFamily: 'Merriweather, serif', preview: 'NewsWire — Breaking Stories' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'NewsWire — Breaking Stories' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'NewsWire — Breaking Stories' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-video-editor',
+    name: 'Video Editor',
+    slug: 'video-editor',
+    description:
+      'A Premiere Pro-style video editor with preview monitor, multi-track timeline with clips, properties panel with transform & color controls, transport bar, and project file browser — designed for video production apps.',
+    thumbnail: '/thumbnails/video-editor.jpg',
+    tags: ['Video & Streaming', 'Desktop'],
+    features: [
+      'Preview Monitor',
+      'Multi-Track Timeline',
+      'Clip Arrangement',
+      'Properties Panel',
+      'Transform Controls',
+      'Color Correction Sliders',
+      'Transport Controls',
+      'Project File Browser',
+    ],
+    demoUrl: '/?preview=video-editor',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0C1220', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'ClipCraft — 02:34:12' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'ClipCraft — 02:34:12' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'ClipCraft — 02:34:12' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-fitness-dash',
+    name: 'Mobile Fitness Dashboard',
+    slug: 'mobile-fitness-dash',
+    description:
+      'A Fitbit-style fitness dashboard with daily goal ring, quick stats grid, weekly activity bar chart, workout list with calories, and bottom navigation — designed for health and fitness apps.',
+    thumbnail: '/thumbnails/fitness-dash.jpg',
+    tags: ['Health & Fitness', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Daily Goal Progress Ring',
+      'Quick Stats Grid',
+      'Weekly Activity Chart',
+      'Workout List Cards',
+      'Calories & Steps Tracking',
+      'Light Theme Design',
+      'Bottom Navigation',
+    ],
+    demoUrl: '/?preview=mobile-fitness-dash',
+    styleVariations: [
+      { name: 'Orange', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#F97316' },
+      { name: 'Cyan', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#06B6D4' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#8B5CF6' },
+    ],
+    fontVariations: [
+      { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'FitPulse — 8,432 Steps' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'FitPulse — 8,432 Steps' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'FitPulse — 8,432 Steps' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-spreadsheet',
+    name: 'Spreadsheet',
+    slug: 'spreadsheet',
+    description:
+      'A Google Sheets-style spreadsheet with cell selection, formula bar, formatting toolbar, data grid with growth indicators, sheet tabs, and status bar with sum/avg — designed for productivity and data apps.',
+    thumbnail: '/thumbnails/spreadsheet.jpg',
+    tags: ['Productivity', 'Desktop'],
+    features: [
+      'Cell Selection & Highlight',
+      'Formula Bar',
+      'Formatting Toolbar',
+      'Data Grid with 10 Rows',
+      'Growth Color Indicators',
+      'Sheet Tab Navigation',
+      'Status Bar (Sum/Avg)',
+      'Light Theme Design',
+    ],
+    demoUrl: '/?preview=spreadsheet',
+    styleVariations: [
+      { name: 'Green', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#0F172A', accentColor: '#22C55E' },
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#0F172A', accentColor: '#3B82F6' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#8B5CF6' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'GridFlow — $398,950' },
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'GridFlow — $398,950' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'GridFlow — $398,950' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-restaurant',
+    name: 'Mobile Restaurant',
+    slug: 'mobile-restaurant',
+    description:
+      'An UberEats-style restaurant ordering app with delivery address, search, promo banner, category filters, featured restaurants with ratings, popular items, and cart bottom nav — designed for food ordering apps.',
+    thumbnail: '/thumbnails/restaurant-app.jpg',
+    tags: ['Food & Restaurant', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Delivery Address Header',
+      'Search Bar',
+      'Promo Banner',
+      'Category Pill Filters',
+      'Featured Restaurant Cards',
+      'Popular Items List',
+      'Cart Bottom Navigation',
+    ],
+    demoUrl: '/?preview=mobile-restaurant',
+    styleVariations: [
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#10B981' },
+      { name: 'Orange', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A1A', accentColor: '#F97316' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#1A1A2E', accentColor: '#8B5CF6' },
+    ],
+    fontVariations: [
+      { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'FoodDash — Free Delivery' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'FoodDash — Free Delivery' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'FoodDash — Free Delivery' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-code-editor',
+    name: 'Code Editor',
+    slug: 'code-editor',
+    description:
+      'A VS Code-style code editor with file explorer tree, syntax-highlighted TypeScript code, tab bar, problems panel with errors/warnings, activity bar, and status bar — designed for developer tool apps.',
+    thumbnail: '/thumbnails/code-editor.jpg',
+    tags: ['Productivity', 'Desktop'],
+    features: [
+      'File Explorer Tree',
+      'Syntax-Highlighted Code',
+      'Tab Bar with Indicators',
+      'Problems Panel',
+      'Activity Sidebar',
+      'Status Bar',
+      'Line Numbers',
+      'Dark Theme Design',
+    ],
+    demoUrl: '/?preview=code-editor',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#1E1E2E', textColor: '#CDD6F4', accentColor: '#3B82F6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#1A1814', textColor: '#FFF8F0', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'CodeForge — Ln 10, Col 42' },
+      { name: 'Fira', fontFamily: 'Fira Code, monospace', preview: 'CodeForge — Ln 10, Col 42' },
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'CodeForge — Ln 10, Col 42' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-wallet',
+    name: 'Mobile Wallet',
+    slug: 'mobile-wallet',
+    description:
+      'An Apple Wallet-style payment app with card carousel, quick action buttons, transaction list with income/expense indicators, and bottom navigation — designed for fintech and banking apps.',
+    thumbnail: '/thumbnails/wallet-app.jpg',
+    tags: ['Finance', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Card Carousel',
+      'Quick Action Buttons',
+      'Transaction List',
+      'Income/Expense Indicators',
+      'Notification Bell',
+      'Dark Theme Design',
+      'Bottom Navigation',
+    ],
+    demoUrl: '/?preview=mobile-wallet',
+    styleVariations: [
+      { name: 'Blue', fontFamily: 'Inter', bgColor: '#0C1220', textColor: '#F1F5F9', accentColor: '#3B82F6' },
+      { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'MyWallet — $12,458.50' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'MyWallet — $12,458.50' },
+      { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'MyWallet — $12,458.50' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-iot-dashboard',
+    name: 'IoT Dashboard',
+    slug: 'iot-dashboard',
+    description: 'A smart home dashboard to monitor and control IoT devices, tracking energy usage and room-specific appliances with a futuristic dark theme.',
+    thumbnail: '/thumbnails/iot-dashboard.jpg',
+    tags: ['Dashboard', 'Weather & Utility', 'Desktop'],
+    features: ['Device Toggle Cards', 'Room Filtering', 'Energy Stats', 'Side Navigation'],
+    demoUrl: '/?preview=iot-dashboard',
+    styleVariations: [
+      { name: 'Cyan', fontFamily: 'Inter', bgColor: '#0F172A', textColor: '#F8FAFC', accentColor: '#06B6D4' },
+      { name: 'Amber', fontFamily: 'Inter', bgColor: '#1A1814', textColor: '#FFF8F0', accentColor: '#F59E0B' },
+      { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Clean', fontFamily: 'Inter, sans-serif', preview: 'SmartHome — 4.2 kWh' },
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'SmartHome — 4.2 kWh' },
+      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'SmartHome — 4.2 kWh' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-astrology-app',
+    name: 'Mobile Astrology',
+    slug: 'mobile-astrology',
+    description: 'A mobile horoscope and astrology app with starry animated background, daily insights, cosmic alignments, and a cosmic dark aesthetic.',
+    thumbnail: '/thumbnails/astrology-app.jpg',
+    tags: ['Mobile', 'Weather & Utility', 'Social Profile'],
+    features: ['Mobile-First Layout (390px)', 'Starry Gradient Background', 'Zodiac Sign Header', 'Daily Insight Card', 'Compatibility Stats'],
+    demoUrl: '/?preview=mobile-astrology',
+    styleVariations: [
+      { name: 'Indigo', fontFamily: 'Inter', bgColor: '#09090B', textColor: '#FAFAFA', accentColor: '#6366F1' },
+      { name: 'Fuchsia', fontFamily: 'Inter', bgColor: '#0A0014', textColor: '#FAFAFA', accentColor: '#D946EF' },
+      { name: 'Sky', fontFamily: 'Inter', bgColor: '#081426', textColor: '#F0F9FF', accentColor: '#0EA5E9' },
+    ],
+    fontVariations: [
+      { name: 'Elegant', fontFamily: 'Cinzel, serif', preview: 'Scorpio — Cosmic Alignments' },
+      { name: 'Clean', fontFamily: 'Inter, sans-serif', preview: 'Scorpio — Cosmic Alignments' },
+      { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'Scorpio — Cosmic Alignments' },
+    ],
+    reviews: [],
+  },
 ]
 
 const DEFAULT_CATEGORIES = ['E-Commerce', 'Desktop', 'Mobile', 'Portfolio', 'Fashion & Beauty', 'Dashboard', 'Food & Restaurant', 'Health & Fitness', 'Travel & Booking', 'Social Media', 'Music & Entertainment', 'Education', 'Real Estate', 'Finance', 'Blog & News', 'Weather & Utility', 'Productivity', 'Food & Recipe', 'CRM & Sales', 'Wellness', 'Events & Conference', 'Jobs & Careers', 'Podcast & Audio', 'Analytics', 'Food Delivery', 'Chat & Messaging', 'Crypto & Trading', 'Video & Streaming', 'Social Profile', 'Admin & CMS', 'Ride & Transport']
@@ -2528,7 +3117,7 @@ function loadWithSeeds(): { themes: ThemeData[]; categories: string[] } {
   // Filter out any seeds the user has permanently deleted
   const activeDefaults = DEFAULT_THEMES.filter((d) => !deletedIds.includes(d.id))
 
-  if (seedVersion === '44') {
+  if (seedVersion === '55') {
     return { themes: savedThemes, categories: mergedCategories }
   }
 
@@ -2539,7 +3128,7 @@ function loadWithSeeds(): { themes: ThemeData[]; categories: string[] } {
   // Persist to localStorage immediately
   localStorage.setItem(THEMES_KEY, JSON.stringify(mergedThemes))
   localStorage.setItem(CATEGORIES_KEY, JSON.stringify(mergedCategories))
-  localStorage.setItem(SEEDED_KEY, '44')
+  localStorage.setItem(SEEDED_KEY, '55')
   return { themes: mergedThemes, categories: mergedCategories }
 }
 
@@ -2610,6 +3199,26 @@ const PREVIEW_COMPONENTS: Record<string, React.ComponentType<any>> = {
   'mobile-weather-pro': MobileWeatherPro,
   'crm-pipeline': CrmPipeline,
   'mobile-food-order': MobileFoodOrder,
+  'restaurant-pos': RestaurantPos,
+  'mobile-video': MobileVideoStream,
+  'inventory-mgmt': InventoryMgmt,
+  'mobile-course': MobileCourseApp,
+  'social-feed': SocialFeed,
+  'mobile-hotel': MobileHotelBooking,
+  'analytics-dash': AnalyticsDash,
+  'calendar-planner': CalendarPlanner,
+  'mobile-crypto-portfolio': MobileCryptoPortfolio,
+  'music-studio': MusicStudio,
+  'mobile-news': MobileNewsFeed,
+  'video-editor': VideoEditor,
+  'mobile-fitness-dash': MobileFitnessDash,
+  'spreadsheet': Spreadsheet,
+  'mobile-restaurant': MobileRestaurant,
+  'code-editor': CodeEditor,
+  'mobile-wallet': MobileWallet,
+
+  'iot-dashboard': IotDashboard,
+  'mobile-astrology': MobileAstrologyApp,
 }
 
 function getInitialPage(): Page {
@@ -2776,25 +3385,25 @@ export default function App() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-white font-semibold text-sm">Delete theme?</h3>
-                <p className="text-zinc-500 text-xs mt-0.5">This action cannot be undone.</p>
+                <h3 className="text-white font-semibold text-sm">Hapus tema?</h3>
+                <p className="text-zinc-500 text-xs mt-0.5">Tindakan ini tidak dapat dibatalkan.</p>
               </div>
             </div>
             <p className="text-sm text-zinc-400 mb-6">
-              Are you sure you want to delete <span className="text-white font-medium">"{deleteConfirm.name}"</span>?
+              Apakah Anda yakin ingin menghapus <span className="text-white font-medium">"{deleteConfirm.name}"</span>?
             </p>
             <div className="flex gap-3">
               <button
                 onClick={() => setDeleteConfirm(null)}
                 className="flex-1 px-4 py-2.5 rounded-xl border border-zinc-700/60 text-sm text-zinc-300 font-medium hover:bg-zinc-800/60 transition-all cursor-pointer"
               >
-                Cancel
+                Batal
               </button>
               <button
                 onClick={handleDeleteConfirm}
                 className="flex-1 px-4 py-2.5 rounded-xl bg-red-500 text-sm text-white font-medium hover:bg-red-600 transition-all cursor-pointer"
               >
-                Delete
+                Hapus
               </button>
             </div>
           </div>

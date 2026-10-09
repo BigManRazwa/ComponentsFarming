@@ -13,22 +13,22 @@ type NavCategory = {
 
 const navigation: NavCategory[] = [
   {
-    title: 'Getting Started',
+    title: 'Memulai',
     items: [
-      { label: 'Overview', path: '/' },
+      { label: 'Ringkasan', path: '/' },
     ],
   },
   {
-    title: 'Components',
+    title: 'Komponen',
     items: [
       { label: 'Button', path: '/components/button' },
       { label: 'Card', path: '/components/card' },
     ],
   },
   {
-    title: 'Themes',
+    title: 'Tema',
     items: [
-      { label: 'Art & Design', path: '/themes/art-and-design' },
+      { label: 'Seni & Desain', path: '/themes/art-and-design' },
     ],
   },
 ]
@@ -42,7 +42,7 @@ export function Sidebar() {
       <button
         className="fixed top-4 left-4 z-50 lg:hidden p-2 rounded-lg bg-zinc-800 text-zinc-300 hover:bg-zinc-700 transition-colors"
         onClick={() => setIsOpen(!isOpen)}
-        aria-label="Toggle navigation"
+        aria-label="Buka/tutup navigasi"
       >
         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           {isOpen ? (
@@ -77,7 +77,7 @@ export function Sidebar() {
             <span className="text-purple-400 text-lg">⚡</span>
             Components
           </h1>
-          <p className="text-[11px] text-zinc-600 mt-1 tracking-wide uppercase">Component Library</p>
+          <p className="text-[11px] text-zinc-600 mt-1 tracking-wide uppercase">Pustaka Komponen</p>
         </div>
 
         {/* Navigation */}
@@ -114,7 +114,7 @@ export function Sidebar() {
         {/* Footer */}
         <div className="p-4 border-t border-zinc-800/60">
           <p className="text-[11px] text-zinc-700 text-center">
-            Temporary Dev Container
+            Kontainer Dev Sementara
           </p>
         </div>
       </aside>

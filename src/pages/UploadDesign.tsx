@@ -116,7 +116,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
     // When editing, allow keeping the same slug
     const slugsToCheck = editTheme ? existingSlugs.filter((s) => s !== editTheme.slug) : existingSlugs
     if (slugsToCheck.includes(finalSlug)) {
-      setSlugError('This URL is already taken. Choose a different one.')
+      setSlugError('URL ini sudah digunakan. Pilih URL yang berbeda.')
       return
     }
 
@@ -144,12 +144,12 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
-        Back to themes
+        Kembali ke tema
       </button>
 
-      <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">{editTheme ? 'Edit Design' : 'Upload Design'}</h1>
+      <h1 className="text-3xl font-bold text-white mb-2 tracking-tight">{editTheme ? 'Edit Desain' : 'Unggah Desain'}</h1>
       <p className="text-zinc-500 text-sm mb-10">
-        {editTheme ? 'Update your theme details below.' : 'Add a new theme to your art and design collection.'}
+        {editTheme ? 'Perbarui detail tema Anda di bawah ini.' : 'Tambahkan tema baru ke koleksi seni dan desain Anda.'}
       </p>
 
       <form onSubmit={handleSubmit} className="space-y-6">
@@ -166,9 +166,9 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
           >
             {thumbnail ? (
               <div className="relative aspect-[16/10] group">
-                <img src={thumbnail} alt="Preview" className="w-full h-full object-cover object-top" />
+                <img src={thumbnail} alt="Pratinjau" className="w-full h-full object-cover object-top" />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors flex items-center justify-center">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white text-sm font-medium px-4 py-2 rounded-lg bg-zinc-900/80 backdrop-blur-sm">Change image</span>
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity text-white text-sm font-medium px-4 py-2 rounded-lg bg-zinc-900/80 backdrop-blur-sm">Ganti gambar</span>
                 </div>
               </div>
             ) : (
@@ -176,7 +176,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
                 <svg className="w-10 h-10 text-zinc-700 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
-                <p className="text-sm text-zinc-500">Drag & drop an image or <span className="text-blue-400">browse</span></p>
+                <p className="text-sm text-zinc-500">Tarik & lepas gambar atau <span className="text-blue-400">telusuri</span></p>
                 <p className="text-[11px] text-zinc-700 mt-1">PNG, JPG, WebP</p>
               </div>
             )}
@@ -186,17 +186,17 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
 
         {/* Name */}
         <div>
-          <label className="block text-sm font-medium text-zinc-300 mb-2">Theme Name <span className="text-red-400">*</span></label>
-          <input type="text" value={name} onChange={(e) => { setName(e.target.value); setSlugError('') }} placeholder="e.g. Nightfall Gallery" className={inputClass} />
+          <label className="block text-sm font-medium text-zinc-300 mb-2">Nama Tema <span className="text-red-400">*</span></label>
+          <input type="text" value={name} onChange={(e) => { setName(e.target.value); setSlugError('') }} placeholder="cth. Nightfall Gallery" className={inputClass} />
         </div>
 
         {/* Custom URL */}
         <div>
-          <label className="block text-sm font-medium text-zinc-300 mb-2">Custom URL</label>
+          <label className="block text-sm font-medium text-zinc-300 mb-2">URL Kustom</label>
           <div className="flex items-center rounded-xl border border-zinc-800/60 bg-zinc-900/30 overflow-hidden focus-within:border-blue-500/40 focus-within:ring-1 focus-within:ring-blue-500/20 transition-all">
             <span className="pl-4 pr-1 text-sm text-zinc-600 whitespace-nowrap select-none">/theme/</span>
             <input type="text" value={customSlug} onChange={(e) => { setCustomSlug(e.target.value); setSlugError('') }}
-              placeholder={generateSlug(name) || 'auto-generated-from-name'}
+              placeholder={generateSlug(name) || 'dibuat-otomatis-dari-nama'}
               className="flex-1 px-2 py-2.5 bg-transparent text-sm text-zinc-300 placeholder-zinc-600 focus:outline-none" />
           </div>
           {resolvedSlug && <p className="text-[11px] text-zinc-600 mt-1.5">URL: <span className="text-zinc-500">/theme/{resolvedSlug}</span></p>}
@@ -205,24 +205,24 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
 
         {/* Demo URL (auto-generated) */}
         <div>
-          <label className="block text-sm font-medium text-zinc-300 mb-2">Demo URL</label>
+          <label className="block text-sm font-medium text-zinc-300 mb-2">URL Demo</label>
           <div className={inputClass + ' bg-zinc-900/50 text-zinc-500 cursor-default'}>
             {resolvedSlug ? `/?preview=${resolvedSlug}` : '/?preview=...'}
           </div>
-          <p className="text-[11px] text-zinc-700 mt-1.5">Auto-generated from your theme name — this will be the embedded preview route</p>
+          <p className="text-[11px] text-zinc-700 mt-1.5">Dibuat otomatis dari nama tema Anda — ini akan menjadi rute pratinjau yang disematkan</p>
         </div>
 
         {/* Description */}
         <div>
-          <label className="block text-sm font-medium text-zinc-300 mb-2">Description</label>
-          <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Describe the theme..." rows={4}
+          <label className="block text-sm font-medium text-zinc-300 mb-2">Deskripsi</label>
+          <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Deskripsikan tema ini..." rows={4}
             className={inputClass + ' resize-none'} />
         </div>
 
         {/* Style Variations */}
         <div>
-          <label className="block text-sm font-medium text-zinc-300 mb-2">Style Variations</label>
-          <p className="text-[11px] text-zinc-600 mb-3">Add font & color presets visitors can preview. Leave empty if no customization is needed.</p>
+          <label className="block text-sm font-medium text-zinc-300 mb-2">Variasi Gaya</label>
+          <p className="text-[11px] text-zinc-600 mb-3">Tambahkan preset font & warna yang dapat dipratinjau pengunjung. Biarkan kosong jika tidak memerlukan kustomisasi.</p>
 
           {/* Existing variations */}
           {styleVariations.length > 0 && (
@@ -258,16 +258,16 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
           {showVarForm ? (
             <div className="rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-4 space-y-4">
               <div>
-                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Variation Name *</label>
-                <input type="text" value={newVarName} onChange={(e) => setNewVarName(e.target.value)} placeholder="e.g. Dark Mode" className={inputClass} />
+                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Nama Variasi *</label>
+                <input type="text" value={newVarName} onChange={(e) => setNewVarName(e.target.value)} placeholder="cth. Mode Gelap" className={inputClass} />
               </div>
               <div>
-                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Font Family</label>
+                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Jenis Font</label>
                 <input
                   type="text"
                   value={newVarFont}
                   onChange={(e) => setNewVarFont(e.target.value)}
-                  placeholder="Type any font name, e.g. Inter"
+                  placeholder="Ketik nama font, cth. Inter"
                   className={inputClass}
                 />
                 <div className="flex flex-wrap gap-1.5 mt-2">
@@ -289,7 +289,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
               </div>
               <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Background</label>
+                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Latar Belakang</label>
                   <div className="flex items-center gap-2">
                     <input type="color" value={newVarBg} onChange={(e) => setNewVarBg(e.target.value)}
                       className="w-8 h-8 rounded-lg border border-zinc-700 cursor-pointer bg-transparent" />
@@ -298,7 +298,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Text</label>
+                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Teks</label>
                   <div className="flex items-center gap-2">
                     <input type="color" value={newVarText} onChange={(e) => setNewVarText(e.target.value)}
                       className="w-8 h-8 rounded-lg border border-zinc-700 cursor-pointer bg-transparent" />
@@ -307,7 +307,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Accent</label>
+                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Aksen</label>
                   <div className="flex items-center gap-2">
                     <input type="color" value={newVarAccent} onChange={(e) => setNewVarAccent(e.target.value)}
                       className="w-8 h-8 rounded-lg border border-zinc-700 cursor-pointer bg-transparent" />
@@ -319,7 +319,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
 
               {/* Live preview of this variation */}
               <div>
-                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Preview</label>
+                <label className="block text-xs font-medium text-zinc-400 mb-1.5">Pratinjau</label>
                 <div className="w-20 h-20 rounded-xl border border-zinc-700 flex flex-col items-center justify-center gap-1" style={{ backgroundColor: newVarBg }}>
                   <span className="text-xl font-semibold leading-none" style={{ color: newVarText, fontFamily: newVarFont }}>Aa</span>
                   <div className="flex gap-1">
@@ -332,10 +332,10 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
               <div className="flex gap-2">
                 <button type="button" onClick={addVariation} disabled={!newVarName.trim()}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-all cursor-pointer ${newVarName.trim() ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-400 hover:to-cyan-400' : 'bg-zinc-800 text-zinc-600 cursor-not-allowed'}`}>
-                  Add Variation
+                  Tambah Variasi
                 </button>
                 <button type="button" onClick={() => setShowVarForm(false)} className="px-4 py-2 rounded-lg text-sm text-zinc-500 hover:text-zinc-300 transition-colors cursor-pointer">
-                  Cancel
+                  Batal
                 </button>
               </div>
             </div>
@@ -345,14 +345,14 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
               </svg>
-              Add Style Variation
+              Tambah Variasi Gaya
             </button>
           )}
         </div>
 
         {/* Features */}
         <div>
-          <label className="block text-sm font-medium text-zinc-300 mb-2">Features</label>
+          <label className="block text-sm font-medium text-zinc-300 mb-2">Fitur</label>
           <div className={chipContainerClass}>
             {features.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-2.5">
@@ -368,16 +368,16 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
             )}
             <input type="text" value={featureInput} onChange={(e) => setFeatureInput(e.target.value)}
               onKeyDown={handleFeatureKeyDown} onBlur={() => { if (featureInput.trim()) addFeature(featureInput) }}
-              placeholder={features.length === 0 ? 'e.g. Blog, E-commerce, Responsive — press Enter to add' : 'Add another feature...'}
+              placeholder={features.length === 0 ? 'cth. Blog, E-commerce, Responsif — tekan Enter untuk menambahkan' : 'Tambah fitur lainnya...'}
               className="w-full bg-transparent text-sm text-zinc-300 placeholder-zinc-600 focus:outline-none" />
           </div>
-          <p className="text-[11px] text-zinc-700 mt-1.5">Press Enter or comma to add</p>
+          <p className="text-[11px] text-zinc-700 mt-1.5">Tekan Enter atau koma untuk menambahkan</p>
         </div>
 
         {/* Categories */}
         <div>
-          <label className="block text-sm font-medium text-zinc-300 mb-2">Categories</label>
-          <p className="text-[11px] text-zinc-600 mb-3">Select existing categories or create new ones. These become filter tabs on the main page.</p>
+          <label className="block text-sm font-medium text-zinc-300 mb-2">Kategori</label>
+          <p className="text-[11px] text-zinc-600 mb-3">Pilih kategori yang ada atau buat kategori baru. Ini akan menjadi tab filter di halaman utama.</p>
 
           {/* Existing categories as toggleable chips */}
           {categories.length > 0 && (
@@ -404,7 +404,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
                   <span
                     onClick={(e) => { e.stopPropagation(); onDeleteCategory(cat); setSelectedCategories((prev) => { const n = new Set(prev); n.delete(cat); return n }) }}
                     className="ml-0.5 opacity-0 group-hover:opacity-100 text-zinc-600 hover:text-red-400 transition-all cursor-pointer"
-                    title="Delete category"
+                    title="Hapus kategori"
                   >
                     ×
                   </span>
@@ -420,7 +420,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
               value={newCategoryInput}
               onChange={(e) => setNewCategoryInput(e.target.value)}
               onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); handleCreateCategory() } }}
-              placeholder="Create new category..."
+              placeholder="Buat kategori baru..."
               className={inputClass}
             />
             <button
@@ -435,7 +435,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
                 }
               `}
             >
-              Add
+              Tambah
             </button>
           </div>
         </div>
@@ -444,7 +444,7 @@ export function UploadDesign({ onSave, onBack, existingSlugs, categories, onAddC
         <div className="pt-4">
           <button type="submit" disabled={!isValid}
             className={`w-full py-3 rounded-xl text-sm font-semibold transition-all cursor-pointer ${isValid ? 'bg-gradient-to-r from-blue-500 to-cyan-500 text-white hover:from-blue-400 hover:to-cyan-400 active:scale-[0.98]' : 'bg-zinc-800 text-zinc-600 cursor-not-allowed'}`}>
-            {editTheme ? 'Save Changes' : 'Add Theme'}
+            {editTheme ? 'Simpan Perubahan' : 'Tambah Tema'}
           </button>
         </div>
       </form>

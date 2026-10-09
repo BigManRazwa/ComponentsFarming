@@ -152,9 +152,9 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
     <div className="max-w-6xl mx-auto">
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-xs text-zinc-600 mb-8">
-        <button onClick={onBack} className="hover:text-zinc-400 transition-colors cursor-pointer">Themes</button>
+        <button onClick={onBack} className="hover:text-zinc-400 transition-colors cursor-pointer">Tema</button>
         <span>›</span>
-        <button onClick={onBack} className="hover:text-zinc-400 transition-colors cursor-pointer">Art & Design</button>
+        <button onClick={onBack} className="hover:text-zinc-400 transition-colors cursor-pointer">Seni & Desain</button>
         <span>›</span>
         <span className="text-zinc-400">{theme.name}</span>
       </div>
@@ -170,7 +170,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
               <button
                 onClick={() => onEdit(theme.id)}
                 className="p-2 rounded-xl border border-zinc-800/60 text-zinc-600 hover:text-blue-400 hover:border-blue-500/30 transition-all cursor-pointer"
-                title="Edit theme"
+                title="Edit tema"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -179,7 +179,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
               <button
                 onClick={() => onDelete(theme.id)}
                 className="p-2 rounded-xl border border-zinc-800/60 text-zinc-600 hover:text-red-400 hover:border-red-500/30 transition-all cursor-pointer"
-                title="Delete theme"
+                title="Hapus tema"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -190,15 +190,15 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
 
           {/* Community Rating */}
           <div>
-            <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Community Rating</h2>
+            <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Rating Komunitas</h2>
             {reviews.length > 0 ? (
               <div className="flex items-center gap-3">
                 <StarRating rating={avgRating} size="md" />
                 <span className="text-sm text-zinc-400">{avgRating.toFixed(1)}/5</span>
-                <span className="text-xs text-zinc-500">({reviews.length} review{reviews.length !== 1 ? 's' : ''})</span>
+                <span className="text-xs text-zinc-500">({reviews.length} ulasan)</span>
               </div>
             ) : (
-              <p className="text-xs text-zinc-500">No reviews yet. Be the first to rate this theme.</p>
+              <p className="text-xs text-zinc-500">Belum ada ulasan. Jadilah yang pertama menilai tema ini.</p>
             )}
           </div>
 
@@ -207,7 +207,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
             <>
               {/* Default Style */}
               <div>
-                <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Default Style</h2>
+                <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Gaya Bawaan</h2>
                 <VariationCard
                   variation={null}
                   isActive={activeVariation === null}
@@ -221,7 +221,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
                   Style Variations
                 </h2>
                 <p className="text-xs text-zinc-500 mb-4">
-                  Preview style variations — pick your own fonts and colors.
+                  Pratinjau variasi gaya — pilih font dan warna Anda sendiri.
                 </p>
                 <div className="flex flex-wrap gap-3">
                   {theme.styleVariations!.map((v, i) => (
@@ -246,7 +246,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
                 Font Variations
               </h2>
               <p className="text-xs text-zinc-500 mb-4">
-                Switch typography to change the look &amp; feel.
+                Ganti tipografi untuk mengubah tampilan & nuansa.
               </p>
               <div className="flex flex-col gap-2">
                 {/* Default font option */}
@@ -260,8 +260,8 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
                 >
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-xs text-zinc-500">Default</span>
-                      <p className="text-sm text-zinc-300 mt-0.5">Theme Default Font</p>
+                      <span className="text-xs text-zinc-500">Bawaan</span>
+                      <p className="text-sm text-zinc-300 mt-0.5">Font Bawaan Tema</p>
                     </div>
                     {activeFont === null && (
                       <div className="w-2 h-2 rounded-full bg-blue-500" />
@@ -298,7 +298,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
           {/* Description */}
           {theme.description && (
             <div>
-              <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Description</h2>
+              <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Deskripsi</h2>
               <p className="text-sm text-zinc-400 leading-relaxed whitespace-pre-line">{theme.description}</p>
             </div>
           )}
@@ -306,7 +306,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
           {/* Features */}
           {theme.features && theme.features.length > 0 && (
             <div>
-              <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Features</h2>
+              <h2 className="text-[11px] font-semibold text-zinc-500 uppercase tracking-wider mb-3">Fitur</h2>
               <div className="rounded-xl border border-zinc-800/60 bg-zinc-900/20 divide-y divide-zinc-800/40">
                 {theme.features.map((feature) => (
                   <div key={feature} className="flex items-center gap-3 px-4 py-3">
@@ -344,7 +344,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
                 onClick={() => setShowReviewForm(!showReviewForm)}
                 className="text-xs text-blue-400 hover:text-blue-300 transition-colors font-medium cursor-pointer"
               >
-                {showReviewForm ? 'Cancel' : '+ Add Review'}
+                {showReviewForm ? 'Batal' : '+ Tambah Ulasan'}
               </button>
             </div>
 
@@ -352,12 +352,12 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
             {showReviewForm && (
               <form onSubmit={handleSubmitReview} className="rounded-xl border border-zinc-800/60 bg-zinc-900/30 p-4 mb-5 space-y-4">
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Your Name *</label>
+                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Nama Anda *</label>
                   <input
                     type="text"
                     value={reviewAuthor}
                     onChange={(e) => setReviewAuthor(e.target.value)}
-                    placeholder="Anonymous"
+                    placeholder="Anonim"
                     className="w-full px-3 py-2 rounded-lg border border-zinc-800/60 bg-zinc-900/50 text-sm text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-blue-500/40 transition-all"
                   />
                 </div>
@@ -369,11 +369,11 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
                   </div>
                 </div>
                 <div>
-                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Comment</label>
+                  <label className="block text-xs font-medium text-zinc-400 mb-1.5">Komentar</label>
                   <textarea
                     value={reviewComment}
                     onChange={(e) => setReviewComment(e.target.value)}
-                    placeholder="Share your experience with this theme..."
+                    placeholder="Bagikan pengalaman Anda dengan tema ini..."
                     rows={3}
                     className="w-full px-3 py-2 rounded-lg border border-zinc-800/60 bg-zinc-900/50 text-sm text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-blue-500/40 transition-all resize-none"
                   />
@@ -389,7 +389,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
                     }
                   `}
                 >
-                  Submit Review
+                  Kirim Ulasan
                 </button>
               </form>
             )}
@@ -418,12 +418,12 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
             ) : (
               !showReviewForm && (
                 <div className="rounded-xl border border-dashed border-zinc-800/60 py-8 text-center">
-                  <p className="text-xs text-zinc-500 mb-2">No reviews yet</p>
+                  <p className="text-xs text-zinc-500 mb-2">Belum ada ulasan</p>
                   <button
                     onClick={() => setShowReviewForm(true)}
                     className="text-xs text-blue-400 hover:text-blue-300 transition-colors font-medium cursor-pointer"
                   >
-                    Be the first to review
+                    Jadilah yang pertama mengulas
                   </button>
                 </div>
               )
@@ -441,7 +441,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
                 <div className="w-2.5 h-2.5 rounded-full bg-amber-500/60" />
                 <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
                 <span className="text-[11px] text-zinc-500 ml-2 uppercase tracking-wider">
-                  {demoUrl ? 'Live Demo' : 'Preview'}
+                  {demoUrl ? 'Demo Langsung' : 'Pratinjau'}
                 </span>
                 {demoUrl && (
                   <a
@@ -450,7 +450,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
                     rel="noopener noreferrer"
                     className="ml-auto text-[10px] text-blue-400 hover:text-blue-300 transition-colors"
                   >
-                    Open in new tab ↗
+                    Buka di tab baru ↗
                   </a>
                 )}
               </div>
@@ -510,7 +510,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                   <div>
-                    <p className="text-sm text-zinc-300 group-hover:text-blue-400 transition-colors font-medium">Preview Demo Site</p>
+                    <p className="text-sm text-zinc-300 group-hover:text-blue-400 transition-colors font-medium">Pratinjau Situs Demo</p>
                     <p className="text-xs text-zinc-500 truncate max-w-xs">{theme.demoUrl}</p>
                   </div>
                 </div>
@@ -524,9 +524,9 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
             {demoUrl && (
               <div className="rounded-xl border border-zinc-800/60 bg-zinc-900/30 px-5 py-4 flex items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-sm font-semibold text-zinc-200 mb-1">Download this theme</h3>
+                  <h3 className="text-sm font-semibold text-zinc-200 mb-1">Unduh tema ini</h3>
                   <p className="text-xs text-zinc-500 leading-relaxed">
-                    This theme is available for download to be used on your own project.
+                    Tema ini tersedia untuk diunduh dan digunakan pada proyek Anda sendiri.
                   </p>
                 </div>
                 <button
@@ -555,7 +555,7 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                   </svg>
-                  Download
+                  Unduh
                 </button>
               </div>
             )}
