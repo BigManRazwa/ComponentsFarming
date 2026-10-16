@@ -88,15 +88,45 @@ export function ThemeDetail({ theme, onBack, onDelete, onEdit, onUpdate }: Theme
   const hasFontVariations = theme.fontVariations && theme.fontVariations.length > 0
   const [activeFont, setActiveFont] = useState<number | null>(null)
 
-  // Load Google Fonts for font variation previews
+  // Load Google Fonts for font variation previews and iframe preview
   useEffect(() => {
     if (!hasFontVariations) return
-    const families = theme.fontVariations!.map((f) => f.fontFamily.split(',')[0].trim()).join('&family=')
+    const families = theme.fontVariations!
+      .map((f) => f.fontFamily.split(',')[0].trim().replace(/['"]/g, ''))
+      .filter((name) => name && !['system-ui', 'monospace', 'sans-serif', 'serif', 'inherit'].includes(name.toLowerCase()))
+
+    if (families.length === 0) return
+    const fontHref = `https://fonts.googleapis.com/css2?family=${families.join('&family=').replace(/ /g, '+')}&display=swap`
+
     const link = document.createElement('link')
     link.rel = 'stylesheet'
-    link.href = `https://fonts.googleapis.com/css2?family=${families.replace(/ /g, '+')}&display=swap`
+    link.href = fontHref
     document.head.appendChild(link)
-    return () => { document.head.removeChild(link) }
+
+    const iframe = iframeRef.current
+    const injectIframe = () => {
+      try {
+        const iDoc = iframe?.contentDocument
+        if (iDoc && !iDoc.querySelector(`link[href="${fontHref}"]`)) {
+          const iLink = iDoc.createElement('link')
+          iLink.rel = 'stylesheet'
+          iLink.href = fontHref
+          iDoc.head.appendChild(iLink)
+        }
+      } catch {
+        // ignore
+      }
+    }
+
+    if (iframe?.contentDocument?.readyState === 'complete') {
+      injectIframe()
+    }
+    iframe?.addEventListener('load', injectIframe)
+
+    return () => {
+      document.head.removeChild(link)
+      iframe?.removeEventListener('load', injectIframe)
+    }
   }, [hasFontVariations, theme.fontVariations])
 
   // Send style-variation change to the iframe via postMessage

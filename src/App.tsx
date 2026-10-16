@@ -83,6 +83,26 @@ import { MobileWallet } from './pages/examples/MobileWallet'
 
 import { IotDashboard } from './pages/examples/IotDashboard'
 import { MobileAstrologyApp } from './pages/examples/MobileAstrologyApp'
+import { FlightBooking } from './pages/examples/FlightBooking'
+import { MobileCoffeeShop } from './pages/examples/MobileCoffeeShop'
+import { VirtualConference } from './pages/examples/VirtualConference'
+import { MobilePlantCare } from './pages/examples/MobilePlantCare'
+import { DroneMissionControl } from './pages/examples/DroneMissionControl'
+import { MobileBeatStudio } from './pages/examples/MobileBeatStudio'
+import { SocIncidentCommand } from './pages/examples/SocIncidentCommand'
+import { MobileRocketLaunch } from './pages/examples/MobileRocketLaunch'
+import { NeuralStudio } from './pages/examples/NeuralStudio'
+import { MobileEvCommand } from './pages/examples/MobileEvCommand'
+import { QuantumLab } from './pages/examples/QuantumLab'
+import { MobileExoplanetTracker } from './pages/examples/MobileExoplanetTracker'
+import { FusionReactor } from './pages/examples/FusionReactor'
+import { MobileMechHangar } from './pages/examples/MobileMechHangar'
+import { SubmersibleCommand } from './pages/examples/SubmersibleCommand'
+import { MobileCyberdeck } from './pages/examples/MobileCyberdeck'
+import { ParticleCollider } from './pages/examples/ParticleCollider'
+import { MobileBionicArm } from './pages/examples/MobileBionicArm'
+import { SmartCityCommand } from './pages/examples/SmartCityCommand'
+import { MobileCyberPet } from './pages/examples/MobileCyberPet'
 import type { ThemeData } from './components/ui/ThemeCard'
 
 const THEMES_KEY = 'art-design-themes'
@@ -1617,7 +1637,7 @@ const DEFAULT_THEMES: ThemeData[] = [
       { name: 'Amber', fontFamily: 'Inter', bgColor: '#0C0A05', textColor: '#FFF8E8', accentColor: '#F59E0B' },
     ],
     fontVariations: [
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'AdminHub — Content Management' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'AdminHub — Content Management' },
       { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'AdminHub — Content Management' },
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'AdminHub — Content Management' },
     ],
@@ -1865,7 +1885,7 @@ const DEFAULT_THEMES: ThemeData[] = [
       { name: 'Teal', fontFamily: 'Inter', bgColor: '#080E0E', textColor: '#F0FAFA', accentColor: '#14B8A6' },
     ],
     fontVariations: [
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'MailFlow — Q4 Marketing Report' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'MailFlow — Q4 Marketing Report' },
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'MailFlow — Q4 Marketing Report' },
       { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'MailFlow — Q4 Marketing Report' },
     ],
@@ -1927,7 +1947,7 @@ const DEFAULT_THEMES: ThemeData[] = [
       { name: 'Amber', fontFamily: 'Inter', bgColor: '#0F0D08', textColor: '#FFF8F0', accentColor: '#F59E0B' },
     ],
     fontVariations: [
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'Planify — Mobile App v2.0' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'Planify — Mobile App v2.0' },
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'Planify — Mobile App v2.0' },
       { name: 'Technical', fontFamily: 'IBM Plex Sans, sans-serif', preview: 'Planify — Mobile App v2.0' },
     ],
@@ -1989,7 +2009,7 @@ const DEFAULT_THEMES: ThemeData[] = [
       { name: 'Violet', fontFamily: 'Inter', bgColor: '#0C0A14', textColor: '#F1F0FF', accentColor: '#8B5CF6' },
     ],
     fontVariations: [
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'CloudVault — 4.2 GB of 10 GB' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'CloudVault — 4.2 GB of 10 GB' },
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'CloudVault — 4.2 GB of 10 GB' },
       { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'CloudVault — 4.2 GB of 10 GB' },
     ],
@@ -2113,7 +2133,7 @@ const DEFAULT_THEMES: ThemeData[] = [
       { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
     ],
     fontVariations: [
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'StayBook — September 2023' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'StayBook — September 2023' },
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'StayBook — September 2023' },
       { name: 'Serif', fontFamily: 'Lora, serif', preview: 'StayBook — September 2023' },
     ],
@@ -2208,7 +2228,7 @@ const DEFAULT_THEMES: ThemeData[] = [
     fontVariations: [
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'ParkEasy — Downtown SF' },
       { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'ParkEasy — Downtown SF' },
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'ParkEasy — Downtown SF' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'ParkEasy — Downtown SF' },
     ],
     reviews: [],
   },
@@ -2299,7 +2319,7 @@ const DEFAULT_THEMES: ThemeData[] = [
       { name: 'Emerald', fontFamily: 'Inter', bgColor: '#0A0F0C', textColor: '#F0FFF8', accentColor: '#10B981' },
     ],
     fontVariations: [
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'HelpDesk — 12 open tickets' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'HelpDesk — 12 open tickets' },
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'HelpDesk — 12 open tickets' },
       { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'HelpDesk — 12 open tickets' },
     ],
@@ -2425,7 +2445,7 @@ const DEFAULT_THEMES: ThemeData[] = [
     fontVariations: [
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'JobFlow — Senior React Developer' },
       { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'JobFlow — Senior React Developer' },
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'JobFlow — Senior React Developer' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'JobFlow — Senior React Developer' },
     ],
     reviews: [],
   },
@@ -2609,7 +2629,7 @@ const DEFAULT_THEMES: ThemeData[] = [
       { name: 'Amber', fontFamily: 'Inter', bgColor: '#0F0D08', textColor: '#FFF8F0', accentColor: '#F59E0B' },
     ],
     fontVariations: [
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'StockHub — 2,456 Products' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'StockHub — 2,456 Products' },
       { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'StockHub — 2,456 Products' },
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'StockHub — 2,456 Products' },
     ],
@@ -2671,7 +2691,7 @@ const DEFAULT_THEMES: ThemeData[] = [
       { name: 'Rose', fontFamily: 'Inter', bgColor: '#FFFFFF', textColor: '#2E0A12', accentColor: '#F43F5E' },
     ],
     fontVariations: [
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'ConnectX — Social Feed' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'ConnectX — Social Feed' },
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'ConnectX — Social Feed' },
       { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'ConnectX — Social Feed' },
     ],
@@ -2765,7 +2785,7 @@ const DEFAULT_THEMES: ThemeData[] = [
     ],
     fontVariations: [
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'PlanIt — October 2024' },
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'PlanIt — October 2024' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'PlanIt — October 2024' },
       { name: 'Modern', fontFamily: 'Outfit, sans-serif', preview: 'PlanIt — October 2024' },
     ],
     reviews: [],
@@ -2828,7 +2848,7 @@ const DEFAULT_THEMES: ThemeData[] = [
     fontVariations: [
       { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'BeatForge — 128 BPM' },
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'BeatForge — 128 BPM' },
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'BeatForge — 128 BPM' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'BeatForge — 128 BPM' },
     ],
     reviews: [],
   },
@@ -2951,7 +2971,7 @@ const DEFAULT_THEMES: ThemeData[] = [
     ],
     fontVariations: [
       { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'GridFlow — $398,950' },
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'GridFlow — $398,950' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'GridFlow — $398,950' },
       { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'GridFlow — $398,950' },
     ],
     reviews: [],
@@ -3014,7 +3034,7 @@ const DEFAULT_THEMES: ThemeData[] = [
     fontVariations: [
       { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'CodeForge — Ln 10, Col 42' },
       { name: 'Fira', fontFamily: 'Fira Code, monospace', preview: 'CodeForge — Ln 10, Col 42' },
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'CodeForge — Ln 10, Col 42' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'CodeForge — Ln 10, Col 42' },
     ],
     reviews: [],
   },
@@ -3066,7 +3086,7 @@ const DEFAULT_THEMES: ThemeData[] = [
     fontVariations: [
       { name: 'Clean', fontFamily: 'Inter, sans-serif', preview: 'SmartHome — 4.2 kWh' },
       { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'SmartHome — 4.2 kWh' },
-      { name: 'System', fontFamily: 'system-ui, sans-serif', preview: 'SmartHome — 4.2 kWh' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'SmartHome — 4.2 kWh' },
     ],
     reviews: [],
   },
@@ -3088,6 +3108,583 @@ const DEFAULT_THEMES: ThemeData[] = [
       { name: 'Elegant', fontFamily: 'Cinzel, serif', preview: 'Scorpio — Cosmic Alignments' },
       { name: 'Clean', fontFamily: 'Inter, sans-serif', preview: 'Scorpio — Cosmic Alignments' },
       { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'Scorpio — Cosmic Alignments' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-flight-booking',
+    name: 'Flight Booking',
+    slug: 'flight-booking',
+    description:
+      'A modern airline search and booking platform with flight search filters, layover breakdown, price trend alerts, amenity pills, and flight details drawers.',
+    thumbnail: '/thumbnails/flight-booking.jpg',
+    tags: ['Travel & Booking', 'Desktop'],
+    features: [
+      'Trip Type Selector (Round/One-way)',
+      'Origin & Destination Flight Search',
+      'Filters for Stops, Airlines & Price',
+      'Price Alert Tracking Banner',
+      'Layover & Amenities Breakdown Drawer',
+    ],
+    demoUrl: '/?preview=flight-booking',
+    styleVariations: [
+      { name: 'Sky', fontFamily: 'Plus Jakarta Sans', bgColor: '#0B132B', textColor: '#F8FAFC', accentColor: '#0284C7' },
+      { name: 'Indigo', fontFamily: 'Plus Jakarta Sans', bgColor: '#0F172A', textColor: '#F8FAFC', accentColor: '#6366F1' },
+      { name: 'Emerald', fontFamily: 'Plus Jakarta Sans', bgColor: '#081411', textColor: '#F0FDF4', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'SkyFlow — JFK → HND $890' },
+      { name: 'Clean', fontFamily: 'Inter, sans-serif', preview: 'SkyFlow — JFK → HND $890' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'SkyFlow — JFK → HND $890' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-coffee-shop',
+    name: 'Mobile Coffee Shop',
+    slug: 'mobile-coffee-shop',
+    description:
+      'A specialty coffee ordering app with store locator, Gold rewards points tracker, seasonal drinks menu, drink customization modal, and sticky order checkout bar.',
+    thumbnail: '/thumbnails/coffee-shop.jpg',
+    tags: ['Food & Restaurant', 'Food Delivery', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Store Locator & Pickup Estimation',
+      'Rewards Points Progress Bar',
+      'Drink Customizer (Milk, Shots, Syrups)',
+      'Fixed Bottom Order Checkout Bar',
+    ],
+    demoUrl: '/?preview=mobile-coffee-shop',
+    styleVariations: [
+      { name: 'Amber', fontFamily: 'Plus Jakarta Sans', bgColor: '#16110D', textColor: '#FFF8F2', accentColor: '#D97706' },
+      { name: 'Emerald', fontFamily: 'Plus Jakarta Sans', bgColor: '#0C1713', textColor: '#F0FDF4', accentColor: '#059669' },
+      { name: 'Rose', fontFamily: 'Plus Jakarta Sans', bgColor: '#190E13', textColor: '#FFF1F2', accentColor: '#E11D48' },
+    ],
+    fontVariations: [
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'Blue Roastery — $5.95' },
+      { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'Blue Roastery — $5.95' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'Blue Roastery — $5.95' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-virtual-conference',
+    name: 'Virtual Conference',
+    slug: 'virtual-conference',
+    description:
+      'A full-featured virtual summit stage with live stream player, agenda schedule, live speaker Q&A with upvoting, interactive audience polls, and networking lounge.',
+    thumbnail: '/thumbnails/virtual-conference.jpg',
+    tags: ['Events & Conference', 'Desktop'],
+    features: [
+      'Live Stream Player Mockup',
+      'Multi-Track Schedule Timeline',
+      'Real-Time Emoji Reactions',
+      'Live Q&A with Upvoting',
+      'Interactive Audience Polls',
+      'Networking Lounge Card',
+    ],
+    demoUrl: '/?preview=virtual-conference',
+    styleVariations: [
+      { name: 'Violet', fontFamily: 'Plus Jakarta Sans', bgColor: '#0D0C14', textColor: '#F8FAFC', accentColor: '#8B5CF6' },
+      { name: 'Cyan', fontFamily: 'Plus Jakarta Sans', bgColor: '#0A1118', textColor: '#F8FAFC', accentColor: '#06B6D4' },
+      { name: 'Rose', fontFamily: 'Plus Jakarta Sans', bgColor: '#140A0F', textColor: '#FFF1F2', accentColor: '#F43F5E' },
+    ],
+    fontVariations: [
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'Nexus Summit — Live Keynote' },
+      { name: 'Clean', fontFamily: 'Inter, sans-serif', preview: 'Nexus Summit — Live Keynote' },
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'Nexus Summit — Live Keynote' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-plant-care',
+    name: 'Mobile Plant Care',
+    slug: 'mobile-plant-care',
+    description:
+      'A botanical care companion with daily hydration checklists, plant sanctuary health cards, sunlight exposure lux gauge, and care schedule bottom navigation.',
+    thumbnail: '/thumbnails/plant-care.jpg',
+    tags: ['Wellness', 'Weather & Utility', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Daily Hydration Checklist',
+      'Plant Sanctuary Health Cards',
+      'Simulated Lux Light Meter Drawer',
+      'Fixed Care Bottom Navigation',
+    ],
+    demoUrl: '/?preview=mobile-plant-care',
+    styleVariations: [
+      { name: 'Emerald', fontFamily: 'Plus Jakarta Sans', bgColor: '#09140F', textColor: '#F0FDF4', accentColor: '#10B981' },
+      { name: 'Amber', fontFamily: 'Plus Jakarta Sans', bgColor: '#18120A', textColor: '#FFFBEB', accentColor: '#F59E0B' },
+      { name: 'Teal', fontFamily: 'Plus Jakarta Sans', bgColor: '#081414', textColor: '#F0FDFA', accentColor: '#14B8A6' },
+    ],
+    fontVariations: [
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'Flora Botanica — 8 Healthy Plants' },
+      { name: 'Rounded', fontFamily: 'Quicksand, sans-serif', preview: 'Flora Botanica — 8 Healthy Plants' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'Flora Botanica — 8 Healthy Plants' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-drone-mission-control',
+    name: 'Drone Mission Control',
+    slug: 'drone-telemetry',
+    description:
+      'A tactical UAV ground control station with artificial horizon telemetry, live optical & thermal vision HUD with AI target tracking, rotating radar sweep, and waypoint mission planner.',
+    thumbnail: '/thumbnails/drone-telemetry.jpg',
+    tags: ['Dashboard', 'Weather & Utility', 'Desktop'],
+    features: [
+      'Tactical Flight HUD Overlay',
+      'Artificial Horizon Telemetry',
+      'Live Optical / Thermal / NVG Modes',
+      'Automated Rotating Radar Sweep',
+      'Interactive Waypoints Mission Log',
+      'Motor & LiPo Power Telemetry',
+    ],
+    demoUrl: '/?preview=drone-telemetry',
+    styleVariations: [
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#04080D', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Amber', fontFamily: 'JetBrains Mono', bgColor: '#0A0804', textColor: '#FFFBEB', accentColor: '#F59E0B' },
+      { name: 'Emerald', fontFamily: 'JetBrains Mono', bgColor: '#040B07', textColor: '#F0FDF4', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'APEX-07 // 1,240m AGL · 84 km/h' },
+      { name: 'Terminal', fontFamily: 'Fira Code, monospace', preview: 'APEX-07 // 1,240m AGL · 84 km/h' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'APEX-07 // 1,240m AGL · 84 km/h' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-beat-studio',
+    name: 'Mobile Beat Studio',
+    slug: 'mobile-beat-maker',
+    description:
+      'A pocket cyberpunk groovebox & beatmaker with 16 illuminated velocity drum pads, active 8-step sequencer with running LED playhead, realtime audio waveform visualizer, and low-pass filter rack.',
+    thumbnail: '/thumbnails/beat-maker.jpg',
+    tags: ['Music & Entertainment', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      '16-Pad Illuminated Drum Grid',
+      'Active 8-Step LED Sequencer',
+      'Realtime Audio Visualizer Spectrum',
+      'Filter Cutoff & Resonance Sliders',
+      'Pattern & BPM Tempo Controls',
+    ],
+    demoUrl: '/?preview=mobile-beat-maker',
+    styleVariations: [
+      { name: 'Fuchsia', fontFamily: 'JetBrains Mono', bgColor: '#0D0612', textColor: '#FDF4FF', accentColor: '#D946EF' },
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#040D14', textColor: '#F0FDF4', accentColor: '#06B6D4' },
+      { name: 'Lime', fontFamily: 'JetBrains Mono', bgColor: '#080D03', textColor: '#F7FEE7', accentColor: '#84CC16' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'GROOVEBOX X-16 — 128 BPM' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'GROOVEBOX X-16 — 128 BPM' },
+      { name: 'Clean', fontFamily: 'Inter, sans-serif', preview: 'GROOVEBOX X-16 — 128 BPM' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-soc-incident-command',
+    name: 'SOC Cyber Threat Command',
+    slug: 'soc-command',
+    description:
+      'A DEFCON 2 security operations center incident command station with real-time global attack vector arcs, raw PCAP packet hex dump inspector, CVE watchlist, and host containment isolation controls.',
+    thumbnail: '/thumbnails/soc-command.jpg',
+    tags: ['Analytics', 'Dashboard', 'Desktop'],
+    features: [
+      'DEFCON Alert Status HUD',
+      'Global Threat Vector Trajectories',
+      'Raw PCAP Packet Hex Inspector',
+      'Zero-Day CVE Watchlist & CVSS Scores',
+      'Endpoint Isolation Containment Switch',
+      'SIEM Real-Time Event Audit Terminal',
+    ],
+    demoUrl: '/?preview=soc-command',
+    styleVariations: [
+      { name: 'Crimson', fontFamily: 'JetBrains Mono', bgColor: '#0A0507', textColor: '#FFF1F2', accentColor: '#F43F5E' },
+      { name: 'Emerald', fontFamily: 'JetBrains Mono', bgColor: '#040B07', textColor: '#F0FDF4', accentColor: '#10B981' },
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#04090D', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'DEFCON 2 // INC-9041 CRITICAL' },
+      { name: 'Terminal', fontFamily: 'Fira Code, monospace', preview: 'DEFCON 2 // INC-9041 CRITICAL' },
+      { name: 'Clean', fontFamily: 'Inter, sans-serif', preview: 'DEFCON 2 // INC-9041 CRITICAL' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-rocket-launch',
+    name: 'Mobile Rocket Launch Tracker',
+    slug: 'mobile-rocket-launch',
+    description:
+      'An aerospace spaceflight companion with live ticking T-minus launch countdown, pre-flight weather GO/NO-GO checklist, mission staging timeline, and cryogenic propellant telemetry.',
+    thumbnail: '/thumbnails/rocket-launch.jpg',
+    tags: ['Weather & Utility', 'Mobile', 'Education'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Live Ticking T-Minus Digital Clock',
+      'Weather GO / NO-GO Flight Rules',
+      'Launch Staging Sequence Timeline',
+      'Orbital Apogee & Telemetry Gauges',
+      'Webcast Live Stream Notification',
+    ],
+    demoUrl: '/?preview=mobile-rocket-launch',
+    styleVariations: [
+      { name: 'Orange', fontFamily: 'JetBrains Mono', bgColor: '#0D0805', textColor: '#FFF7ED', accentColor: '#F97316' },
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#04090D', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Violet', fontFamily: 'JetBrains Mono', bgColor: '#0A0612', textColor: '#F5F3FF', accentColor: '#8B5CF6' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'NOVA-IX // T-00:04:12:38' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'NOVA-IX // T-00:04:12:38' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'NOVA-IX // T-00:04:12:38' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-neural-studio',
+    name: 'Neural Network AI Lab',
+    slug: 'neural-studio',
+    description:
+      'A deep learning architecture lab and model training telemetry suite with real-time loss divergence curves, 8-head attention layer activation heatmaps, hyperparameter tuning, and zero-shot inference probing.',
+    thumbnail: '/thumbnails/neural-studio.jpg',
+    tags: ['Analytics', 'Productivity', 'Desktop'],
+    features: [
+      'Model Layer Architecture Stack',
+      'Loss vs Step Divergence Graphic',
+      '8-Head Attention Activation Heatmap',
+      'Hyperparameters LR & Precision Controls',
+      'Live Zero-Shot Inference Probe',
+      'H100 SXM5 GPU VRAM Telemetry',
+    ],
+    demoUrl: '/?preview=neural-studio',
+    styleVariations: [
+      { name: 'Violet', fontFamily: 'JetBrains Mono', bgColor: '#0A0713', textColor: '#F8FAFC', accentColor: '#8B5CF6' },
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#04090E', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Emerald', fontFamily: 'JetBrains Mono', bgColor: '#040B07', textColor: '#F0FDF4', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'SYNAPSE-X // 184,200 tok/s' },
+      { name: 'Terminal', fontFamily: 'Fira Code, monospace', preview: 'SYNAPSE-X // 184,200 tok/s' },
+      { name: 'Clean', fontFamily: 'Inter, sans-serif', preview: 'SYNAPSE-X // 184,200 tok/s' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-ev-command',
+    name: 'Mobile EV Vehicle Command',
+    slug: 'mobile-ev-command',
+    description:
+      'A connected supercar vehicle telemetry and remote command app with 100 kWh battery pack charging monitor, remote frunk/trunk locks, tri-motor Plaid drive dynamics, and HEPA climate preconditioning.',
+    thumbnail: '/thumbnails/ev-command.jpg',
+    tags: ['Ride & Transport', 'Weather & Utility', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Structural Battery Pack 418mi Gauge',
+      'Remote Frunk & Trunk Lock Controls',
+      'Plaid & Track Dynamics Modes',
+      'Cabin Climate & Bioweapon Defense',
+      '360 Sentry Security AI Monitor',
+    ],
+    demoUrl: '/?preview=mobile-ev-command',
+    styleVariations: [
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#04090E', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Red', fontFamily: 'JetBrains Mono', bgColor: '#0A0506', textColor: '#FFF1F2', accentColor: '#EF4444' },
+      { name: 'Amber', fontFamily: 'JetBrains Mono', bgColor: '#0A0804', textColor: '#FFFBEB', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'APEX GT-R // 418 mi at 91%' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'APEX GT-R // 418 mi at 91%' },
+      { name: 'Clean', fontFamily: 'DM Sans, sans-serif', preview: 'APEX GT-R // 418 mi at 91%' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-quantum-lab',
+    name: 'Quantum Computer Lab',
+    slug: 'quantum-lab',
+    description:
+      'A 128-qubit superconducting transmon quantum circuit simulator and laboratory telemetry suite with 4-qubit wire canvas, Bloch sphere 3D projection, collapse histogram, and 14.2 mK cryo dilution refrigerator monitoring.',
+    thumbnail: '/thumbnails/quantum-lab.jpg',
+    tags: ['Analytics', 'Productivity', 'Desktop'],
+    features: [
+      '128 Transmon Qubit QPU Telemetry',
+      'Quantum Gate Unitary Matrix Toolbox',
+      '4-Wire Interactive Quantum Circuit Canvas',
+      'Bloch Sphere State Vector 3D Simulation',
+      'Measurement Collapse 10k Shot Histogram',
+      '14.2 mK Dilution Cryo Stages Monitor',
+    ],
+    demoUrl: '/?preview=quantum-lab',
+    styleVariations: [
+      { name: 'Indigo', fontFamily: 'JetBrains Mono', bgColor: '#080612', textColor: '#F8FAFC', accentColor: '#6366F1' },
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#04090E', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Emerald', fontFamily: 'JetBrains Mono', bgColor: '#040B07', textColor: '#F0FDF4', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'Q-SYS 128 // 14.2 mK LOCKED' },
+      { name: 'Terminal', fontFamily: 'Fira Code, monospace', preview: 'Q-SYS 128 // 14.2 mK LOCKED' },
+      { name: 'Clean', fontFamily: 'Space Grotesk, sans-serif', preview: 'Q-SYS 128 // 14.2 mK LOCKED' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-exoplanet-tracker',
+    name: 'Mobile Exoplanet Observatory',
+    slug: 'mobile-exoplanet-tracker',
+    description:
+      'A deep space exoplanet radar and atmospheric spectrograph companion with Earth Similarity Index (ESI) scoring, H2O/CO2/CH4 chemical signature breakdown, and AR telescope sky compass alignment.',
+    thumbnail: '/thumbnails/exoplanet-tracker.jpg',
+    tags: ['Weather & Utility', 'Education', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Goldilocks Habitable Zone Radar',
+      'Earth Similarity Index (ESI) Dial',
+      'Atmospheric NIRSpec Chemical Spectrograph',
+      'TRAPPIST & Kepler Planet Catalog',
+      'AR Night Sky Pointing Compass',
+    ],
+    demoUrl: '/?preview=mobile-exoplanet-tracker',
+    styleVariations: [
+      { name: 'Purple', fontFamily: 'JetBrains Mono', bgColor: '#0A0612', textColor: '#FAF5FF', accentColor: '#A855F7' },
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#04090E', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Amber', fontFamily: 'JetBrains Mono', bgColor: '#0D0904', textColor: '#FFFBEB', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'TRAPPIST-1e // ESI 0.95' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'TRAPPIST-1e // ESI 0.95' },
+      { name: 'Clean', fontFamily: 'Outfit, sans-serif', preview: 'TRAPPIST-1e // ESI 0.95' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-fusion-reactor',
+    name: 'Tokamak Fusion Reactor Core',
+    slug: 'fusion-reactor',
+    description:
+      'A magnetic confinement tokamak fusion reactor telemetry console with toroidal plasma cross-section flux modeling, cryogenic D-T ice pellet injection, auxiliary RF/NBI heating meters, Q=10.4 energy gain, and magnet quench protection.',
+    thumbnail: '/thumbnails/fusion-reactor.jpg',
+    tags: ['Analytics', 'Dashboard', 'Desktop'],
+    features: [
+      '154M Kelvin Plasma Core Telemetry',
+      'Toroidal Nested Magnetic Flux Graphic',
+      'Net Positive Energy Gain Q=10.42',
+      'Cryogenic D-T Pellet Fuel Injector',
+      '71.5 MW Neutral Beam & RF Heating',
+      'Emergency Fast Quench Coil Scram',
+    ],
+    demoUrl: '/?preview=fusion-reactor',
+    styleVariations: [
+      { name: 'Amber', fontFamily: 'JetBrains Mono', bgColor: '#0D0904', textColor: '#FFFBEB', accentColor: '#F59E0B' },
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#04090E', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Violet', fontFamily: 'JetBrains Mono', bgColor: '#0A0713', textColor: '#F8FAFC', accentColor: '#8B5CF6' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'HELIOS // 154.2M K · Q=10.4' },
+      { name: 'Terminal', fontFamily: 'Fira Code, monospace', preview: 'HELIOS // 154.2M K · Q=10.4' },
+      { name: 'Clean', fontFamily: 'Space Grotesk, sans-serif', preview: 'HELIOS // 154.2M K · Q=10.4' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-mech-hangar',
+    name: 'Mobile Mech Armory & Hangar',
+    slug: 'mobile-mech-hangar',
+    description:
+      'A combat mech hangar and loadout customizer with 75-ton assault frame armor gauges, modular railgun and plasma armaments, micro-missile hardpoints, neural synapse avionics tuning, and orbital drop pod deployment.',
+    thumbnail: '/thumbnails/mech-hangar.jpg',
+    tags: ['Music & Entertainment', 'Productivity', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      '75-Ton Titan Assault Frame HUD',
+      'Modular Railgun & Plasma Armaments',
+      'x32 Micro-Missile Swarm Hardpoint',
+      'Neural Synapse AI Link Latency Meter',
+      'Orbital Drop Pod Re-entry Trigger',
+    ],
+    demoUrl: '/?preview=mobile-mech-hangar',
+    styleVariations: [
+      { name: 'Amber', fontFamily: 'JetBrains Mono', bgColor: '#0D0904', textColor: '#FFFBEB', accentColor: '#F59E0B' },
+      { name: 'Crimson', fontFamily: 'JetBrains Mono', bgColor: '#0A0507', textColor: '#FFF1F2', accentColor: '#F43F5E' },
+      { name: 'Emerald', fontFamily: 'JetBrains Mono', bgColor: '#040B07', textColor: '#F0FDF4', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'TITAN MK-VII // 72.4 TONS' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'TITAN MK-VII // 72.4 TONS' },
+      { name: 'Clean', fontFamily: 'Outfit, sans-serif', preview: 'TITAN MK-VII // 72.4 TONS' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-submersible-command',
+    name: 'Deep Sea Submersible Command',
+    slug: 'submersible-command',
+    description:
+      'A deep-sea submersible and Mariana Trench exploration console with multibeam bathymetry sonar radar, 4K deep ocean low-light camera, titanium-sphere hull strain gauges, life support scrubbers, and acoustic surface uplink.',
+    thumbnail: '/thumbnails/submersible-command.jpg',
+    tags: ['Weather & Utility', 'Dashboard', 'Desktop'],
+    features: [
+      '10,928m Challenger Deep Telemetry',
+      '360° Multibeam Bathymetry Sonar',
+      '4K Nocturnal Hadal Abyss Camera',
+      'Titanium Pressure Sphere Strain Gauges',
+      'Oxygen & LiOH Life Support Scrubbers',
+      '8.4 kHz Surface Acoustic Transponder',
+    ],
+    demoUrl: '/?preview=submersible-command',
+    styleVariations: [
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#020810', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Emerald', fontFamily: 'JetBrains Mono', bgColor: '#020B07', textColor: '#F0FDF4', accentColor: '#10B981' },
+      { name: 'Amber', fontFamily: 'JetBrains Mono', bgColor: '#0A0703', textColor: '#FFFBEB', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'NAUTILUS // 10,928m · 1,086 BAR' },
+      { name: 'Terminal', fontFamily: 'Fira Code, monospace', preview: 'NAUTILUS // 10,928m · 1,086 BAR' },
+      { name: 'Clean', fontFamily: 'Space Grotesk, sans-serif', preview: 'NAUTILUS // 10,928m · 1,086 BAR' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-cyberdeck',
+    name: 'Mobile Cyberdeck Terminal',
+    slug: 'mobile-cyberdeck',
+    description:
+      'A netrunner cyberdeck infiltration terminal with RAM buffer telemetry, executable quick daemons (Short Circuit, Reboot Optics, Synapse Burn), 4x4 Breach Matrix code sequence mini-game, and emergency Jack-Out killswitch.',
+    thumbnail: '/thumbnails/cyberdeck.jpg',
+    tags: ['Productivity', 'Crypto & Trading', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Subnet Infiltration & RAM Buffer Gauge',
+      'Executable Quick Daemons Suite',
+      '4x4 Hex Breach Matrix Mini-Game',
+      'Real-Time Signal Trace Percentage',
+      'Emergency Jack-Out Neural Sever Killswitch',
+    ],
+    demoUrl: '/?preview=mobile-cyberdeck',
+    styleVariations: [
+      { name: 'Neon', fontFamily: 'JetBrains Mono', bgColor: '#0A040B', textColor: '#FDF2F8', accentColor: '#EC4899' },
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#04090E', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Amber', fontFamily: 'JetBrains Mono', bgColor: '#0D0904', textColor: '#FFFBEB', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'ONYX DECK // 64 RAM UNITS' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'ONYX DECK // 64 RAM UNITS' },
+      { name: 'Clean', fontFamily: 'Outfit, sans-serif', preview: 'ONYX DECK // 64 RAM UNITS' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-particle-collider',
+    name: 'Particle Collider Detector Lab',
+    slug: 'particle-collider',
+    description:
+      'A 13.6 TeV high-energy particle physics collider detector console with transverse subatomic track visualizer, invariant mass diphoton Higgs resonance peak histogram, and 40 MHz collision trigger pipeline.',
+    thumbnail: '/thumbnails/particle-collider.jpg',
+    tags: ['Analytics', 'Dashboard', 'Desktop'],
+    features: [
+      '13.6 TeV Proton-Proton Beam Telemetry',
+      'ATLAS Transverse Detector Event Display',
+      'Higgs Boson 125 GeV Invariant Mass Peak',
+      'Superfluid 1.9 K Helium-II Cryogenics',
+      '40 MHz Level-1 to HLT Trigger System',
+      'Emergency Collimator Beam Dump Control',
+    ],
+    demoUrl: '/?preview=particle-collider',
+    styleVariations: [
+      { name: 'Indigo', fontFamily: 'JetBrains Mono', bgColor: '#070612', textColor: '#F8FAFC', accentColor: '#6366F1' },
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#04090E', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Amber', fontFamily: 'JetBrains Mono', bgColor: '#0A0703', textColor: '#FFFBEB', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'ATLAS // 13.6 TeV · 125 GeV' },
+      { name: 'Terminal', fontFamily: 'Fira Code, monospace', preview: 'ATLAS // 13.6 TeV · 125 GeV' },
+      { name: 'Clean', fontFamily: 'Space Grotesk, sans-serif', preview: 'ATLAS // 13.6 TeV · 125 GeV' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-bionic-arm',
+    name: 'Mobile Bionic Limb Controller',
+    slug: 'mobile-bionic-arm',
+    description:
+      'A cybernetic bionic arm companion with 16-channel EMG myoelectric sensor telemetry, interactive grip preset selection (Precision Pinch, Power Fist, Tripod), grip lock toggle, and vibrotactile haptic calibration.',
+    thumbnail: '/thumbnails/bionic-arm.jpg',
+    tags: ['Health & Fitness', 'Productivity', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'Titanium Cyber-Arm MK-V Telemetry',
+      'Multi-Grip Mode Preset Switcher',
+      '16-Channel Forearm EMG Sensor Monitor',
+      'Grip Lock & Force Readout (120 N)',
+      'Vibrotactile Sensory Haptic Feedback',
+    ],
+    demoUrl: '/?preview=mobile-bionic-arm',
+    styleVariations: [
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#04090E', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Purple', fontFamily: 'JetBrains Mono', bgColor: '#0A0612', textColor: '#FAF5FF', accentColor: '#A855F7' },
+      { name: 'Amber', fontFamily: 'JetBrains Mono', bgColor: '#0D0904', textColor: '#FFFBEB', accentColor: '#F59E0B' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'NEXUS-V // 16-CH EMG 4.2ms' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'NEXUS-V // 16-CH EMG 4.2ms' },
+      { name: 'Clean', fontFamily: 'Outfit, sans-serif', preview: 'NEXUS-V // 16-CH EMG 4.2ms' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-smart-city-command',
+    name: 'Smart City Autonomous Grid Console',
+    slug: 'smart-city-command',
+    description:
+      'A hyper-dense municipal command center for Tokyo Neo-Arcology monitoring energy grids, autonomous drone transit networks, water purification aquifers, emergency response dispatches, and ionized atmospheric deflectors.',
+    thumbnail: '/thumbnails/smart-city.jpg',
+    tags: ['Dashboard', 'Weather & Utility', 'Desktop'],
+    features: [
+      'Tokyo Neo-Arcology 24.5M Population Telemetry',
+      'Quantum Fusion Grid & Maglev Transit Radar',
+      'Interactive Sector Telemetry Inspector',
+      'Autonomous Drone Fleet Dispatch Monitor',
+      'Aquifer & Water Purification Subsystem Gauges',
+      'Atmospheric Deflector & Weather Dome Status',
+    ],
+    demoUrl: '/?preview=smart-city-command',
+    styleVariations: [
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#030712', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Fuchsia', fontFamily: 'JetBrains Mono', bgColor: '#0A030D', textColor: '#FDF4FF', accentColor: '#D946EF' },
+      { name: 'Emerald', fontFamily: 'JetBrains Mono', bgColor: '#020B07', textColor: '#F0FDF4', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'TOKYO NEO-ARCOLOGY // 24.5M POPULATION' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'TOKYO NEO-ARCOLOGY // 24.5M POPULATION' },
+      { name: 'Clean', fontFamily: 'Outfit, sans-serif', preview: 'TOKYO NEO-ARCOLOGY // 24.5M POPULATION' },
+    ],
+    reviews: [],
+  },
+  {
+    id: 'seed-mobile-cyber-pet',
+    name: 'Cybernetic AI Companion App',
+    slug: 'mobile-cyber-pet',
+    description:
+      'A mobile companion controller for an autonomous cybernetic robotic pet (A-9 Bolt). Features interactive status commands (Feed Battery, Neural Sync, Ultrasonic Whistle), behavioral stance selector, hardware upgrade slots, and real-time biometric telemetry.',
+    thumbnail: '/thumbnails/cyber-pet.jpg',
+    tags: ['Wellness', 'Music & Entertainment', 'Mobile'],
+    features: [
+      'Mobile-First Layout (390px)',
+      'A-9 Bolt Cyber-Hound Biometric Vitals',
+      'Autonomous Behavioral Mode Presets',
+      'Interactive Feeding, Sync & Whistle Controls',
+      'Infrared & Ultrasonic Cyber-Augment Modules',
+      'Chassis Integrity & LIDAR Perception Gauges',
+    ],
+    demoUrl: '/?preview=mobile-cyber-pet',
+    styleVariations: [
+      { name: 'Cyan', fontFamily: 'JetBrains Mono', bgColor: '#030712', textColor: '#F0FDFA', accentColor: '#06B6D4' },
+      { name: 'Fuchsia', fontFamily: 'JetBrains Mono', bgColor: '#0A030D', textColor: '#FDF4FF', accentColor: '#D946EF' },
+      { name: 'Emerald', fontFamily: 'JetBrains Mono', bgColor: '#020B07', textColor: '#F0FDF4', accentColor: '#10B981' },
+    ],
+    fontVariations: [
+      { name: 'Mono', fontFamily: 'JetBrains Mono, monospace', preview: 'A-9 BOLT // AUTONOMOUS AI CANINE' },
+      { name: 'Modern', fontFamily: 'Plus Jakarta Sans, sans-serif', preview: 'A-9 BOLT // AUTONOMOUS AI CANINE' },
+      { name: 'Clean', fontFamily: 'Outfit, sans-serif', preview: 'A-9 BOLT // AUTONOMOUS AI CANINE' },
     ],
     reviews: [],
   },
@@ -3117,7 +3714,7 @@ function loadWithSeeds(): { themes: ThemeData[]; categories: string[] } {
   // Filter out any seeds the user has permanently deleted
   const activeDefaults = DEFAULT_THEMES.filter((d) => !deletedIds.includes(d.id))
 
-  if (seedVersion === '55') {
+  if (seedVersion === '66') {
     return { themes: savedThemes, categories: mergedCategories }
   }
 
@@ -3128,7 +3725,7 @@ function loadWithSeeds(): { themes: ThemeData[]; categories: string[] } {
   // Persist to localStorage immediately
   localStorage.setItem(THEMES_KEY, JSON.stringify(mergedThemes))
   localStorage.setItem(CATEGORIES_KEY, JSON.stringify(mergedCategories))
-  localStorage.setItem(SEEDED_KEY, '55')
+  localStorage.setItem(SEEDED_KEY, '66')
   return { themes: mergedThemes, categories: mergedCategories }
 }
 
@@ -3219,6 +3816,26 @@ const PREVIEW_COMPONENTS: Record<string, React.ComponentType<any>> = {
 
   'iot-dashboard': IotDashboard,
   'mobile-astrology': MobileAstrologyApp,
+  'flight-booking': FlightBooking,
+  'mobile-coffee-shop': MobileCoffeeShop,
+  'virtual-conference': VirtualConference,
+  'mobile-plant-care': MobilePlantCare,
+  'drone-telemetry': DroneMissionControl,
+  'mobile-beat-maker': MobileBeatStudio,
+  'soc-command': SocIncidentCommand,
+  'mobile-rocket-launch': MobileRocketLaunch,
+  'neural-studio': NeuralStudio,
+  'mobile-ev-command': MobileEvCommand,
+  'quantum-lab': QuantumLab,
+  'mobile-exoplanet-tracker': MobileExoplanetTracker,
+  'fusion-reactor': FusionReactor,
+  'mobile-mech-hangar': MobileMechHangar,
+  'submersible-command': SubmersibleCommand,
+  'mobile-cyberdeck': MobileCyberdeck,
+  'particle-collider': ParticleCollider,
+  'mobile-bionic-arm': MobileBionicArm,
+  'smart-city-command': SmartCityCommand,
+  'mobile-cyber-pet': MobileCyberPet,
 }
 
 function getInitialPage(): Page {

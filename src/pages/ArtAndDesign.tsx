@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import type { ThemeData } from '../components/ui/ThemeCard'
 
 const sortOptions = ['Populer', 'Terbaru', 'Rating Tertinggi']
@@ -24,6 +24,69 @@ const CATEGORY_ICONS: Record<string, string> = {
 const getCategoryIcon = (cat: string) =>
   CATEGORY_ICONS[cat] || 'M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4'
 
+/* ─── Keyframe CSS injected once ─── */
+const GALLERY_STYLES = `
+@keyframes glow-drift {
+  0%, 100% { transform: translate(0%, 0%) scale(1); opacity: 0.4; }
+  25% { transform: translate(30%, -20%) scale(1.2); opacity: 0.6; }
+  50% { transform: translate(-10%, 30%) scale(0.9); opacity: 0.35; }
+  75% { transform: translate(-30%, -10%) scale(1.1); opacity: 0.5; }
+}
+@keyframes glow-drift-2 {
+  0%, 100% { transform: translate(0%, 0%) scale(1); opacity: 0.3; }
+  33% { transform: translate(-25%, 25%) scale(1.15); opacity: 0.5; }
+  66% { transform: translate(20%, -15%) scale(0.85); opacity: 0.25; }
+}
+@keyframes float-orb {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.2; }
+  100% { transform: scale(0.8); opacity: 0.6; }
+}
+@keyframes text-shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes border-rotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+.card-spotlight {
+  --x: 50%;
+  --y: 50%;
+}
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    600px circle at var(--x) var(--y),
+    rgba(59, 130, 246, 0.08),
+    transparent 40%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: inherit;
+}
+.card-spotlight:hover::before {
+  opacity: 1;
+}
+`
+
 interface ArtAndDesignProps {
   themes: ThemeData[]
   categories: string[]
@@ -43,6 +106,7 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
   const [filtersExpanded, setFiltersExpanded] = useState(true)
   const [mounted, setMounted] = useState(false)
   const sortRef = useRef<HTMLDivElement>(null)
+  const gridRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => { setMounted(true) }, [])
 
@@ -52,6 +116,18 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
     }
     document.addEventListener('mousedown', handleClick)
     return () => document.removeEventListener('mousedown', handleClick)
+  }, [])
+
+  /* ── Spotlight effect: track mouse across entire grid ── */
+  const handleGridMouseMove = useCallback((e: React.MouseEvent) => {
+    const cards = gridRef.current?.querySelectorAll('.card-spotlight')
+    cards?.forEach((card) => {
+      const rect = (card as HTMLElement).getBoundingClientRect()
+      const x = e.clientX - rect.left
+      const y = e.clientY - rect.top
+      ;(card as HTMLElement).style.setProperty('--x', `${x}px`)
+      ;(card as HTMLElement).style.setProperty('--y', `${y}px`)
+    })
   }, [])
 
   const filtered = themes.filter((theme) => {
@@ -75,7 +151,6 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
 
   const allCats = ['All', ...categories]
 
-  // Count themes per category
   const catCounts: Record<string, number> = { 'All': themes.length }
   for (const cat of categories) {
     catCounts[cat] = themes.filter((t) => t.tags?.includes(cat)).length
@@ -86,71 +161,141 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
     columns === 4 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' :
     'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
 
+  const totalRatings = themes.reduce((sum, t) => sum + (t.reviews?.length || 0), 0)
+
   return (
-    <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto relative">
+      <style>{GALLERY_STYLES}</style>
 
       {/* ═══════ HERO HEADER ═══════ */}
-      <section
-        className="text-center pt-4 pb-10"
-        style={{
-          opacity: mounted ? 1 : 0,
-          transform: mounted ? 'translateY(0)' : 'translateY(16px)',
-          transition: 'all 0.6s ease-out',
-        }}
-      >
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-3">
-          Theme Gallery
-        </h1>
-        <p className="text-zinc-500 text-sm sm:text-base mb-8">
-          {themes.length} premium templates
-        </p>
+      <section className="relative text-center pt-6 pb-14 overflow-hidden">
 
-        {/* ─── Search bar ─── */}
-        <div className="max-w-2xl mx-auto flex items-center gap-3">
-          <div className={`relative flex-1 rounded-xl border transition-all duration-300 ${
-            searchFocused
-              ? 'border-blue-500/40 shadow-[0_0_20px_rgba(59,130,246,0.12)]'
-              : 'border-zinc-800/60 hover:border-zinc-700/60'
-          }`}>
-            <svg
-              className={`absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] transition-colors duration-200 ${
-                searchFocused ? 'text-blue-400' : 'text-zinc-600'
-              }`}
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-            </svg>
-            <input
-              type="text"
-              placeholder="Cari tema, komponen, gaya..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              onFocus={() => setSearchFocused(true)}
-              onBlur={() => setSearchFocused(false)}
-              className="w-full pl-12 pr-4 py-3.5 rounded-xl bg-zinc-900/40 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded-md text-zinc-600 hover:text-zinc-400 hover:bg-zinc-800/60 transition-colors cursor-pointer"
-              >
-                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            )}
+        {/* Ambient glow orbs */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+          {/* Primary blue orb */}
+          <div
+            className="absolute w-[500px] h-[500px] rounded-full blur-[120px]"
+            style={{
+              background: 'radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%)',
+              top: '-15%', left: '10%',
+              animation: 'glow-drift 12s ease-in-out infinite',
+            }}
+          />
+          {/* Secondary cyan orb */}
+          <div
+            className="absolute w-[400px] h-[400px] rounded-full blur-[100px]"
+            style={{
+              background: 'radial-gradient(circle, rgba(34,211,238,0.08) 0%, transparent 70%)',
+              top: '5%', right: '5%',
+              animation: 'glow-drift-2 15s ease-in-out infinite',
+            }}
+          />
+          {/* Faint grid pattern overlay */}
+          <div
+            className="absolute inset-0 opacity-[0.03]"
+            style={{
+              backgroundImage: `linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)`,
+              backgroundSize: '60px 60px',
+            }}
+          />
+        </div>
+
+        {/* Floating indicator orbs */}
+        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+          <div className="absolute w-2 h-2 rounded-full bg-blue-500/40 top-[18%] left-[22%]" style={{ animation: 'float-orb 4s ease-in-out infinite' }} />
+          <div className="absolute w-1.5 h-1.5 rounded-full bg-cyan-400/30 top-[35%] right-[18%]" style={{ animation: 'float-orb 5s ease-in-out 1s infinite' }} />
+          <div className="absolute w-1 h-1 rounded-full bg-blue-400/50 top-[25%] left-[65%]" style={{ animation: 'float-orb 3.5s ease-in-out 0.5s infinite' }} />
+          <div className="absolute w-1.5 h-1.5 rounded-full bg-indigo-400/25 top-[12%] right-[35%]" style={{ animation: 'float-orb 6s ease-in-out 2s infinite' }} />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10" style={{ animation: mounted ? 'fade-in-up 0.8s ease-out' : 'none' }}>
+
+          {/* Badge */}
+          <div
+            className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-blue-500/20 bg-blue-500/5 mb-6"
+          >
+            <div className="relative">
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+              <div className="absolute inset-0 w-1.5 h-1.5 rounded-full bg-emerald-400" style={{ animation: 'pulse-ring 2s ease-in-out infinite' }} />
+            </div>
+            <span className="text-[11px] font-medium text-blue-400/90 tracking-wide">
+              {themes.length} templates &middot; {categories.length} categories &middot; {totalRatings} ratings
+            </span>
           </div>
 
-          {/* Upload button */}
-          <button
-            onClick={onGoUpload}
-            className="shrink-0 flex items-center gap-2 px-5 py-3.5 rounded-xl bg-blue-600 text-white text-sm font-semibold hover:bg-blue-500 active:scale-[0.97] transition-all cursor-pointer"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
-            </svg>
-            <span className="hidden sm:inline">Unggah</span>
-          </button>
+          {/* Title with shimmer */}
+          <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-4">
+            <span className="text-white">Theme </span>
+            <span
+              className="inline-block"
+              style={{
+                background: 'linear-gradient(90deg, #3b82f6 0%, #06b6d4 25%, #8b5cf6 50%, #3b82f6 75%, #06b6d4 100%)',
+                backgroundSize: '200% auto',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                animation: 'text-shimmer 4s linear infinite',
+              }}
+            >
+              Gallery
+            </span>
+          </h1>
+
+          <p className="text-zinc-500 text-sm sm:text-base mb-8 max-w-md mx-auto leading-relaxed">
+            Discover hand-crafted UI themes built for modern apps.
+            <br className="hidden sm:block" />
+            <span className="text-zinc-600"> Explore, preview, and ship faster.</span>
+          </p>
+
+          {/* ─── Search bar ─── */}
+          <div className="max-w-2xl mx-auto flex items-center gap-3">
+            <div className={`relative flex-1 rounded-2xl border transition-all duration-500 backdrop-blur-sm ${
+              searchFocused
+                ? 'border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.1),0_0_60px_rgba(59,130,246,0.05)] bg-zinc-900/60'
+                : 'border-zinc-800/50 hover:border-zinc-700/50 bg-zinc-900/30'
+            }`}>
+              <svg
+                className={`absolute left-4 top-1/2 -translate-y-1/2 w-[18px] h-[18px] transition-all duration-300 ${
+                  searchFocused ? 'text-blue-400 scale-110' : 'text-zinc-600'
+                }`}
+                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+              <input
+                type="text"
+                placeholder="Cari tema, komponen, gaya..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                onFocus={() => setSearchFocused(true)}
+                onBlur={() => setSearchFocused(false)}
+                className="w-full pl-12 pr-4 py-4 rounded-2xl bg-transparent text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 rounded-lg text-zinc-600 hover:text-zinc-300 hover:bg-zinc-800/60 transition-all cursor-pointer"
+                >
+                  <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              )}
+            </div>
+
+            {/* Upload button */}
+            <button
+              onClick={onGoUpload}
+              className="group shrink-0 flex items-center gap-2 px-5 py-4 rounded-2xl bg-blue-600 text-white text-sm font-semibold
+                hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/20
+                active:scale-[0.96] transition-all duration-300 cursor-pointer"
+            >
+              <svg className="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" />
+              </svg>
+              <span className="hidden sm:inline">Unggah</span>
+            </button>
+          </div>
         </div>
       </section>
 
@@ -161,7 +306,7 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
           style={{
             opacity: mounted ? 1 : 0,
             transform: mounted ? 'translateY(0)' : 'translateY(12px)',
-            transition: 'all 0.6s ease-out 0.1s',
+            transition: 'all 0.6s ease-out 0.15s',
           }}
         >
           {/* Filter header bar */}
@@ -268,10 +413,9 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
         style={{
           opacity: mounted ? 1 : 0,
           transform: mounted ? 'translateY(0)' : 'translateY(10px)',
-          transition: 'all 0.6s ease-out 0.15s',
+          transition: 'all 0.6s ease-out 0.2s',
         }}
       >
-        {/* Results count */}
         <p className="text-xs text-zinc-500">
           Menampilkan <span className="text-zinc-300 font-medium">{filtered.length}</span> dari{' '}
           <span className="text-zinc-300 font-medium">{themes.length}</span>
@@ -342,7 +486,7 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
               </svg>
             </button>
             {sortOpen && (
-              <div className="absolute top-full right-0 mt-1.5 w-full min-w-[140px] rounded-xl bg-zinc-900 border border-zinc-800/60 shadow-2xl shadow-black/50 py-1 z-50 overflow-hidden">
+              <div className="absolute top-full right-0 mt-1.5 w-full min-w-[140px] rounded-xl bg-zinc-900 border border-zinc-800/60 shadow-2xl shadow-black/50 py-1 z-50 overflow-hidden backdrop-blur-xl">
                 {sortOptions.map((opt) => (
                   <button
                     key={opt}
@@ -362,12 +506,16 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
         </div>
       </div>
 
-      {/* ═══════ DIVIDER ═══════ */}
-      <div className="h-px bg-zinc-800/40 mb-8" />
+      {/* ═══════ DIVIDER — gradient fade ═══════ */}
+      <div className="h-px mb-8 bg-gradient-to-r from-transparent via-zinc-700/40 to-transparent" />
 
       {/* ═══════ THEME GRID ═══════ */}
       {filtered.length > 0 ? (
-        <div className={`grid ${colClass} gap-5`}>
+        <div
+          ref={gridRef}
+          className={`grid ${colClass} gap-5`}
+          onMouseMove={handleGridMouseMove}
+        >
           {filtered.map((theme, i) => {
             const avgRating = theme.reviews?.length
               ? theme.reviews.reduce((s, r) => s + r.rating, 0) / theme.reviews.length
@@ -376,31 +524,32 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
             return (
               <div
                 key={theme.id}
-                className="group relative rounded-2xl border border-zinc-800/40 bg-zinc-900/20 hover:border-blue-500/25 hover:bg-zinc-900/40 transition-all duration-400 overflow-hidden cursor-pointer hover:shadow-xl hover:shadow-blue-500/[0.04] hover:-translate-y-0.5"
+                className="card-spotlight group relative rounded-2xl border border-zinc-800/50 bg-zinc-900/30
+                  hover:border-zinc-700/80 hover:bg-zinc-900/60
+                  transition-all duration-300 overflow-hidden cursor-pointer
+                  hover:shadow-[0_12px_40px_rgba(0,0,0,0.5)] hover:-translate-y-1"
                 onClick={() => onViewTheme(theme.slug)}
                 style={{
-                  opacity: mounted ? 1 : 0,
-                  transform: mounted ? 'translateY(0)' : 'translateY(16px)',
-                  transition: `all 0.5s ease-out ${Math.min(0.04 * i, 0.4)}s`,
+                  animation: mounted ? `fade-in-up 0.5s ease-out ${Math.min(0.05 * i, 0.5)}s both` : 'none',
                 }}
               >
                 {/* Action buttons */}
                 <div className="absolute top-3 left-3 z-20 opacity-0 group-hover:opacity-100 transition-all duration-200 flex gap-1.5">
                   <button
                     onClick={(e) => { e.stopPropagation(); onEdit(theme.id) }}
-                    className="p-1.5 rounded-lg bg-blue-500/90 backdrop-blur-md text-white hover:bg-blue-500 cursor-pointer shadow-lg shadow-blue-500/20 transition-all hover:scale-110"
+                    className="p-1.5 rounded-lg bg-zinc-900/80 backdrop-blur-md text-zinc-300 hover:text-white hover:bg-blue-600 border border-zinc-700/50 cursor-pointer shadow-lg transition-all hover:scale-105"
                     title="Edit tema"
                   >
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                     </svg>
                   </button>
                   <button
                     onClick={(e) => { e.stopPropagation(); onDelete(theme.id) }}
-                    className="p-1.5 rounded-lg bg-red-500/90 backdrop-blur-md text-white hover:bg-red-500 cursor-pointer shadow-lg shadow-red-500/20 transition-all hover:scale-110"
+                    className="p-1.5 rounded-lg bg-zinc-900/80 backdrop-blur-md text-zinc-300 hover:text-white hover:bg-red-600 border border-zinc-700/50 cursor-pointer shadow-lg transition-all hover:scale-105"
                     title="Hapus tema"
                   >
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                     </svg>
                   </button>
@@ -408,8 +557,8 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
 
                 {/* Preview badge */}
                 <div className="absolute top-3 right-3 z-20 opacity-0 group-hover:opacity-100 transition-all duration-200">
-                  <span className="px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[10px] font-medium flex items-center gap-1.5 shadow-lg">
-                    <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span className="px-2.5 py-1 rounded-lg bg-zinc-900/80 backdrop-blur-md text-zinc-200 border border-zinc-700/50 text-[10px] font-medium flex items-center gap-1.5 shadow-lg">
+                    <svg className="w-3 h-3 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
@@ -417,41 +566,30 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
                   </span>
                 </div>
 
-                {/* ─── Browser mockup frame ─── */}
-                <div className="m-3 mb-0 rounded-xl overflow-hidden border border-zinc-800/30 bg-zinc-950">
-                  {/* Window chrome bar */}
-                  <div className="flex items-center gap-1.5 px-3 py-2 bg-zinc-900/80 border-b border-zinc-800/30">
-                    <div className="w-2 h-2 rounded-full bg-zinc-700/60" />
-                    <div className="w-2 h-2 rounded-full bg-zinc-700/60" />
-                    <div className="w-2 h-2 rounded-full bg-zinc-700/60" />
-                    <div className="flex-1 mx-3 h-4 rounded-md bg-zinc-800/50" />
-                  </div>
-
-                  {/* Thumbnail */}
-                  <div className="relative aspect-[16/10] overflow-hidden">
-                    <img
-                      src={theme.thumbnail}
-                      alt={theme.name}
-                      className="w-full h-full object-cover object-top group-hover:scale-[1.04] transition-transform duration-700"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  </div>
+                {/* ─── Clean Thumbnail Showcase ─── */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-zinc-950 border-b border-zinc-800/40">
+                  <img
+                    src={theme.thumbnail}
+                    alt={theme.name}
+                    className="w-full h-full object-cover object-top group-hover:scale-[1.05] transition-transform duration-500 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-40 group-hover:opacity-20 transition-opacity duration-300" />
                 </div>
 
                 {/* ─── Card info ─── */}
-                <div className="p-4 pt-3.5">
+                <div className="relative z-10 p-4">
                   {/* Title + Rating */}
-                  <div className="flex items-start justify-between gap-3 mb-2">
-                    <h3 className="text-[13px] font-semibold text-white group-hover:text-blue-400 transition-colors duration-200 truncate">
+                  <div className="flex items-start justify-between gap-3 mb-1.5">
+                    <h3 className="text-[13px] font-semibold text-zinc-100 group-hover:text-blue-400 transition-colors duration-200 truncate">
                       {theme.name}
                     </h3>
                     {avgRating > 0 && (
-                      <div className="flex items-center gap-1 shrink-0">
+                      <div className="flex items-center gap-1 shrink-0 pt-0.5">
                         {[1, 2, 3, 4, 5].map((star) => (
                           <svg
                             key={star}
-                            className={`w-2.5 h-2.5 ${star <= Math.round(avgRating) ? 'text-amber-400' : 'text-zinc-700'}`}
+                            className={`w-2.5 h-2.5 transition-colors duration-200 ${star <= Math.round(avgRating) ? 'text-amber-400' : 'text-zinc-700'}`}
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -463,7 +601,7 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
                   </div>
 
                   {/* Description */}
-                  <p className="text-[11px] text-zinc-500 leading-relaxed line-clamp-2 mb-3">
+                  <p className="text-[11px] text-zinc-400 leading-relaxed line-clamp-2 mb-3">
                     {theme.description}
                   </p>
 
@@ -473,13 +611,13 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
                       {theme.features.slice(0, 3).map((feature) => (
                         <span
                           key={feature}
-                          className="text-[9px] px-2 py-0.5 rounded-md bg-blue-500/8 text-blue-400/70 border border-blue-500/10 font-medium"
+                          className="text-[9px] px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-400/90 border border-blue-500/20 font-medium"
                         >
                           {feature}
                         </span>
                       ))}
                       {theme.features.length > 3 && (
-                        <span className="text-[9px] px-2 py-0.5 rounded-md bg-zinc-800/40 text-zinc-600 font-medium">
+                        <span className="text-[9px] px-2 py-0.5 rounded-md bg-zinc-800/60 text-zinc-500 font-medium border border-zinc-800/40">
                           +{theme.features.length - 3}
                         </span>
                       )}
@@ -492,7 +630,7 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
                       {theme.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="text-[9px] px-2 py-0.5 rounded-md bg-zinc-800/50 text-zinc-500 border border-zinc-800/30 font-medium"
+                          className="text-[9px] px-2 py-0.5 rounded-md bg-zinc-800/40 text-zinc-400 border border-zinc-800/60 font-medium"
                         >
                           {tag}
                         </span>
@@ -509,32 +647,37 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
         <div className="flex flex-col items-center justify-center py-24 text-center">
           {themes.length === 0 ? (
             <>
-              <div className="w-20 h-20 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 flex items-center justify-center mb-5">
-                <svg className="w-8 h-8 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="relative w-24 h-24 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 flex items-center justify-center mb-6">
+                <svg className="w-10 h-10 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
+                <div className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-blue-500 flex items-center justify-center">
+                  <svg className="w-2.5 h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M12 4v16m8-8H4" />
+                  </svg>
+                </div>
               </div>
-              <p className="text-zinc-400 text-sm font-medium mb-1.5">Belum ada desain</p>
-              <p className="text-zinc-600 text-xs mb-6">Unggah tema pertama Anda untuk memulai.</p>
+              <p className="text-zinc-300 text-base font-semibold mb-1.5">Belum ada desain</p>
+              <p className="text-zinc-600 text-sm mb-6">Unggah tema pertama Anda untuk memulai.</p>
               <button
                 onClick={onGoUpload}
-                className="px-6 py-2.5 rounded-xl bg-blue-600 text-white text-sm font-medium hover:bg-blue-500 transition-all cursor-pointer"
+                className="px-6 py-3 rounded-xl bg-blue-600 text-white text-sm font-medium hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/20 transition-all cursor-pointer"
               >
                 + Unggah Desain
               </button>
             </>
           ) : (
             <>
-              <div className="w-20 h-20 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 flex items-center justify-center mb-5">
-                <svg className="w-8 h-8 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <div className="w-24 h-24 rounded-2xl bg-zinc-900/50 border border-zinc-800/50 flex items-center justify-center mb-6">
+                <svg className="w-10 h-10 text-zinc-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
               </div>
-              <p className="text-zinc-400 text-sm font-medium mb-1.5">Tema tidak ditemukan</p>
-              <p className="text-zinc-600 text-xs mb-5">Coba sesuaikan pencarian atau kriteria filter Anda.</p>
+              <p className="text-zinc-300 text-base font-semibold mb-1.5">Tema tidak ditemukan</p>
+              <p className="text-zinc-600 text-sm mb-5">Coba sesuaikan pencarian atau kriteria filter Anda.</p>
               <button
                 onClick={() => { setSearchQuery(''); setActiveFilter('All') }}
-                className="px-5 py-2 rounded-lg text-xs text-blue-400 bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/20 transition-all cursor-pointer"
+                className="px-5 py-2.5 rounded-lg text-xs text-blue-400 bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/20 transition-all cursor-pointer"
               >
                 Hapus semua filter
               </button>
@@ -551,7 +694,7 @@ export function ArtAndDesign({ themes, categories, onDelete, onEdit, onGoUpload,
               Menampilkan {filtered.length} dari {themes.length} template
             </p>
             <div className="flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-blue-500/50" />
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-500/50" style={{ animation: 'pulse-ring 3s ease-in-out infinite' }} />
               <span className="text-[10px] text-zinc-700 tracking-wider uppercase font-medium">Komponen oleh Desain</span>
             </div>
           </div>
